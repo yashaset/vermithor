@@ -84,6 +84,7 @@ const ProfileCardContainer = styled.div`
   border-radius: 20px;
   font-family: var(--font-raleway);
   position: relative;
+  margin-top: 100px;
 `
 
 const TitleContainer = styled.div`

@@ -8,10 +8,11 @@ const NavigationBar = () => {
       background: VOILET[100]
     }}>
       <h3 style={{
-        fontSize: "1.5rem"
+        fontSize: "2.5rem"
       }}>Yash <span style={{
         color: ORANGE[100]
       }}>Rawat</span></h3>
+      
     </div>
   )
 }

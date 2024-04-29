@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, Pacifico } from "next/font/google";
+import { Raleway, Pacifico } from "next/font/google";
 import "./globals.css";
 
-const pacifico = Pacifico({ subsets: ["latin"], weight: ["400"] });
+const pacifico = Pacifico({ subsets: ["latin"], weight: ["400"],variable: '--font-pacifico'  });
+const raleway = Raleway({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"],variable: '--font-raleway' });
 
 export const metadata: Metadata = {
   title: "Yash Rawat | Portfolio",
@@ -16,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={pacifico.className}>{children}</body>
+      <body className={`${pacifico.variable} ${raleway.variable}`}>{children}</body>
     </html>
   );
 }

@@ -17,7 +17,7 @@ const HomePage = () => {
       minHeight:"100vh"
     }}>
       <ProfileCardContainer>
-
+        <ProfileContainer/>
         <TitleContainer>
         <h1 style={{
           color:ORANGE[100],
@@ -83,6 +83,7 @@ const ProfileCardContainer = styled.div`
   padding-top: 160px;
   border-radius: 20px;
   font-family: var(--font-raleway);
+  position: relative;
 `
 
 const TitleContainer = styled.div`
@@ -109,5 +110,18 @@ const Tile = styled.div`
   background-color: ${VOILET[100]};
   border-radius: 20px;
   width: 100%;
+
+`
+
+const ProfileContainer = styled.div`
+
+width: 250px;
+height: 250px;
+left: 50%;
+top: 3%;
+transform: translate(-50%, -50%);
+border-radius: 20px;
+position: absolute;
+background-color: #D9D9D9;
 
 `

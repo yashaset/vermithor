@@ -39,7 +39,7 @@ const HomePage = () => {
           <h4  style={{
             fontWeight:"100",
             fontSize:"1.8rem",
-            color:ORANGE[100]
+            color: ORANGE[100]
           }}>+91 9953631349</h4>
         </Tile>
         <Tile>

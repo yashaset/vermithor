@@ -1,6 +1,5 @@
 "use client"
 import React from 'react'
-import NavigationBar from './UI/NavigationBar'
 import { BLUE, ORANGE, VOILET } from './colors'
 import styled from "styled-components";
 const HomePage = () => {

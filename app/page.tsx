@@ -108,6 +108,7 @@ const HomePage = () => {
         </ProfileCardContainer>
       </div>
       <div
+        id="youtube-videos"
         style={{
           padding: 16,
         }}

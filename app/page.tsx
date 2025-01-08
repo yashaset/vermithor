@@ -82,7 +82,7 @@ const HomePage = () => {
                   color: ORANGE[100],
                 }}
               >
-                rawatyash1999@gmail.com
+                yash@yashrawat.com
               </h4>
             </Tile>
             <Tile>

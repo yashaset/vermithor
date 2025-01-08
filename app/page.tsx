@@ -10,6 +10,7 @@ import {
   TitleContainer,
 } from "./styles";
 import ShowCaseVideos from "./UI/ShowCaseVideos/ShowCaseVideos";
+import Link from "next/link";
 const HomePage = () => {
   return (
     <div
@@ -75,15 +76,17 @@ const HomePage = () => {
               >
                 Email
               </h3>
-              <h4
+              <Link
+                href={"mailto: yash@yashrawat.com"}
                 style={{
                   fontWeight: "100",
                   fontSize: "1.8rem",
                   color: ORANGE[100],
+                  textDecoration: "none",
                 }}
               >
                 yash@yashrawat.com
-              </h4>
+              </Link>
             </Tile>
             <Tile>
               <h3

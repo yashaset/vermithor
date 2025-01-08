@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { BLUE, ORANGE, VOILET } from "./colors";
+import { BLUE, ORANGE } from "./colors";
 import {
   InfoTileContainer,
   ProfileCardContainer,

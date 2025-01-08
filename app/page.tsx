@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { BLUE, ORANGE, VOILET } from "./colors";
-import YouTubeEmbed from "./UI/YouTubeEmbed/YouTubeEmbed";
 import {
   InfoTileContainer,
   ProfileCardContainer,

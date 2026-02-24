@@ -1,15 +1,111 @@
-*, *::after, *::before{
-  
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-syne: "Syne", sans-serif;
+  --font-dm-mono: "DM Mono", monospace;
+}
+
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  color: #FFF;
+}
 
+html {
+  scroll-behavior: smooth;
 }
-html{
-  font-size: 10px;
+
+body {
+  background: #0a0a0a;
+  color: #f0ede6;
+  cursor: none;
+  overflow-x: hidden;
 }
-body{
-  font-family: var(--font-pacifico);
-  font-size: 10px;
+
+/* Noise overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.5;
+}
+
+/* Section dividers */
+.section-divider {
+  border-top: 1px solid #1e1e1e;
+}
+
+/* Ghost text */
+.ghost-text {
+  color: transparent;
+  -webkit-text-stroke: 1px #1e1e1e;
+  animation: pulseStroke 4s ease-in-out infinite;
+}
+
+@keyframes pulseStroke {
+  0%,
+  100% {
+    -webkit-text-stroke-color: #1e1e1e;
+  }
+  50% {
+    -webkit-text-stroke-color: #2e2e2e;
+  }
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stat card stagger */
+.stat-card-1 {
+  animation-delay: 0.2s;
+}
+.stat-card-2 {
+  animation-delay: 0.35s;
+}
+.stat-card-3 {
+  animation-delay: 0.5s;
+}
+.stat-card-4 {
+  animation-delay: 0.65s;
+}
+
+/* Custom cursor */
+.cursor {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: #e8f542;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+.cursor-ring {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #e8f542;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.4;
+  transform: translate(-50%, -50%);
+  transition:
+    left 0.12s ease,
+    top 0.12s ease;
 }

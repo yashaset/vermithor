@@ -1,59 +1,80 @@
-'use client'
+"use client";
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from "react";
 
-interface Stat { target: number; suffix: string; label: string }
-
-const stats: Stat[] = [
-  { target: 100, suffix: 'K+', label: 'Monthly Operators' },
-  { target: 92,  suffix: '+',  label: 'Lighthouse Score' },
-  { target: 50,  suffix: '%',  label: 'Bundle Reduction' },
-  { target: 150, suffix: 'K+', label: 'LOC to TypeScript' },
-]
-
-function useCounter(target: number, suffix: string, active: boolean) {
-  const [value, setValue] = useState(0)
-  useEffect(() => {
-    if (!active) return
-    let cur = 0
-    const step = target / 50
-    const id = setInterval(() => {
-      cur = Math.min(cur + step, target)
-      setValue(Math.floor(cur))
-      if (cur >= target) clearInterval(id)
-    }, 30)
-    return () => clearInterval(id)
-  }, [active, target])
-  return `${value}${suffix}`
+interface Stat {
+  target: number;
+  suffix: string;
+  label: string;
 }
 
-function StatCard({ stat, index, active }: { stat: Stat; index: number; active: boolean }) {
-  const display = useCounter(stat.target, stat.suffix, active)
+const stats: Stat[] = [
+  { target: 100, suffix: "K+", label: "Monthly Operators" },
+  { target: 92, suffix: "+", label: "Lighthouse Score" },
+  { target: 50, suffix: "%", label: "Bundle Reduction" },
+  { target: 150, suffix: "K+", label: "LOC to TypeScript" },
+];
+
+function useCounter(target: number, suffix: string, active: boolean) {
+  const [value, setValue] = useState(0);
+  useEffect(() => {
+    if (!active) return;
+    let cur = 0;
+    const step = target / 50;
+    const id = setInterval(() => {
+      cur = Math.min(cur + step, target);
+      setValue(Math.floor(cur));
+      if (cur >= target) clearInterval(id);
+    }, 30);
+    return () => clearInterval(id);
+  }, [active, target]);
+  return `${value}${suffix}`;
+}
+
+function StatCard({
+  stat,
+  index,
+  active,
+}: {
+  stat: Stat;
+  index: number;
+  active: boolean;
+}) {
+  const display = useCounter(stat.target, stat.suffix, active);
   return (
     <div
       className={`bg-surface border border-border p-4 sm:p-6 opacity-0 animate-fade-up stat-card-${index + 1}`}
-      style={{ animationFillMode: 'forwards' }}
+      style={{ animationFillMode: "forwards" }}
     >
-      <div className="text-[28px] sm:text-[40px] font-extrabold text-accent leading-none">{display}</div>
-      <div className="font-mono text-[9px] sm:text-[10px] text-muted mt-1.5 uppercase tracking-widest leading-tight">{stat.label}</div>
+      <div className="text-[28px] sm:text-[40px] font-extrabold text-accent leading-none">
+        {display}
+      </div>
+      <div className="font-mono text-[9px] sm:text-[10px] text-muted mt-1.5 uppercase tracking-widest leading-tight">
+        {stat.label}
+      </div>
     </div>
-  )
+  );
 }
 
 export default function Hero() {
-  const statsRef = useRef<HTMLDivElement>(null)
-  const [statsActive, setStatsActive] = useState(false)
+  const statsRef = useRef<HTMLDivElement>(null);
+  const [statsActive, setStatsActive] = useState(false);
 
   useEffect(() => {
-    const el = statsRef.current
-    if (!el) return
+    const el = statsRef.current;
+    if (!el) return;
     const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setStatsActive(true); obs.disconnect() } },
-      { threshold: 0.2 }
-    )
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [])
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStatsActive(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.2 },
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   return (
     <section className="min-h-screen grid grid-cols-1 md:grid-cols-2 relative overflow-hidden pt-[72px] md:pt-0">
@@ -64,7 +85,8 @@ export default function Hero() {
             Software Engineer (UI) · Delhi, India
           </p>
           <h1 className="text-[clamp(48px,10vw,110px)] font-extrabold leading-[0.9] tracking-tight mt-4 md:mt-5">
-            Yash<br />
+            Yash
+            <br />
             <span className="text-accent">Rawat</span>
           </h1>
           <p className="font-mono text-[12px] sm:text-[13px] text-muted mt-4 md:mt-5 tracking-wide">
@@ -73,13 +95,20 @@ export default function Hero() {
         </div>
         <div className="flex flex-wrap gap-3 mt-8 md:mt-10">
           {[
-            { href: 'mailto:rawatyash1999@gmail.com', label: 'Email' },
-            { href: 'https://linkedin.com/in/yashrawat-react', label: 'LinkedIn' },
-            { href: 'tel:+919958625621', label: 'Call' },
+            { href: "mailto:rawatyash1999@gmail.com", label: "Email" },
+            {
+              href: "https://linkedin.com/in/yashrawat-react",
+              label: "LinkedIn",
+            },
+            { href: "tel:+919958625621", label: "Call" },
           ].map((l) => (
-            <a key={l.href} href={l.href}
-              target={l.href.startsWith('http') ? '_blank' : undefined}
-              rel={l.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+            <a
+              key={l.href}
+              href={l.href}
+              target={l.href.startsWith("http") ? "_blank" : undefined}
+              rel={
+                l.href.startsWith("http") ? "noopener noreferrer" : undefined
+              }
               className="font-mono text-[11px] text-ink border border-border px-4 sm:px-5 py-2.5 tracking-widest uppercase transition-all duration-200 hover:border-accent hover:text-accent"
             >
               {l.label}
@@ -95,7 +124,9 @@ export default function Hero() {
           className="ghost-text hidden sm:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[55%] text-[clamp(60px,12vw,200px)] font-extrabold leading-tight whitespace-nowrap pointer-events-none select-none"
           aria-hidden
         >
-          3+<br />YRS
+          4.5+
+          <br />
+          YRS
         </div>
         <div ref={statsRef} className="grid grid-cols-2 gap-[2px]">
           {stats.map((s, i) => (
@@ -104,5 +135,5 @@ export default function Hero() {
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -1,12 +1,7 @@
 import SectionLabel from './SectionLabel'
 import Reveal from './Reveal'
 
-interface Job {
-  company: string
-  role: string
-  date: string
-  items: string[]
-}
+interface Job { company: string; role: string; date: string; items: string[] }
 
 const jobs: Job[] = [
   {
@@ -15,7 +10,7 @@ const jobs: Job[] = [
     date: 'Dec 2021 – Present · Gurgaon, India',
     items: [
       'Owned & scaled the core booking platform (React + Next.js) used by 100K+ monthly operators, including automated bidding and Razorpay payment capture.',
-      'Migrated platform to Next.js, improving Lighthouse score 60 → 90. Nginx text compression cut bundle size by 50%.',
+      'Migrated platform to Next.js, improving Lighthouse score 60 → 92. Nginx text compression cut bundle size by 50%.',
       'Built trip management module with real-time updates — milestones, expenses, issues, and payments for fleet owners.',
       'Developed Help Center chatbot supporting FAQs, ticket creation, automated resolution flows, and agent escalation.',
       'Created KYC + Onboarding platform capturing complex documents and verification data.',
@@ -40,17 +35,14 @@ const jobs: Job[] = [
 function JobCard({ job, delay }: { job: Job; delay: number }) {
   return (
     <Reveal delay={delay}>
-      <div className="group relative bg-surface border border-border p-10 overflow-hidden transition-colors duration-300 hover:border-[#333] hover:bg-[#141414]">
-        {/* accent left bar */}
+      <div className="group relative bg-surface border border-border p-6 sm:p-10 overflow-hidden transition-colors duration-300 hover:border-[#333] hover:bg-[#141414] h-full">
         <span className="absolute top-0 left-0 w-[3px] h-0 bg-accent transition-all duration-500 group-hover:h-full" />
-
-        <h3 className="text-[22px] font-bold tracking-tight">{job.company}</h3>
+        <h3 className="text-[18px] sm:text-[22px] font-bold tracking-tight">{job.company}</h3>
         <p className="font-mono text-[11px] text-accent2 mt-1 tracking-wide">{job.role}</p>
         <p className="font-mono text-[10px] text-muted mt-0.5 tracking-wide">{job.date}</p>
-
         <ul className="mt-6 flex flex-col gap-2.5">
           {job.items.map((item, i) => (
-            <li key={i} className="relative font-mono text-[12px] text-[#aaa] leading-relaxed pl-4">
+            <li key={i} className="relative font-mono text-[11px] sm:text-[12px] text-[#aaa] leading-relaxed pl-4">
               <span className="absolute left-0 top-[3px] text-accent text-[9px]">▸</span>
               {item}
             </li>
@@ -63,12 +55,10 @@ function JobCard({ job, delay }: { job: Job; delay: number }) {
 
 export default function Experience() {
   return (
-    <section id="experience" className="section-divider px-[60px] py-20">
+    <section id="experience" className="section-divider px-4 sm:px-8 md:px-[60px] py-16 md:py-20">
       <SectionLabel>Experience</SectionLabel>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-[2px]">
-        {jobs.map((job, i) => (
-          <JobCard key={job.company} job={job} delay={i * 120} />
-        ))}
+        {jobs.map((job, i) => <JobCard key={job.company} job={job} delay={i * 120} />)}
       </div>
     </section>
   )

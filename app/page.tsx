@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import Experience from "@/components/Experience";
 import Impact from "@/components/Impact";
 import Skills from "@/components/Skills";
+import BusinessCard from "@/components/BusinessCard";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -17,6 +18,7 @@ export default function Home() {
         <Experience />
         <Impact />
         <Skills />
+        <BusinessCard />
         <Contact />
       </main>
       <Footer />

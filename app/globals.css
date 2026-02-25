@@ -5,6 +5,7 @@
 :root {
   --font-syne: "Syne", sans-serif;
   --font-dm-mono: "DM Mono", monospace;
+  --font-cormorant: "Cormorant Garamond", serif;
 }
 
 * {
@@ -20,8 +21,23 @@ html {
 body {
   background: #0a0a0a;
   color: #f0ede6;
-  cursor: none;
   overflow-x: hidden;
+}
+
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+}
+
+@media (pointer: coarse) {
+  .cursor,
+  .cursor-ring {
+    display: none;
+  }
+  body {
+    cursor: auto;
+  }
 }
 
 /* Noise overlay */
@@ -108,4 +124,135 @@ body::before {
   transition:
     left 0.12s ease,
     top 0.12s ease;
+}
+
+/* ── Business Card ── */
+.card-scene {
+  width: min(440px, 92vw);
+  height: min(260px, calc(92vw * 0.59));
+}
+
+.card-wrapper {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.08s linear;
+  position: relative;
+}
+
+.card-wrapper--flipped {
+  transition: transform 0.72s cubic-bezier(0.4, 0.2, 0.2, 1) !important;
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  overflow: hidden;
+  backface-visibility: hidden;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+    0 32px 80px -10px rgba(0, 0, 0, 0.75),
+    0 0 60px -20px rgba(20, 180, 150, 0.12);
+}
+
+.card-face::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.11) 0%,
+    rgba(255, 255, 255, 0.02) 40%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.card-grid {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 32px 32px;
+  -webkit-mask-image: radial-gradient(
+    ellipse 90% 90% at 50% 50%,
+    black 40%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 90% 90% at 50% 50%,
+    black 40%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.card-diagonal {
+  position: absolute;
+  top: 0;
+  right: 80px;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.07) 30%,
+    rgba(255, 255, 255, 0.13) 50%,
+    rgba(255, 255, 255, 0.04) 70%,
+    transparent 100%
+  );
+  transform: skewX(-12deg);
+  pointer-events: none;
+  z-index: 4;
+}
+
+.card-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  pointer-events: none;
+  z-index: 2;
+  transition: background 0.06s linear;
+}
+
+.card-rim {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  pointer-events: none;
+  z-index: 3;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.06),
+    inset 1px 0 0 rgba(255, 255, 255, 0.12),
+    inset -1px 0 0 rgba(255, 255, 255, 0.06);
+}
+
+.card-content {
+  position: relative;
+  z-index: 5;
+  padding: clamp(20px, 4vw, 32px) clamp(22px, 5vw, 36px);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.font-cormorant {
+  font-family: var(--font-cormorant), serif;
 }

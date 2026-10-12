@@ -11,8 +11,8 @@ export default function PrivacyPage() {
   return (
     <DocPage kicker="Momentum · Privacy" title={<>Privacy <span className="text-accent">Policy</span></>} meta="Effective 12 October 2026 · Applies to the Momentum iOS app and its widgets">
       <div className="border border-border bg-surface p-6 sm:p-8">
-        <p className="font-mono text-[10px] text-accent tracking-[0.2em] uppercase mb-4">The short version</p>
-        <ul className="flex flex-col gap-3 font-mono text-[12px] sm:text-[13px] leading-relaxed">
+        <p className="text-[10px] text-accent tracking-[0.2em] uppercase mb-4">The short version</p>
+        <ul className="flex flex-col gap-3 text-[12px] sm:text-[13px] leading-relaxed">
           <li>You can use Momentum without an account. Then your workouts never leave your iPhone.</li>
           <li>If you sign in, your workouts are backed up to your private cloud space so they sync across devices.</li>
           <li>Apple Health data and your gym location stay on your iPhone. They are never uploaded.</li>

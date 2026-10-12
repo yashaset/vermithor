@@ -46,10 +46,10 @@ export default function SupportPage() {
         className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border border-border bg-surface p-6 sm:p-8 transition-colors duration-200 hover:border-accent"
       >
         <div>
-          <p className="font-mono text-[10px] text-accent tracking-[0.2em] uppercase">Email the developer</p>
-          <p className="font-mono text-[13px] sm:text-[15px] text-ink mt-3 break-all">{SUPPORT_EMAIL}</p>
+          <p className="text-[10px] text-accent tracking-[0.2em] uppercase">Email the developer</p>
+          <p className="text-[13px] sm:text-[15px] text-ink mt-3 break-all">{SUPPORT_EMAIL}</p>
         </div>
-        <p className="font-mono text-[11px] text-muted leading-relaxed sm:max-w-[240px]">
+        <p className="text-[11px] text-muted leading-relaxed sm:max-w-[240px]">
           Bug reports, feature requests or questions about your data. Replies within a few days.
         </p>
       </a>
@@ -58,9 +58,9 @@ export default function SupportPage() {
         <div className="flex flex-col">
           {faqs.map((f) => (
             <details key={f.q} className="group border-b border-border py-5">
-              <summary className="flex justify-between items-center gap-4 list-none cursor-none [&::-webkit-details-marker]:hidden">
-                <span className="font-syne text-[16px] sm:text-[18px] font-bold text-ink tracking-tight">{f.q}</span>
-                <span className="font-mono text-accent text-[18px] transition-transform duration-200 group-open:rotate-45" aria-hidden>+</span>
+              <summary className="flex justify-between items-center gap-4 list-none cursor-pointer [&::-webkit-details-marker]:hidden">
+                <span className="text-[16px] sm:text-[18px] font-bold text-ink tracking-tight">{f.q}</span>
+                <span className="text-accent text-[18px] transition-transform duration-200 group-open:rotate-45" aria-hidden>+</span>
               </summary>
               <p className="mt-4">{f.a}</p>
             </details>

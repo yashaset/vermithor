@@ -1,37 +1,30 @@
-import type { Metadata } from "next";
-import { Syne, DM_Mono } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next'
+import { Inter, Nunito } from 'next/font/google'
+import './globals.css'
+import { STUDIO_NAME } from '@/components/studio/config'
 
-const syne = Syne({
-  subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
-  variable: "--font-syne",
-  display: "swap",
-});
-
-const dmMono = DM_Mono({
-  subsets: ["latin"],
-  weight: ["300", "400"],
-  style: ["normal", "italic"],
-  variable: "--font-dm-mono",
-  display: "swap",
-});
+// Fallbacks only: Apple devices render the real SF Pro / SF Pro Rounded, like the Momentum app.
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap', preload: false })
+const nunito = Nunito({ subsets: ['latin'], weight: ['700', '800', '900'], variable: '--font-nunito', display: 'swap', preload: false })
 
 export const metadata: Metadata = {
-  title: "Yash Rawat — Software Engineer (UI)",
+  metadataBase: new URL('https://yashrawat.com'),
+  title: `${STUDIO_NAME} — Independent apps by Yash Rawat`,
   description:
-    "Portfolio of Yash Rawat, a Software Engineer specialising in React, Next.js, TypeScript, and performance engineering.",
-  keywords: ["React", "Next.js", "TypeScript", "Frontend", "Software Engineer"],
-};
+    'Apps worth keeping on your home screen. Yash Rawat is an independent developer in Delhi who designs, builds and supports every app himself. No ads, no tracking.',
+  openGraph: {
+    title: `${STUDIO_NAME} — Independent apps by Yash Rawat`,
+    description: 'Apps worth keeping on your home screen.',
+    url: '/',
+    siteName: STUDIO_NAME,
+    type: 'website',
+  },
+}
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${syne.variable} ${dmMono.variable}`}>
-      <body className="font-syne bg-[#0a0a0a] text-ink">{children}</body>
+    <html lang="en" className={`${inter.variable} ${nunito.variable}`}>
+      <body className="font-sans bg-bg text-ink">{children}</body>
     </html>
-  );
+  )
 }

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import AppStoreButton from './AppStoreButton'
+import { STUDIO_NAME } from '@/components/studio/config'
 
 const links = [
   { href: '/momentum#features', label: 'Features' },
@@ -26,8 +27,10 @@ export default function MomentumNav() {
       }`}
     >
       <div className="flex items-center gap-3 min-w-0">
-        <a href="/" className="text-base font-black tracking-tight shrink-0" aria-label="Yash Rawat — home">
-          YR<span className="text-accent">.</span>
+        <a href="/" className="font-display text-base font-extrabold tracking-tight shrink-0" aria-label={`${STUDIO_NAME} — all apps`}>
+          {STUDIO_NAME.split('.')[0]}
+          <span className="text-accent">.</span>
+          {STUDIO_NAME.split('.')[1]}
         </a>
         <span className="text-border">/</span>
         <a href="/momentum" className="flex items-center gap-2 min-w-0">
@@ -42,7 +45,7 @@ export default function MomentumNav() {
             <li key={l.href} className={l.label === 'Features' ? 'hidden sm:block' : undefined}>
               <a
                 href={l.href}
-                className="font-mono text-[10px] sm:text-[11px] text-muted tracking-[0.1em] uppercase transition-colors duration-200 hover:text-accent"
+                className="text-[10px] sm:text-[11px] text-muted tracking-[0.1em] uppercase transition-colors duration-200 hover:text-accent"
               >
                 {l.label}
               </a>

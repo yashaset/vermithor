@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Cursor from '@/components/Cursor'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://yashrawat.com'),
@@ -23,9 +22,6 @@ export const metadata: Metadata = {
 
 export default function MomentumLayout({ children }: { children: React.ReactNode }) {
   return (
-    <>
-      <Cursor />
-      {children}
-    </>
+    <>{children}</>
   )
 }

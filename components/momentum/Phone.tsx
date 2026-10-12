@@ -10,7 +10,7 @@ export default function Phone({
 }) {
   return (
     <div
-      className={`rounded-[46px] bg-[#050505] p-[9px] border border-[#2a2a2a] shadow-[0_40px_100px_-30px_rgba(0,0,0,0.9),0_0_80px_-30px_rgba(232,245,66,0.18)] ${className}`}
+      className={`rounded-[46px] bg-[#050505] p-[9px] border border-[#2a2a2a] shadow-[0_40px_100px_-30px_rgba(0,0,0,0.9),0_0_80px_-30px_rgba(201,244,59,0.18)] ${className}`}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img

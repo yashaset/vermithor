@@ -60,14 +60,14 @@ export default function MomentumPage() {
         {/* Hero */}
         <section className="relative overflow-hidden min-h-screen grid grid-cols-1 lg:grid-cols-2 items-center gap-12 px-4 sm:px-10 md:px-[60px] pt-28 pb-16 lg:py-0">
           <div
-            className="pointer-events-none absolute -top-40 right-[-10%] w-[700px] h-[700px] rounded-full bg-[radial-gradient(circle,rgba(232,245,66,0.14),transparent_65%)]"
+            className="pointer-events-none absolute -top-40 right-[-10%] w-[700px] h-[700px] rounded-full bg-[radial-gradient(circle,rgba(201,244,59,0.14),transparent_65%)]"
             aria-hidden
           />
           <div className="relative">
             <div className="flex items-center gap-4">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/momentum/icon.png" alt="Momentum app icon" width={72} height={72} className="w-[60px] h-[60px] sm:w-[72px] sm:h-[72px] rounded-[16px] shadow-[0_10px_40px_-10px_rgba(232,245,66,0.35)]" />
-              <p className="font-mono text-[10px] sm:text-[11px] text-accent tracking-[0.2em] uppercase">
+              <img src="/momentum/icon.png" alt="Momentum app icon" width={72} height={72} className="w-[60px] h-[60px] sm:w-[72px] sm:h-[72px] rounded-[16px] shadow-[0_10px_40px_-10px_rgba(201,244,59,0.35)]" />
+              <p className="text-[10px] sm:text-[11px] text-accent tracking-[0.2em] uppercase">
                 iPhone app · Strength training
               </p>
             </div>
@@ -80,13 +80,13 @@ export default function MomentumPage() {
               <br />
               <span className="text-accent">lift.</span>
             </h1>
-            <p className="font-mono text-[12px] sm:text-[13px] text-muted mt-6 max-w-[460px] leading-relaxed">
+            <p className="text-[12px] sm:text-[13px] text-muted mt-6 max-w-[460px] leading-relaxed">
               Log every set in seconds, watch your lifts climb and never miss a gym day. Momentum is built for
               lifting, nothing else.
             </p>
             <div className="flex flex-wrap items-center gap-4 mt-10">
               <AppStoreButton />
-              <span className="font-mono text-[10px] text-muted tracking-widest uppercase">Free · No ads · No account needed</span>
+              <span className="text-[10px] text-muted tracking-widest uppercase">Free · No ads · No account needed</span>
             </div>
           </div>
 
@@ -110,8 +110,8 @@ export default function MomentumPage() {
         <section className="section-divider grid grid-cols-2 md:grid-cols-4 gap-[2px] px-4 sm:px-10 md:px-[60px] py-12">
           {stats.map((s) => (
             <div key={s.label} className="bg-surface border border-border p-5 sm:p-7">
-              <div className="text-[32px] sm:text-[44px] font-extrabold text-accent leading-none">{s.value}</div>
-              <div className="font-mono text-[9px] sm:text-[10px] text-muted mt-2 uppercase tracking-widest">{s.label}</div>
+              <div className="font-display text-[32px] sm:text-[44px] font-black text-accent leading-none tabular-nums">{s.value}</div>
+              <div className="text-[9px] sm:text-[10px] text-muted mt-2 uppercase tracking-widest">{s.label}</div>
             </div>
           ))}
         </section>
@@ -128,12 +128,12 @@ export default function MomentumPage() {
                   </div>
                 </Reveal>
                 <Reveal delay={100}>
-                  <p className="font-mono text-[11px] text-accent tracking-[0.2em] uppercase">{f.kicker}</p>
+                  <p className="text-[11px] text-accent tracking-[0.2em] uppercase">{f.kicker}</p>
                   <h2 className="text-[clamp(32px,5vw,56px)] font-extrabold leading-[0.95] tracking-tight mt-4">{f.title}</h2>
-                  <p className="font-mono text-[12px] sm:text-[13px] text-muted mt-6 leading-relaxed max-w-[480px]">{f.body}</p>
+                  <p className="text-[12px] sm:text-[13px] text-muted mt-6 leading-relaxed max-w-[480px]">{f.body}</p>
                   <ul className="mt-8 flex flex-col gap-3">
                     {f.points.map((p) => (
-                      <li key={p} className="flex items-center gap-3 font-mono text-[11px] sm:text-[12px] tracking-wide">
+                      <li key={p} className="flex items-center gap-3 text-[11px] sm:text-[12px] tracking-wide">
                         <span className="w-1.5 h-1.5 bg-accent shrink-0" aria-hidden />
                         {p}
                       </li>
@@ -153,7 +153,7 @@ export default function MomentumPage() {
               <Reveal key={e.title}>
                 <div className="h-full bg-surface border border-border p-6 sm:p-8 transition-colors duration-200 hover:border-accent">
                   <h3 className="text-[20px] font-bold tracking-tight">{e.title}</h3>
-                  <p className="font-mono text-[11px] sm:text-[12px] text-muted mt-3 leading-relaxed">{e.body}</p>
+                  <p className="text-[11px] sm:text-[12px] text-muted mt-3 leading-relaxed">{e.body}</p>
                 </div>
               </Reveal>
             ))}
@@ -180,12 +180,12 @@ export default function MomentumPage() {
                 'No ads, no analytics, no tracking. Your data is never sold.',
                 'Delete your account and cloud data from inside the app, any time.',
               ].map((t) => (
-                <li key={t} className="px-5 py-4 border border-border bg-surface font-mono text-[11px] sm:text-[12px] tracking-wide leading-relaxed">
+                <li key={t} className="px-5 py-4 border border-border bg-surface text-[11px] sm:text-[12px] tracking-wide leading-relaxed">
                   {t}
                 </li>
               ))}
             </ul>
-            <a href="/momentum/privacy" className="inline-block mt-6 font-mono text-[11px] text-accent tracking-widest uppercase hover:underline underline-offset-4">
+            <a href="/momentum/privacy" className="inline-block mt-6 text-[11px] text-accent tracking-widest uppercase hover:underline underline-offset-4">
               Read the privacy policy →
             </a>
           </Reveal>
@@ -201,7 +201,7 @@ export default function MomentumPage() {
           <div className="mt-10">
             <AppStoreButton />
           </div>
-          <p className="font-mono text-[11px] text-muted mt-10 max-w-[440px] leading-relaxed">
+          <p className="text-[11px] text-muted mt-10 max-w-[440px] leading-relaxed">
             Designed, built and shipped by{' '}
             <a href="/" className="text-ink underline underline-offset-4 decoration-border hover:decoration-accent">
               Yash Rawat

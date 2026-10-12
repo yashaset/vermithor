@@ -7,7 +7,7 @@ export default function AppStoreButton({ size = 'lg' }: { size?: 'sm' | 'lg' }) 
     return (
       <span className={`inline-flex items-center gap-3 border border-border bg-surface ${pad}`}>
         <span className="w-2 h-2 rounded-full bg-accent animate-pulse" aria-hidden />
-        <span className="font-mono text-[11px] tracking-[0.15em] uppercase text-ink">
+        <span className="text-[11px] tracking-[0.15em] uppercase text-ink">
           Coming soon to the App Store
         </span>
       </span>
@@ -23,7 +23,7 @@ export default function AppStoreButton({ size = 'lg' }: { size?: 'sm' | 'lg' }) 
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
         <path d="M12 2v13m0 0-5-5m5 5 5-5M4 20h16" stroke="currentColor" strokeWidth="2.4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
-      <span className="font-mono text-[11px] tracking-[0.15em] uppercase font-normal">
+      <span className="text-[11px] tracking-[0.15em] uppercase font-normal">
         Download on the App Store
       </span>
     </a>

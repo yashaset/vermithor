@@ -50,8 +50,8 @@ export default function Home() {
                         <path d="M12 5v14M5 12h14" />
                       </svg>
                     </span>
-                    <span className="font-semibold text-[15px] text-muted">Next app</span>
-                    <span className="text-[12px] text-faint">On the workbench</span>
+                    <span className="font-semibold text-[15px] text-muted">Up next</span>
+                    <span className="text-[12px] text-faint whitespace-nowrap">Camera · Git</span>
                   </a>
                 </li>
               </ul>
@@ -73,7 +73,7 @@ export default function Home() {
                 </Reveal>
               ))}
               <Reveal className="h-full">
-                <NextAppCard n={APPS.length + 1} />
+                <NextAppCard />
               </Reveal>
             </div>
           </section>

@@ -3,6 +3,7 @@ import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Experience from "@/components/Experience";
 import Impact from "@/components/Impact";
+import Products from "@/components/Products";
 import Skills from "@/components/Skills";
 import BusinessCard from "@/components/BusinessCard";
 import Contact from "@/components/Contact";
@@ -15,6 +16,7 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
+        <Products />
         <Experience />
         <Impact />
         <Skills />

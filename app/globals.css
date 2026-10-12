@@ -2,6 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Momentum's palettes. Dark is the default; light follows the system unless the toggle picks one. */
+:root {
+  color-scheme: dark;
+  --bg: #0a0a0b;
+  --surface: #111113;
+  --border: #1e1e22;
+  --line: #2a2a30;
+  --ghost: #26262b;
+  --nav: rgba(10, 10, 11, 0.92);
+  --ink: #ededef;
+  --ink2: #b4b4bc;
+  --muted: #a0a0a8;
+  --faint: #6e6e76;
+  --accent: #c9f43b;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --bg: #f6f7f3;
+    --surface: #ffffff;
+    --border: #e3e5de;
+    --line: #d5d8d0;
+    --ghost: #e6e8e2;
+    --nav: rgba(246, 247, 243, 0.92);
+    --ink: #0f140d;
+    --ink2: #3d423a;
+    --muted: #5c6058;
+    --faint: #6f736b;
+    --accent: #458005;
+  }
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f6f7f3;
+  --surface: #ffffff;
+  --border: #e3e5de;
+  --line: #d5d8d0;
+  --ghost: #e6e8e2;
+  --nav: rgba(246, 247, 243, 0.92);
+  --ink: #0f140d;
+  --ink2: #3d423a;
+  --muted: #5c6058;
+  --faint: #6f736b;
+  --accent: #458005;
+}
+
+/* Per-app colours: set --a-d/--a-l (accent) and --t-d/--t-l (panel tint) inline. */
+.app-accent { color: var(--a-d); }
+.app-tint { background: var(--t-d); }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .app-accent { color: var(--a-l); }
+  :root:not([data-theme="dark"]) .app-tint { background: var(--t-l); }
+}
+:root[data-theme="light"] .app-accent { color: var(--a-l); }
+:root[data-theme="light"] .app-tint { background: var(--t-l); }
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -13,8 +69,8 @@ html {
 }
 
 body {
-  background: #0a0a0b;
-  color: #ededef;
+  background: var(--bg);
+  color: var(--ink);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -28,7 +84,7 @@ h3 {
 }
 
 .section-divider {
-  border-top: 1px solid #1e1e22;
+  border-top: 1px solid var(--border);
 }
 
 /* Scroll reveal */

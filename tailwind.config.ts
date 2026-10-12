@@ -12,14 +12,21 @@ const config: Config = {
         sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Text"', '"SF Pro Display"', 'var(--font-inter)', 'system-ui', 'sans-serif'],
         display: ['ui-rounded', '"SF Pro Rounded"', 'var(--font-nunito)', '-apple-system', 'system-ui', 'sans-serif'],
       },
+      // Theme tokens: values live in app/globals.css and switch between dark and light.
       colors: {
-        accent: '#C9F43B',
-        surface: '#111113',
-        border: '#1E1E22',
-        muted: '#A0A0A8',
-        faint: '#6E6E76',
-        ink: '#EDEDEF',
-        bg: '#0A0A0B',
+        bg: 'var(--bg)',
+        surface: 'var(--surface)',
+        border: 'var(--border)',
+        line: 'var(--line)',
+        ghost: 'var(--ghost)',
+        nav: 'var(--nav)',
+        ink: 'var(--ink)',
+        ink2: 'var(--ink2)',
+        muted: 'var(--muted)',
+        faint: 'var(--faint)',
+        accent: 'var(--accent)', // accent text/links: lime on dark, deep green on light
+        lime: '#C9F43B', // Momentum lime, for fills (always with onlime text)
+        onlime: '#0A0A0B',
       },
     },
   },

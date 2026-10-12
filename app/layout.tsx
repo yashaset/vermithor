@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, Nunito } from 'next/font/google'
 import './globals.css'
 import { STUDIO_NAME } from '@/components/studio/config'
+import { themeInitScript } from '@/components/ThemeToggle'
 
 // Fallbacks only: Apple devices render the real SF Pro / SF Pro Rounded, like the Momentum app.
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap', preload: false })
@@ -23,7 +24,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${nunito.variable}`}>
+    <html lang="en" className={`${inter.variable} ${nunito.variable}`} suppressHydrationWarning>
+      <head>
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f6f7f3" />
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0a0b" />
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className="font-sans bg-bg text-ink">{children}</body>
     </html>
   )

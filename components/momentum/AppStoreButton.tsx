@@ -6,7 +6,7 @@ export default function AppStoreButton({ size = 'lg' }: { size?: 'sm' | 'lg' }) 
   if (!APP_STORE_URL) {
     return (
       <span className={`inline-flex items-center gap-3 border border-border bg-surface ${pad}`}>
-        <span className="w-2 h-2 rounded-full bg-accent animate-pulse" aria-hidden />
+        <span className="w-2 h-2 rounded-full bg-lime" aria-hidden />
         <span className="text-[11px] tracking-[0.15em] uppercase text-ink">
           Coming soon to the App Store
         </span>
@@ -18,7 +18,7 @@ export default function AppStoreButton({ size = 'lg' }: { size?: 'sm' | 'lg' }) 
       href={APP_STORE_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center gap-3 bg-accent text-[#0a0a0a] ${pad} transition-transform duration-200 hover:-translate-y-0.5`}
+      className={`inline-flex items-center gap-3 bg-lime text-onlime ${pad} transition-transform duration-200 hover:-translate-y-0.5`}
     >
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
         <path d="M12 2v13m0 0-5-5m5 5 5-5M4 20h16" stroke="currentColor" strokeWidth="2.4" fill="none" strokeLinecap="round" strokeLinejoin="round" />

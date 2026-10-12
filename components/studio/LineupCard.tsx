@@ -1,12 +1,13 @@
 import AppIcon from './AppIcon'
 import StatusBadge from './StatusBadge'
 import type { StudioApp } from './apps'
+import { appVars } from './appStyle'
 
 function Art({ app }: { app: StudioApp }) {
   if (app.screenshots?.length) {
     const [a, b] = app.screenshots
     return (
-      <div className="h-[260px] flex justify-center items-start gap-3 pt-8 overflow-hidden" style={{ background: app.tint }}>
+      <div className="app-tint h-[260px] flex justify-center items-start gap-3 pt-8 overflow-hidden" style={appVars(app)}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={a.src} alt={a.alt} width={640} height={1391} loading="lazy" className="w-[38%] rounded-[22px] border-[5px] border-black -rotate-[5deg] translate-y-[18px]" />
         {b && (
@@ -24,7 +25,7 @@ function Art({ app }: { app: StudioApp }) {
       { w: 'das', bg: '#2E7D32', r: 'rotate-[10deg]', y: 'translate-y-3' },
     ]
     return (
-      <div className="h-[260px] flex items-center justify-center gap-3" style={{ background: app.tint }} aria-hidden>
+      <div className="app-tint h-[260px] flex items-center justify-center gap-3" style={appVars(app)} aria-hidden>
         {words.map((x) => (
           <span
             key={x.w}
@@ -37,7 +38,7 @@ function Art({ app }: { app: StudioApp }) {
       </div>
     )
   }
-  return <div className="h-[260px]" style={{ background: app.tint }} aria-hidden />
+  return <div className="app-tint h-[260px]" style={appVars(app)} aria-hidden />
 }
 
 export default function LineupCard({ app }: { app: StudioApp }) {
@@ -60,7 +61,7 @@ export default function LineupCard({ app }: { app: StudioApp }) {
             </p>
           </div>
         </div>
-        <p className="text-[16px] leading-relaxed text-[#B4B4BC]">{app.description}</p>
+        <p className="text-[16px] leading-relaxed text-ink2">{app.description}</p>
         <div className="mt-auto pt-2 flex flex-wrap items-center gap-2.5">
           <a
             href={primary.href}
@@ -80,9 +81,9 @@ export default function LineupCard({ app }: { app: StudioApp }) {
 
 export function NextAppCard({ n }: { n: number }) {
   return (
-    <article id="app-next" className="scroll-mt-6 rounded-[28px] border-[1.5px] border-dashed border-[#2E2E34] flex flex-col">
-      <div className="h-[260px] flex items-center justify-center border-b-[1.5px] border-dashed border-[#2E2E34]" aria-hidden>
-        <span className="font-display font-black text-[96px] tracking-tighter text-[#26262B]">{String(n).padStart(2, '0')}</span>
+    <article id="app-next" className="scroll-mt-6 rounded-[28px] border-[1.5px] border-dashed border-line flex flex-col">
+      <div className="h-[260px] flex items-center justify-center border-b-[1.5px] border-dashed border-line" aria-hidden>
+        <span className="font-display font-black text-[96px] tracking-tighter text-ghost">{String(n).padStart(2, '0')}</span>
       </div>
       <div className="p-7 flex flex-col gap-3.5 flex-1">
         <h3 className="text-[22px] font-extrabold tracking-tight">Next app</h3>

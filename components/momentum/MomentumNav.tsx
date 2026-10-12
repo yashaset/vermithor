@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import AppStoreButton from './AppStoreButton'
 import { STUDIO_NAME } from '@/components/studio/config'
+import ThemeToggle from '@/components/ThemeToggle'
 
 const links = [
   { href: '/momentum#features', label: 'Features' },
@@ -23,7 +24,7 @@ export default function MomentumNav() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-center gap-4 px-4 sm:px-10 md:px-[60px] py-4 transition-all duration-300 ${
-        scrolled ? 'bg-[rgba(10,10,10,0.95)] backdrop-blur-md border-b border-border' : 'bg-transparent'
+        scrolled ? 'bg-nav backdrop-blur-md border-b border-border' : 'bg-transparent'
       }`}
     >
       <div className="flex items-center gap-3 min-w-0">
@@ -55,6 +56,7 @@ export default function MomentumNav() {
         <div className="hidden lg:block">
           <AppStoreButton size="sm" />
         </div>
+        <ThemeToggle />
       </div>
     </nav>
   )

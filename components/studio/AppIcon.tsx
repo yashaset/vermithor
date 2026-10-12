@@ -3,13 +3,13 @@ export default function AppIcon({
   src,
   size,
   alt = '',
-  glow,
+  shadow,
   className = '',
 }: {
   src: string
   size: number
   alt?: string
-  glow?: string
+  shadow?: boolean
   className?: string
 }) {
   return (
@@ -24,7 +24,8 @@ export default function AppIcon({
         width: size,
         height: size,
         borderRadius: size * 0.2237,
-        boxShadow: glow ? `0 20px 50px -16px ${glow}` : undefined,
+        // Hairline ring keeps light icons (e.g. Sweetheart's) defined on light backgrounds.
+        boxShadow: `0 0 0 1px var(--border)${shadow ? ', 0 12px 28px -14px rgba(0, 0, 0, 0.45)' : ''}`,
       }}
     />
   )

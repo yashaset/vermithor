@@ -7,6 +7,7 @@ import NotifyForm from '@/components/studio/NotifyForm'
 import Reveal from '@/components/Reveal'
 import { APPS } from '@/components/studio/apps'
 import { POSTS } from '@/components/studio/devlog'
+import { appVars } from '@/components/studio/appStyle'
 
 export default function Home() {
   const live = APPS.filter((a) => a.status === 'live').length
@@ -20,16 +21,9 @@ export default function Home() {
         <main>
           {/* Hero */}
           <section className="relative pt-16 sm:pt-24 lg:pt-[120px] pb-16 sm:pb-24 text-center">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute left-1/2 top-10 w-[1000px] h-[700px] -translate-x-1/2"
-              style={{
-                background: `radial-gradient(ellipse at 30% 60%, ${APPS[0].accent}1A, transparent 55%), radial-gradient(ellipse at 70% 60%, ${(APPS[1] ?? APPS[0]).accent}1A, transparent 55%)`,
-              }}
-            />
             <div className="relative">
-              <span className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-[#2A2A30] text-[13px] font-medium text-[#C8C8CE]">
-                <span className="w-2 h-2 rounded-full bg-accent" aria-hidden />
+              <span className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-line text-[13px] font-medium text-ink2">
+                <span className="w-2 h-2 rounded-full bg-lime" aria-hidden />
                 Independent app studio · Delhi
               </span>
               <h1 className="mt-7 mx-auto max-w-[940px] font-black text-[clamp(46px,7.4vw,104px)] leading-[0.98] tracking-[-0.045em]">
@@ -39,11 +33,11 @@ export default function Home() {
                 I&apos;m Yash. I design, build and support every app here myself. No ads, no tracking, no filler.
               </p>
 
-              <ul className="list-none mt-12 sm:mt-[72px] mx-auto inline-flex flex-wrap justify-center gap-2 sm:gap-12 px-4 sm:px-11 py-6 rounded-[36px] bg-white/[0.04] border border-[#222227]">
+              <ul className="list-none mt-12 sm:mt-[72px] mx-auto inline-flex flex-wrap justify-center gap-2 sm:gap-12 px-4 sm:px-11 py-6 rounded-[36px] bg-surface border border-border">
                 {APPS.map((app) => (
                   <li key={app.slug}>
                     <a href={`#app-${app.slug}`} className="flex flex-col items-center gap-3 w-[98px] sm:w-[120px]">
-                      <AppIcon src={app.icon} size={84} glow={`${app.accent}80`} />
+                      <AppIcon src={app.icon} size={84} shadow />
                       <span className="font-semibold text-[15px]">{app.name}</span>
                       <StatusBadge app={app} variant="dot" />
                     </a>
@@ -51,8 +45,8 @@ export default function Home() {
                 ))}
                 <li>
                   <a href="#app-next" className="flex flex-col items-center gap-3 w-[98px] sm:w-[120px]">
-                    <span className="w-[84px] h-[84px] rounded-[19px] border-[1.5px] border-dashed border-[#3A3A42] flex items-center justify-center" aria-hidden>
-                      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#6E6E76" strokeWidth="2" strokeLinecap="round">
+                    <span className="w-[84px] h-[84px] rounded-[19px] border-[1.5px] border-dashed border-line text-faint flex items-center justify-center" aria-hidden>
+                      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                         <path d="M12 5v14M5 12h14" />
                       </svg>
                     </span>
@@ -106,15 +100,15 @@ export default function Home() {
             <ol className="flex-[999_1_560px] min-w-0 list-none border-b border-border">
               {POSTS.map((p) => {
                 const app = APPS.find((a) => a.slug === p.app)
+                const tag = app
+                  ? { className: 'app-accent', style: { ...appVars(app), background: `${app.accent}26` } }
+                  : { className: 'text-ink2 bg-border', style: undefined }
                 const inner = (
                   <>
                     <span className="col-span-2 sm:col-span-1 text-[13px] text-faint tabular-nums">{p.date}</span>
                     <span>
                       <span className="block text-[18px] font-semibold">{p.title}</span>
-                      <span
-                        className="inline-block mt-2 text-[11px] font-bold px-2 py-[3px] rounded-md"
-                        style={{ color: app?.accent ?? '#C8C8CE', background: `${app?.accent ?? '#C8C8CE'}1F` }}
-                      >
+                      <span className={`${tag.className} inline-block mt-2 text-[11px] font-bold px-2 py-[3px] rounded-md`} style={tag.style}>
                         {app?.name ?? 'Studio'}
                       </span>
                     </span>
@@ -125,7 +119,7 @@ export default function Home() {
                 return (
                   <li key={p.title} className="border-t border-border">
                     {p.href ? (
-                      <a href={p.href} className={`${cls} hover:text-white`}>{inner}</a>
+                      <a href={p.href} className={`${cls} hover:text-accent`}>{inner}</a>
                     ) : (
                       <div className={cls}>{inner}</div>
                     )}
@@ -137,7 +131,7 @@ export default function Home() {
 
           {/* About */}
           <section id="about" className="scroll-mt-6 mt-20 sm:mt-32 rounded-[28px] bg-surface border border-border p-7 sm:p-14 flex flex-wrap gap-8 items-center">
-            <span aria-hidden className="shrink-0 w-24 h-24 rounded-full bg-accent text-bg flex items-center justify-center font-display font-black text-[32px] tracking-tighter">
+            <span aria-hidden className="shrink-0 w-24 h-24 rounded-full bg-lime text-onlime flex items-center justify-center font-display font-black text-[32px] tracking-tighter">
               YR
             </span>
             <div className="flex-[1_1_420px] min-w-0">

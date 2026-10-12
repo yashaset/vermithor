@@ -36,7 +36,7 @@ export function DocSection({ n, title, children }: { n?: string; title: string; 
         {n && <span className="text-[11px] text-muted font-normal">{n}</span>}
         {title}
       </h2>
-      <div className="text-[12px] sm:text-[13px] text-[#b9b6ae] leading-[1.8] flex flex-col gap-4">{children}</div>
+      <div className="text-[12px] sm:text-[13px] text-ink2 leading-[1.8] flex flex-col gap-4">{children}</div>
     </section>
   )
 }

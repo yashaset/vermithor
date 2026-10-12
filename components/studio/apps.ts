@@ -15,9 +15,12 @@ export interface StudioApp {
   storeUrl?: string
   supportHref?: string
   privacyHref?: string
-  /** Brand colours: tint for the art panel, accent for badges and buttons, ink for text on accent. */
+  /** Brand colours. accent = button fill (with accentInk text) and accent text on dark; accentLight = accent text on light.
+   *  tint / tintLight = the art panel behind screenshots in each theme. */
   tint: string
+  tintLight: string
   accent: string
+  accentLight: string
   accentInk: string
   screenshots?: { src: string; alt: string }[]
 }
@@ -36,7 +39,9 @@ export const APPS: StudioApp[] = [
     supportHref: '/momentum/support',
     privacyHref: '/momentum/privacy',
     tint: '#12200E',
+    tintLight: '#E4EDD3',
     accent: '#C9F43B',
+    accentLight: '#458005',
     accentInk: '#0A0A0B',
     screenshots: [
       { src: '/momentum/workout.webp', alt: 'Momentum workout screen' },
@@ -53,7 +58,9 @@ export const APPS: StudioApp[] = [
       'Flashcards for memorising German words and phrases, with meanings, examples and spaced repetition. der, die and das are colour-coded, so the articles finally stick.',
     status: 'building',
     tint: '#1A1416',
+    tintLight: '#F8E9E7',
     accent: '#FF6B6B',
+    accentLight: '#B3261E',
     accentInk: '#1A0606',
   },
 ]

@@ -1,4 +1,5 @@
 import { STUDIO_NAME } from './config'
+import ThemeToggle from '@/components/ThemeToggle'
 
 const links = [
   { href: '/#apps', label: 'Apps' },
@@ -20,7 +21,7 @@ export default function StudioNav() {
           </>
         )}
       </a>
-      <nav aria-label="Primary">
+      <nav aria-label="Primary" className="flex items-center gap-3 sm:gap-5">
         <ul className="flex flex-wrap gap-5 sm:gap-7 list-none text-[14px]">
           {links.map((l) => (
             <li key={l.href}>
@@ -30,6 +31,7 @@ export default function StudioNav() {
             </li>
           ))}
         </ul>
+        <ThemeToggle />
       </nav>
     </header>
   )

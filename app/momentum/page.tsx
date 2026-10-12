@@ -59,14 +59,10 @@ export default function MomentumPage() {
       <main>
         {/* Hero */}
         <section className="relative overflow-hidden min-h-screen grid grid-cols-1 lg:grid-cols-2 items-center gap-12 px-4 sm:px-10 md:px-[60px] pt-28 pb-16 lg:py-0">
-          <div
-            className="pointer-events-none absolute -top-40 right-[-10%] w-[700px] h-[700px] rounded-full bg-[radial-gradient(circle,rgba(201,244,59,0.14),transparent_65%)]"
-            aria-hidden
-          />
           <div className="relative">
             <div className="flex items-center gap-4">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/momentum/icon.png" alt="Momentum app icon" width={72} height={72} className="w-[60px] h-[60px] sm:w-[72px] sm:h-[72px] rounded-[16px] shadow-[0_10px_40px_-10px_rgba(201,244,59,0.35)]" />
+              <img src="/momentum/icon.png" alt="Momentum app icon" width={72} height={72} className="w-[60px] h-[60px] sm:w-[72px] sm:h-[72px] rounded-[16px] shadow-[0_0_0_1px_var(--border),0_12px_28px_-14px_rgba(0,0,0,0.45)]" />
               <p className="text-[10px] sm:text-[11px] text-accent tracking-[0.2em] uppercase">
                 iPhone app · Strength training
               </p>

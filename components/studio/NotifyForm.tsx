@@ -15,7 +15,7 @@ export default function NotifyForm() {
   )
   const [email, setEmail] = useState('')
 
-  const options = [...upcoming.map((a) => ({ id: a.slug, label: a.name, color: a.accent })), { id: 'anything', label: 'Anything new', color: '#EDEDEF' }]
+  const options = [...upcoming.map((a) => ({ id: a.slug, label: a.name, color: a.accent })), { id: 'anything', label: 'Anything new', color: 'var(--ink)' }]
 
   function submit(e: React.FormEvent) {
     e.preventDefault()
@@ -30,7 +30,7 @@ export default function NotifyForm() {
       <fieldset className="flex flex-wrap gap-2.5">
         <legend className="text-[13px] text-muted mb-2.5">Tell me about</legend>
         {options.map((o) => (
-          <label key={o.id} className="inline-flex items-center gap-2.5 min-h-[44px] px-4 rounded-xl border border-[#2A2A30] text-[14px] cursor-pointer">
+          <label key={o.id} className="inline-flex items-center gap-2.5 min-h-[44px] px-4 rounded-xl border border-line text-[14px] cursor-pointer">
             <input
               type="checkbox"
               checked={!!picked[o.id]}
@@ -53,7 +53,7 @@ export default function NotifyForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@example.com"
-          className="flex-[1_1_240px] min-h-[50px] px-[18px] rounded-xl border border-[#2A2A30] bg-bg text-ink text-[15px] placeholder:text-faint"
+          className="flex-[1_1_240px] min-h-[50px] px-[18px] rounded-xl border border-line bg-bg text-ink text-[15px] placeholder:text-faint"
         />
         <button type="submit" className="min-h-[50px] px-[22px] rounded-xl bg-ink text-bg font-bold text-[15px] transition-transform hover:-translate-y-0.5">
           Join the list

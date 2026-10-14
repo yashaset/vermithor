@@ -1,6 +1,6 @@
 import AppIcon from './AppIcon'
 import StatusBadge from './StatusBadge'
-import type { StudioApp } from './apps'
+import { WORKBENCH, type StudioApp } from './apps'
 import { appVars } from './appStyle'
 
 function Art({ app }: { app: StudioApp }) {
@@ -79,19 +79,54 @@ export default function LineupCard({ app }: { app: StudioApp }) {
   )
 }
 
-export function NextAppCard({ n }: { n: number }) {
+function WorkbenchIcon({ kind, size = 22 }: { kind: 'camera' | 'git'; size?: number }) {
+  return kind === 'camera' ? (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M14.3 3.3 9 12M20.6 9.2l-9.7.2M17.6 18.6 12 9.6M9.7 20.7l5.2-8.7M3.4 14.8l9.6-.2M6.4 5.4l5.6 9" />
+    </svg>
+  ) : (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <circle cx="6" cy="5" r="2.2" />
+      <circle cx="6" cy="19" r="2.2" />
+      <circle cx="18" cy="8" r="2.2" />
+      <path d="M6 7.2v9.6M18 10.2c0 4-6 3-11 6.8" />
+    </svg>
+  )
+}
+
+export function NextAppCard() {
   return (
     <article id="app-next" className="scroll-mt-6 rounded-[28px] border-[1.5px] border-dashed border-line flex flex-col">
-      <div className="h-[260px] flex items-center justify-center border-b-[1.5px] border-dashed border-line" aria-hidden>
-        <span className="font-display font-black text-[96px] tracking-tighter text-ghost">{String(n).padStart(2, '0')}</span>
+      <div className="h-[260px] flex items-center justify-center gap-5 border-b-[1.5px] border-dashed border-line text-faint" aria-hidden>
+        {WORKBENCH.map((w) => (
+          <span key={w.title} className="w-[84px] h-[84px] rounded-[19px] border-[1.5px] border-dashed border-line flex items-center justify-center">
+            <WorkbenchIcon kind={w.icon} size={36} />
+          </span>
+        ))}
       </div>
-      <div className="p-7 flex flex-col gap-3.5 flex-1">
-        <h3 className="text-[22px] font-extrabold tracking-tight">Next app</h3>
-        <p className="text-[16px] leading-relaxed text-muted">
-          Something new is taking shape on the workbench. People on the launch list hear about it first.
-        </p>
+      <div className="p-7 flex flex-col gap-4 flex-1">
+        <div>
+          <h3 className="text-[22px] font-extrabold tracking-tight">On the workbench</h3>
+          <p className="text-[13px] text-faint mt-0.5">Ideas taking shape</p>
+        </div>
+        <ul className="list-none flex flex-col gap-3.5">
+          {WORKBENCH.map((w) => (
+            <li key={w.title} className="flex gap-3">
+              <span className="mt-0.5 shrink-0 text-faint">
+                <WorkbenchIcon kind={w.icon} />
+              </span>
+              <span>
+                <span className="block text-[16px] font-semibold">
+                  {w.title} <span className="text-[13px] font-medium text-faint">· {w.platform}</span>
+                </span>
+                <span className="block text-[15px] leading-snug text-muted mt-0.5">{w.blurb}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
         <a href="#notify" className="mt-auto self-start inline-flex items-center min-h-[44px] font-semibold text-[14px] text-accent">
-          Join the launch list →
+          Hear about them first →
         </a>
       </div>
     </article>

@@ -22,11 +22,15 @@ const faqs: { q: string; a: React.ReactNode }[] = [
   },
   {
     q: 'How does the gym alarm work?',
-    a: 'Go to Profile → Gym alarm, pick a time and your gym days. It is a real system alarm, so it rings even in Silent mode. Use “Test alarm” to hear it in a few seconds.',
+    a: 'Go to Profile → Gym Alarm, turn it on, pick a time and your gym days, then tap Save. It is a real system alarm, so it rings even in Silent mode. Use “Test Alarm” to hear it in about a minute.',
   },
   {
     q: 'Why does Momentum ask for “Always” location?',
-    a: 'Only for the optional gym arrival reminder. Save your gym in Profile → Gym and iOS tells Momentum when you arrive, even when the app is closed. Your location never leaves your iPhone, and the app works without it.',
+    a: 'Only for the optional gym arrival reminder. Save your gym in Profile → Gym Check-in and iOS tells Momentum when you arrive, even when the app is closed. Your location never leaves your iPhone, and the app works without it.',
+  },
+  {
+    q: 'Can I log sets without unlocking my phone?',
+    a: 'Yes. While a workout is running, it appears on your Lock Screen and in the Dynamic Island. Tap ✓ Done to log the current set, adjust the weight or reps, or skip your rest, all without unlocking. If nothing is logged for 22 minutes, Momentum asks whether you are still working out so your time and calories stay accurate.',
   },
   {
     q: 'How do I add the widgets?',
@@ -34,7 +38,7 @@ const faqs: { q: string; a: React.ReactNode }[] = [
   },
   {
     q: 'How do I delete my account and data?',
-    a: 'Profile → Account → Delete account removes your account and all cloud data immediately. To erase only your history, use Profile → Data → Erase all workouts.',
+    a: 'Profile → Account → Delete Account removes your account and all cloud data immediately. To erase only your history, use Profile → Your Data → Erase All Workouts.',
   },
 ]
 

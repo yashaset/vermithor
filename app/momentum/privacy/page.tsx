@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <DocPage kicker="Momentum · Privacy" title={<>Privacy <span className="text-accent">Policy</span></>} meta="Effective 12 October 2026 · Applies to the Momentum iOS app and its widgets">
+    <DocPage kicker="Momentum · Privacy" title={<>Privacy <span className="text-accent">Policy</span></>} meta="Effective 14 October 2026 · Applies to the Momentum iOS app and its widgets">
       <div className="border border-border bg-surface p-6 sm:p-8">
         <p className="text-[10px] text-accent tracking-[0.2em] uppercase mb-4">The short version</p>
         <ul className="flex flex-col gap-3 text-[12px] sm:text-[13px] leading-relaxed">
@@ -26,6 +26,7 @@ export default function PrivacyPage() {
           rows={[
             ['Workouts: exercises, sets, reps, weights, dates, custom exercises', 'On your iPhone. Also in our cloud database if you sign in.', 'To log training, show trends and PRs, and sync your history'],
             ['Name, email address and account ID', 'Our sign-in provider, only if you sign in with Apple or Google', 'To identify your account and keep your data private to you'],
+            ['Body weight and height you enter during setup or in Profile', 'On your iPhone only', 'To estimate calories and count your body weight on exercises like pull-ups and dips'],
             ['Body weight and heart rate from Apple Health', 'On your iPhone only', 'To count body-weight exercises correctly and estimate effort'],
             ['Strength workouts and estimated calories written to Apple Health', 'Apple Health on your iPhone', 'So your training counts toward Activity rings, if you turn this on'],
             ["Your gym's location", 'On your iPhone only', 'To remind you to start a workout when you arrive, if you turn this on'],
@@ -70,7 +71,8 @@ export default function PrivacyPage() {
             ['Location: While Using', 'Saving where your gym is, when you tap “Use current location”', 'No'],
             ['Location: Always', 'Noticing when you arrive at or leave that one gym, so the app can remind you to start or finish a workout', 'No'],
             ['Alarms', 'The morning gym alarm that rings even in Silent mode', 'No'],
-            ['Notifications', 'Rest-timer alerts and gym arrival reminders', 'No'],
+            ['Notifications', 'Rest-timer alerts, gym arrival reminders, and a “Still working out?” check if nothing is logged for a while', 'No'],
+            ['Live Activities', 'Shows your running workout, current set and rest timer on the Lock Screen and Dynamic Island, with buttons to log a set without unlocking. Anyone who can see your Lock Screen can see it; turn it off in Settings → Momentum → Live Activities.', 'No'],
             ['Sign in with Apple or Google', 'Optional account for cloud backup and sync', 'Yes: name, email, account ID and workouts (section 2)'],
           ]}
         />
@@ -99,8 +101,8 @@ export default function PrivacyPage() {
 
       <DocSection n="7" title="Deleting your data">
         <ul className="flex flex-col gap-2 list-disc pl-5">
-          <li><strong className="text-ink">Delete your account:</strong> Profile → Account → Delete account. This removes your sign-in account and every workout stored in the cloud, immediately.</li>
-          <li><strong className="text-ink">Erase workouts:</strong> Profile → Data → Erase all workouts removes your history from the device and, if you are signed in, from the cloud.</li>
+          <li><strong className="text-ink">Delete your account:</strong> Profile → Account → Delete Account. This removes your sign-in account and every workout stored in the cloud, immediately.</li>
+          <li><strong className="text-ink">Erase workouts:</strong> Profile → Your Data → Erase All Workouts removes your history from the device and, if you are signed in, from the cloud.</li>
           <li><strong className="text-ink">Remove everything on the device:</strong> delete the app. Workouts already saved to Apple Health stay there until you delete them in the Health app.</li>
         </ul>
       </DocSection>

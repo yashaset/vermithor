@@ -70,3 +70,9 @@ export const STATUS_LABEL: Record<AppStatus, string> = {
   soon: 'Coming soon',
   building: 'In development',
 }
+
+/** Ideas on the workbench, shown on the "Next app" card. No names yet, so nothing is promised. */
+export const WORKBENCH: { icon: 'camera' | 'git'; title: string; platform: string; blurb: string }[] = [
+  { icon: 'camera', title: 'A manual camera', platform: 'iPhone', blurb: 'Full control over ISO, shutter speed and white balance.' },
+  { icon: 'git', title: 'A Git client', platform: 'macOS', blurb: 'A clean, visual way to stage, commit and branch.' },
+]

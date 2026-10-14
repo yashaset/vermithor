@@ -26,7 +26,7 @@ export async function listLeads(): Promise<Lead[]> {
     // Later lines for the same reference (status updates) win.
     const byRef = new Map<string, Lead>()
     for (const l of all) if (l) byRef.set(l.reference, { ...byRef.get(l.reference), ...l })
-    return [...byRef.values()].map((l) => ({ ...l, status: l.status ?? 'new' })).sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+    return Array.from(byRef.values()).map((l) => ({ ...l, status: l.status ?? 'new' })).sort((a, b) => b.createdAt.localeCompare(a.createdAt))
   } catch {
     return []
   }

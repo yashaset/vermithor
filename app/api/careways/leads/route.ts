@@ -38,7 +38,7 @@ function sanitizeOffer(x: unknown): Offer | null {
  */
 export async function POST(req: Request) {
   const body = (await req.json().catch(() => null)) as
-    | { token?: unknown; phone?: unknown; offerId?: unknown; details?: Partial<BookingDetails> }
+    | { token?: unknown; phone?: unknown; offerId?: unknown; offer?: unknown; details?: Partial<BookingDetails> }
     | null
   const jar = cookies()
   const consented = mayRemember(jar.get(CONSENT_COOKIE)?.value)

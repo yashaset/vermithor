@@ -36,7 +36,8 @@ them, so edits show on `/demo/careways` straight away in the same browser. Reque
 calls to a database and image uploads with object storage; the shapes stay the same.
 
 Protection: `middleware.ts` asks for `CAREWAYS_ADMIN_PASSWORD` (HTTP Basic, any username) on the admin page and
-`/api/careways/admin/*`. Without it the admin is open in development and disabled in production.
+`/api/careways/admin/*`. **For the demo it is open while that variable is unset**, including on Vercel. Set a password
+before real leads are stored, since the Requests page shows guests' names and phone numbers.
 
 ## Run it
 
@@ -64,7 +65,7 @@ LEAD_WEBHOOK_SECRET=          # optional, sent as X-Careways-Secret
 # Signs the short-lived "phone verified" token. Set a long random value in production.
 CAREWAYS_SECRET=
 
-# Password for /demo/careways-admin (required in production)
+# Password for /demo/careways-admin (unset = open, for the demo)
 CAREWAYS_ADMIN_PASSWORD=
 
 # Only to try the dev OTP on a production build (code appears in server logs only)

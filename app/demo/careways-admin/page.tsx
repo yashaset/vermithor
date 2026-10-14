@@ -1,6 +1,6 @@
 import AdminApp from '@/components/careways/admin/AdminApp'
 
-// Protected by middleware.ts when CAREWAYS_ADMIN_PASSWORD is set (required in production).
+// Open for the demo; protected by middleware.ts once CAREWAYS_ADMIN_PASSWORD is set.
 export default function CarewaysAdminPage() {
   return <AdminApp />
 }

@@ -21,8 +21,8 @@ const SEND_WINDOW_MS = 15 * 60_000
 
 type Entry = { hash: string; expires: number; attempts: number }
 const g = globalThis as unknown as { __cwOtp?: Map<string, Entry>; __cwSends?: Map<string, number[]> }
-const codes = (g.__cwOtp ??= new Map())
-const sends = (g.__cwSends ??= new Map())
+const codes: Map<string, Entry> = (g.__cwOtp ??= new Map<string, Entry>())
+const sends: Map<string, number[]> = (g.__cwSends ??= new Map<string, number[]>())
 
 const hmac = (s: string) => crypto.createHmac('sha256', SECRET).update(s).digest('hex')
 const safeEqual = (a: string, b: string) => a.length === b.length && crypto.timingSafeEqual(Buffer.from(a), Buffer.from(b))

@@ -99,7 +99,7 @@ export default function OfferBooking({ offer: o, isEnvelope }: { offer: Offer; i
           <div className={b.sumImg}>
             <Image src={o.image} alt="" fill priority unoptimized sizes="(max-width: 1000px) 100vw, 640px" />
             <span className={b.sumBadge}><Shield size={13} />Careways Verified</span>
-            {isEnvelope && <span className={b.offerBadge}><Crest size={16} variant="mono" color="#0F1A3C" />Royal Envelope rate</span>}
+            {isEnvelope && <span className={b.offerBadge}><Crest size={16} variant="mono" color="#0F0E0C" />Royal Envelope rate</span>}
           </div>
           <div className={b.sumBody}>
             <span className={s.kindTag}><KindIcon o={o} size={14} />{KIND_LABEL[o.kind]} · {dest.label}{o.route ? ` · ${o.route.cabin}` : ''}</span>
@@ -153,7 +153,7 @@ export default function OfferBooking({ offer: o, isEnvelope }: { offer: Offer; i
           {step === 'done' && (
             <div className={b.done}>
               <div className={b.doneMsg} role="status">
-                <Crest size={60} shadow />
+                <Crest size={60} variant="gold" />
                 <div>
                   <h3>Thank you, {details.name.trim().split(' ')[0]}.</h3>
                   <p>

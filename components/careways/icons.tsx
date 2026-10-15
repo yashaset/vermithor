@@ -52,8 +52,8 @@ export function Crest({
   label,
 }: {
   size?: number
-  /** "color" on light backgrounds · "reversed" on navy · "mono" one colour for seals and stamps */
-  variant?: 'color' | 'reversed' | 'mono'
+  /** "gold" on black (the site) · "color" on light backgrounds · "reversed" on navy · "mono" one colour for seals and stamps */
+  variant?: 'gold' | 'color' | 'reversed' | 'mono'
   /** Mono colour */
   color?: string
   /** Kept for older call sites; no longer used. */
@@ -63,8 +63,9 @@ export function Crest({
   label?: string
 }) {
   const a11y = label ? { role: 'img' as const, 'aria-label': label } : { 'aria-hidden': true }
-  const path = variant === 'mono' ? color : variant === 'reversed' ? '#FAF8F3' : 'url(#cw-path)'
-  const gold = variant === 'mono' ? color : 'url(#cw-gold)'
+  const path = variant === 'mono' ? color : variant === 'reversed' ? '#FAF8F3' : variant === 'gold' ? 'url(#cw-gold)' : 'url(#cw-path)'
+  // On black the route and plane step up to a lighter gold so they read against the gold heart.
+  const gold = variant === 'mono' ? color : variant === 'gold' ? '#E3C68C' : 'url(#cw-gold)'
   return (
     <svg width={size} height={size} viewBox="0 0 64 64" fill="none" className={className} {...a11y}>
       {variant !== 'mono' && <MarkDefs />}

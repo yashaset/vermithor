@@ -68,7 +68,7 @@ export default function RoyalEnvelope() {
           <div className={s.curL} aria-hidden><span className={s.curCap}>Sealed</span></div>
           <div className={s.curR} aria-hidden><span className={s.curCap}>only tonight</span></div>
           <button type="button" className={s.seal} onClick={reveal} aria-label="Break the seal to reveal tonight’s offer" aria-expanded={open}>
-            <Crest size={58} variant="mono" color="#0F1A3C" />
+            <Crest size={58} variant="mono" color="#0F0E0C" />
             <span className={s.sealLabel}>Break the seal</span>
           </button>
 

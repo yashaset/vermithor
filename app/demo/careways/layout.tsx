@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Cormorant_Garamond, Manrope } from 'next/font/google'
 import CookieConsent from '@/components/careways/CookieConsent'
 
@@ -19,9 +19,13 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false }, // demo route
 }
 
+export const viewport: Viewport = { themeColor: '#0F0E0C' }
+
 export default function CarewaysLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className={`${serif.variable} ${sans.variable}`}>
+      {/* Black behind the page too, so overscroll and the gaps around the page never flash the main site's colours. */}
+      <style>{'html,body{background:#0F0E0C}'}</style>
       {children}
       <CookieConsent />
     </div>

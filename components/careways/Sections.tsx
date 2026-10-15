@@ -11,7 +11,7 @@ export function Header() {
     <header className={s.hdr}>
       <div className={`${s.wrap} ${s.hdrIn}`}>
         <Link href="/demo/careways" className={s.brand} aria-label="Careways home">
-          <Crest size={42} />
+          <Crest size={42} variant="gold" />
           <span className={s.wordmark}><b>careways</b><small>Travel, taken care of</small></span>
         </Link>
       </div>
@@ -71,7 +71,7 @@ export function RoyalCircle() {
       <div className={s.wrap}>
         <div className={s.circle}>
           <div className={s.circleIntro}>
-            <Crest size={64} variant="reversed" />
+            <Crest size={64} variant="gold" />
             <span className={s.eyebrow} style={{ color: '#CDA85A' }}>Membership</span>
             <h2>The Careways Royal Circle</h2>
             <p>Membership by invitation or application. Members open the Royal Envelope first, every evening.</p>
@@ -101,7 +101,7 @@ export function Footer() {
       <div className={`${s.wrap} ${s.ftrIn}`}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
           <span className={s.brand}>
-            <Crest size={36} />
+            <Crest size={36} variant="gold" />
             <span className={s.wordmark}><b style={{ fontSize: 26 }}>careways</b><small>Travel, taken care of</small></span>
           </span>
           <p className={s.ftrNote}>{contact.legal}</p>

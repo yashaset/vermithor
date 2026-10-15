@@ -108,7 +108,7 @@ export default function TicketForm({ offer: o, details: d, onChange, errors = {}
         <div className={b.main}>
           <div className={b.band}>
             <span className={b.bandBrand}>
-              <Crest size={28} variant="reversed" />
+              <Crest size={28} variant="gold" />
               <b>careways</b>
             </span>
             <span className={b.bandTag}>{PASS_NAME[o.kind]} · {dest.label}</span>

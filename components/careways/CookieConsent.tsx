@@ -96,11 +96,11 @@ export default function CookieConsent() {
       <div className={c.sky} aria-hidden>
         <svg viewBox="0 0 392 54" preserveAspectRatio="none">
           {STARS.map(([x, y, r], i) => (
-            <circle key={i} className={c.star} cx={x} cy={y} r={r} fill="#FFF4D2" style={{ animationDelay: `${i * .4}s` }} />
+            <circle key={i} className={c.star} cx={x} cy={y} r={r} fill="#E3C68C" opacity=".6" style={{ animationDelay: `${i * .4}s` }} />
           ))}
           <path className={c.route} d={ROUTE} stroke="#C9A04E" strokeWidth="2" strokeLinecap="round" fill="none" />
           <g>
-            <path d={PLANE} fill="#E9C978" transform="scale(1.15)" />
+            <path d={PLANE} fill="#E3C68C" transform="scale(1.15)" />
             <animateMotion dur="2.4s" fill="freeze" rotate="auto" path={ROUTE} keyPoints="0;0.66" keyTimes="0;1" calcMode="spline" keySplines=".2 .7 .3 1" />
           </g>
         </svg>

@@ -1,3 +1,5 @@
+import { APP_STORE_URL } from '@/components/momentum/config'
+
 /** Every app in the lineup. Add a new app here and it appears in the dock, lineup, signup and footer. */
 export type AppStatus = 'live' | 'soon' | 'building'
 
@@ -34,8 +36,9 @@ export const APPS: StudioApp[] = [
     category: 'Health & Fitness',
     description:
       'The gym log for people who actually lift. One-tap sets, automatic PRs, a muscle map and an alarm that rings even in Silent mode.',
-    status: 'soon',
+    status: 'live',
     href: '/momentum',
+    storeUrl: APP_STORE_URL,
     supportHref: '/momentum/support',
     privacyHref: '/momentum/privacy',
     tint: '#12200E',

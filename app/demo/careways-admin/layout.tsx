@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
-import { Cormorant_Garamond, Manrope } from 'next/font/google'
+import { Manrope } from 'next/font/google'
 
-const serif = Cormorant_Garamond({ subsets: ['latin'], weight: ['500', '600', '700'], variable: '--cw-serif', display: 'swap' })
+// Cormorant Garamond loads from a stylesheet, not next/font: Next 14.2's Google font loader
+// crashes on its font file URLs at build time ("Cannot read properties of null (reading '1')").
 const sans = Manrope({ subsets: ['latin'], variable: '--cw-sans', display: 'swap' })
 
 export const metadata: Metadata = {
@@ -11,5 +12,12 @@ export const metadata: Metadata = {
 }
 
 export default function CarewaysAdminLayout({ children }: { children: React.ReactNode }) {
-  return <div className={`${serif.variable} ${sans.variable}`}>{children}</div>
+  return (
+    <div className={`${sans.variable}`}>
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap" />
+      <style>{":root{--cw-serif:'Cormorant Garamond'}"}</style>
+      {children}
+    </div>
+  )
 }

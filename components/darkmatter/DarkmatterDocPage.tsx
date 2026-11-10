@@ -2,8 +2,8 @@ import StudioNav from '@/components/studio/StudioNav'
 import StudioFooter from '@/components/studio/StudioFooter'
 import AppIcon from '@/components/studio/AppIcon'
 
-/** Reading-column layout for ManualCam's privacy (and later support) pages, inside the studio shell. */
-export default function ManualCamDocPage({
+/** Reading-column layout for Darkmatter's privacy (and later support) pages, inside the studio shell. */
+export default function DarkmatterDocPage({
   kicker,
   title,
   meta,
@@ -21,7 +21,7 @@ export default function ManualCamDocPage({
         <main className="pt-16 sm:pt-24 pb-10">
           <article className="max-w-[720px] mx-auto">
             <div className="flex items-center gap-3">
-              <AppIcon src="/apps/manualcam/icon.png" size={44} alt="" />
+              <AppIcon src="/apps/darkmatter/icon.png" size={44} alt="" />
               <p className="text-[11px] text-accent tracking-[0.2em] uppercase">{kicker}</p>
             </div>
             <h1 className="text-[clamp(40px,8vw,72px)] font-extrabold leading-[0.95] tracking-tight mt-6">{title}</h1>

@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
-import ManualCamDocPage from '@/components/manualcam/ManualCamDocPage'
+import DarkmatterDocPage from '@/components/darkmatter/DarkmatterDocPage'
 import { DocSection } from '@/components/momentum/DocPage'
-import { SUPPORT_EMAIL } from '@/components/manualcam/config'
+import { SUPPORT_EMAIL } from '@/components/darkmatter/config'
 
 export const metadata: Metadata = {
   title: 'Support',
-  description: 'Get help with ManualCam: manual exposure, RAW and ProRAW, light trails, focus and permissions.',
+  description: 'Get help with Darkmatter: manual exposure, RAW and ProRAW, light trails, focus and permissions.',
 }
 
 const faqs: { q: string; a: React.ReactNode }[] = [
@@ -38,7 +38,7 @@ const faqs: { q: string; a: React.ReactNode }[] = [
     a: 'Open FOCUS and slide towards the flower to focus close, or towards the mountain to focus far away. Pinch to zoom in while you fine-tune. On Auto, tap the viewfinder to choose where to focus.',
   },
   {
-    q: 'Why does ManualCam ask for the microphone?',
+    q: 'Why does Darkmatter ask for the microphone?',
     a: 'Only to record sound in Video mode, and only the first time you switch to it. Photo and Light Trails never use the microphone.',
   },
   {
@@ -51,11 +51,11 @@ const faqs: { q: string; a: React.ReactNode }[] = [
   },
 ]
 
-export default function ManualCamSupportPage() {
+export default function DarkmatterSupportPage() {
   return (
-    <ManualCamDocPage kicker="ManualCam · Support" title={<>How can we <span className="text-accent">help?</span></>}>
+    <DarkmatterDocPage kicker="Darkmatter · Support" title={<>How can we <span className="text-accent">help?</span></>}>
       <a
-        href={`mailto:${SUPPORT_EMAIL}?subject=ManualCam%20support`}
+        href={`mailto:${SUPPORT_EMAIL}?subject=Darkmatter%20support`}
         className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border border-border bg-surface p-6 sm:p-8 transition-colors duration-200 hover:border-accent"
       >
         <div>
@@ -83,10 +83,10 @@ export default function ManualCamSupportPage() {
 
       <DocSection title="Privacy">
         <p>
-          ManualCam collects no data. Read the full{' '}
-          <a href="/manualcam/privacy" className="text-accent underline underline-offset-4">privacy policy</a>.
+          Darkmatter collects no data. Read the full{' '}
+          <a href="/darkmatter/privacy" className="text-accent underline underline-offset-4">privacy policy</a>.
         </p>
       </DocSection>
-    </ManualCamDocPage>
+    </DarkmatterDocPage>
   )
 }

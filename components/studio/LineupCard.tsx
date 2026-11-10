@@ -60,7 +60,7 @@ function Art({ app }: { app: StudioApp }) {
       </div>
     )
   }
-  if (app.slug === 'manualcam') {
+  if (app.slug === 'darkmatter') {
     // The aperture from the app icon over a shutter-speed dial, like the app's controls.
     const stops = ['1/60', '1/125', '1/250', '1/500', '1/1000']
     return (

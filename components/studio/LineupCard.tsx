@@ -38,6 +38,28 @@ function Art({ app }: { app: StudioApp }) {
       </div>
     )
   }
+  if (app.slug === 'focusblock') {
+    // A breathing circle with the leaf, like the app's focus screen.
+    return (
+      <div className="app-tint h-[260px] flex items-center justify-center" style={appVars(app)} aria-hidden>
+        <div className="relative w-[200px] h-[200px] flex items-center justify-center">
+          <span className="absolute inset-0 rounded-full motion-safe:animate-[breathe_10s_ease-in-out_infinite]" style={{ background: `${app.accent}26` }} />
+          <span className="absolute inset-[22px] rounded-full motion-safe:animate-[breathe_10s_ease-in-out_infinite]" style={{ background: `${app.accent}33` }} />
+          <span className="absolute inset-[44px] rounded-full bg-[#FAF7F1] shadow-[0_10px_30px_-12px_rgba(0,0,0,0.45)]" />
+          <svg className="relative" width="54" height="54" viewBox="0 0 24 24" aria-hidden>
+            <defs>
+              <linearGradient id="fb-leaf" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stopColor="#9DBBA5" />
+                <stop offset="1" stopColor="#4A6A58" />
+              </linearGradient>
+            </defs>
+            <path d="M20.5 3.5C11 3.5 4.5 7.6 4.5 14.3c0 1.9.6 3.5 1.7 4.7 1.3 1.2 2.9 1.7 4.7 1.7 6.6 0 9.6-7.4 9.6-17.2z" fill="url(#fb-leaf)" />
+            <path d="M8 17.5c3-4.2 6.3-7.4 9.8-10.4" stroke="#F4EFE3" strokeOpacity="0.7" strokeWidth="1.1" strokeLinecap="round" fill="none" />
+          </svg>
+        </div>
+      </div>
+    )
+  }
   return <div className="app-tint h-[260px]" style={appVars(app)} aria-hidden />
 }
 

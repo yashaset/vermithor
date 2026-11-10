@@ -52,6 +52,23 @@ export const APPS: StudioApp[] = [
     ],
   },
   {
+    slug: 'focusblock',
+    name: 'FocusBlock',
+    icon: '/apps/focusblock/icon.png',
+    platforms: 'iPhone',
+    category: 'Productivity',
+    description:
+      'A calm app blocker. Keep Instagram, TikTok and YouTube out of reach during focus sessions and quiet hours that run on their own. Built on Screen Time, so it never sees what you use.',
+    status: 'soon',
+    supportHref: '/focusblock/support',
+    privacyHref: '/focusblock/privacy',
+    tint: '#1A221D',
+    tintLight: '#F1EDE3',
+    accent: '#9DBBA5',
+    accentLight: '#4A6A58',
+    accentInk: '#0F1A14',
+  },
+  {
     slug: 'sweetheart',
     name: 'Sweetheart',
     icon: '/apps/sweetheart/icon.png',

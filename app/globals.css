@@ -87,6 +87,12 @@ h3 {
   border-top: 1px solid var(--border);
 }
 
+/* Slow breathing motion (FocusBlock lineup art): 5 s in, 5 s out. */
+@keyframes breathe {
+  0%, 100% { transform: scale(0.88); }
+  50% { transform: scale(1); }
+}
+
 /* Scroll reveal */
 .reveal {
   opacity: 0;

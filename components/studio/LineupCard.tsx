@@ -60,6 +60,37 @@ function Art({ app }: { app: StudioApp }) {
       </div>
     )
   }
+  if (app.slug === 'manualcam') {
+    // The aperture from the app icon over a shutter-speed dial, like the app's controls.
+    const stops = ['1/60', '1/125', '1/250', '1/500', '1/1000']
+    return (
+      <div className="app-tint h-[260px] flex flex-col items-center justify-center gap-6" style={appVars(app)} aria-hidden>
+        <svg className="app-accent" width="112" height="112" viewBox="20 20 60 60" aria-hidden>
+          <defs>
+            <mask id="mc-aperture" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
+              <circle cx="50" cy="50" r="30" fill="#fff" />
+              <path d="M52.4 38.8L60.9 46.4L58.5 57.7L47.6 61.2L39.1 53.6L41.5 42.3Z" fill="#000" />
+              <path
+                d="M41.5 42.3L73.8 31.8M52.4 38.8L77.7 61.5M60.9 46.4L53.9 79.8M58.5 57.7L26.2 68.2M47.6 61.2L22.3 38.5M39.1 53.6L46.1 20.2"
+                stroke="#000"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+              />
+            </mask>
+          </defs>
+          <rect x="0" y="0" width="100" height="100" fill="currentColor" mask="url(#mc-aperture)" />
+        </svg>
+        <div className="flex items-end gap-5 [mask-image:linear-gradient(90deg,transparent,#000_25%,#000_75%,transparent)]">
+          {stops.map((s, i) => (
+            <span key={s} className="flex flex-col items-center gap-1.5 w-[52px]">
+              <span className={`w-[2px] rounded-full ${i === 2 ? 'h-[14px] bg-current app-accent' : 'h-[9px] bg-current text-faint'}`} />
+              <span className={`text-[13px] tabular-nums ${i === 2 ? 'font-bold app-accent' : 'font-medium text-faint'}`}>{s}</span>
+            </span>
+          ))}
+        </div>
+      </div>
+    )
+  }
   return <div className="app-tint h-[260px]" style={appVars(app)} aria-hidden />
 }
 

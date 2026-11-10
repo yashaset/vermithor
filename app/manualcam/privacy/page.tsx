@@ -90,8 +90,8 @@ export default function ManualCamPrivacyPage() {
       <DocSection title="Contact">
         <p>
           Questions about your data? Email{' '}
-          <a href={`mailto:${SUPPORT_EMAIL}?subject=ManualCam%20privacy`} className="text-accent underline underline-offset-4">{SUPPORT_EMAIL}</a>.
-          ManualCam is made by an independent developer, Yash Rawat. ProRAW and iCloud are trademarks of Apple Inc.
+          <a href={`mailto:${SUPPORT_EMAIL}?subject=ManualCam%20privacy`} className="text-accent underline underline-offset-4">{SUPPORT_EMAIL}</a>
+          {' '}or visit the <a href="/manualcam/support" className="text-accent underline underline-offset-4">support page</a>. ManualCam is made by an independent developer, Yash Rawat. ProRAW and iCloud are trademarks of Apple Inc.
         </p>
       </DocSection>
     </ManualCamDocPage>

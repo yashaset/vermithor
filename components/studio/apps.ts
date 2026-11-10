@@ -69,6 +69,23 @@ export const APPS: StudioApp[] = [
     accentInk: '#0F1A14',
   },
   {
+    slug: 'manualcam',
+    name: 'ManualCam',
+    icon: '/apps/manualcam/icon.png',
+    platforms: 'iPhone',
+    category: 'Photo & Video',
+    description:
+      'A manual camera for iPhone. Dial in ISO, shutter speed, white balance and focus, shoot RAW or ProRAW, and paint light trails with long exposures.',
+    status: 'soon',
+    supportHref: '/manualcam/support',
+    privacyHref: '/manualcam/privacy',
+    tint: '#141416',
+    tintLight: '#F3EEDC',
+    accent: '#FFD60A',
+    accentLight: '#7A5C00',
+    accentInk: '#0A0A0B',
+  },
+  {
     slug: 'sweetheart',
     name: 'Sweetheart',
     icon: '/apps/sweetheart/icon.png',
@@ -93,6 +110,5 @@ export const STATUS_LABEL: Record<AppStatus, string> = {
 
 /** Ideas on the workbench, shown on the "Next app" card. No names yet, so nothing is promised. */
 export const WORKBENCH: { icon: 'camera' | 'git'; title: string; platform: string; blurb: string }[] = [
-  { icon: 'camera', title: 'A manual camera', platform: 'iPhone', blurb: 'Full control over ISO, shutter speed and white balance.' },
   { icon: 'git', title: 'A Git client', platform: 'macOS', blurb: 'A clean, visual way to stage, commit and branch.' },
 ]

@@ -77,6 +77,7 @@ export const APPS: StudioApp[] = [
     description:
       'A manual camera for iPhone. Dial in ISO, shutter speed, white balance and focus, shoot RAW or ProRAW, and paint light trails with long exposures.',
     status: 'soon',
+    href: '/darkmatter',
     supportHref: '/darkmatter/support',
     privacyHref: '/darkmatter/privacy',
     tint: '#141416',

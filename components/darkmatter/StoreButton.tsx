@@ -1,0 +1,26 @@
+import { APP_STORE_URL } from './config'
+
+/** "Download on the App Store" once live; a "coming soon" pill until APP_STORE_URL is set. */
+export default function StoreButton() {
+  if (!APP_STORE_URL) {
+    return (
+      <span className="inline-flex items-center gap-3 border border-border bg-surface px-6 py-3.5">
+        <span className="w-2 h-2 rounded-full bg-[#FFD60A]" aria-hidden />
+        <span className="text-[11px] tracking-[0.15em] uppercase text-ink">Coming soon to the App Store</span>
+      </span>
+    )
+  }
+  return (
+    <a
+      href={APP_STORE_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-3 px-6 py-3.5 bg-[#FFD60A] text-[#0A0A0B] transition-transform duration-200 hover:-translate-y-0.5"
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden>
+        <path d="M12 2v13m0 0-5-5m5 5 5-5M4 20h16" stroke="currentColor" strokeWidth="2.4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+      <span className="text-[11px] tracking-[0.15em] uppercase">Download on the App Store</span>
+    </a>
+  )
+}

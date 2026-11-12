@@ -50,7 +50,7 @@ const link = 'text-accent underline underline-offset-4'
 
 export default function WhyIosPost() {
   return (
-    <DevlogPost title={<>Why I build for <span className="text-accent">iPhone</span> first</>} meta="12 Nov 2026 · Yash Rawat" jsonLd={jsonLd}>
+    <DevlogPost path={URL_PATH} title={<>Why I build for <span className="text-accent">iPhone</span> first</>} meta="12 Nov 2026 · Yash Rawat" jsonLd={jsonLd}>
       <p className="text-[14px] sm:text-[15px] text-ink2 leading-[1.8]">
         By day I build web interfaces. So when I started making my own apps, the obvious move would have been something cross-platform
         that ships everywhere at once. Instead, every app in the lineup so far starts on iPhone. That wasn&apos;t loyalty to a logo. It

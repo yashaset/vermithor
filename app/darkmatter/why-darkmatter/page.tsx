@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import DarkmatterDocPage from '@/components/darkmatter/DarkmatterDocPage'
 import { DocSection } from '@/components/momentum/DocPage'
+import MoreFromDevlog from '@/components/studio/MoreFromDevlog'
 
 const URL_PATH = '/darkmatter/why-darkmatter'
 const TITLE = 'Why build a manual camera when the iPhone camera is this good?'
@@ -140,6 +141,7 @@ export default function WhyDarkmatterPost() {
           <a href="/darkmatter" className="text-accent underline underline-offset-4">See what Darkmatter can do →</a>
         </p>
       </DocSection>
+      <MoreFromDevlog current={URL_PATH} />
     </DarkmatterDocPage>
   )
 }

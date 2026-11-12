@@ -115,3 +115,103 @@ h3 {
     scroll-behavior: auto;
   }
 }
+
+/* Devlog posts: typewriter type. Dark mode keeps the site palette; light mode turns the page into warm paper. */
+.blog {
+  font-family: var(--font-courier-prime), "Courier New", Courier, monospace;
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+}
+.blog h1,
+.blog h2,
+.blog h3 {
+  font-family: var(--font-special-elite), var(--font-courier-prime), "Courier New", monospace;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+/* Monospace reads small: lift DocSection body text in posts. */
+.blog .doc section > div {
+  font-size: 17px;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .blog {
+    --bg: #f3eedc;
+    --surface: #faf6ea;
+    --border: #e2d9c0;
+    --line: #d6ccb0;
+    --ghost: #e6dec7;
+    --nav: rgba(243, 238, 220, 0.92);
+    --ink: #1f1c15;
+    --ink2: #3a352a;
+    --muted: #5a5444;
+    --faint: #6b6454;
+    --accent: #3f6f05;
+  }
+}
+:root[data-theme="light"] .blog {
+  --bg: #f3eedc;
+  --surface: #faf6ea;
+  --border: #e2d9c0;
+  --line: #d6ccb0;
+  --ghost: #e6dec7;
+  --nav: rgba(243, 238, 220, 0.92);
+  --ink: #1f1c15;
+  --ink2: #3a352a;
+  --muted: #5a5444;
+  --faint: #6b6454;
+  --accent: #3f6f05;
+}
+
+/* Devlog code: blocks and `inline code`. Colours follow the dark / paper themes. */
+.blog {
+  --code-bg: #111113;
+  --code-inline: #1c1c20;
+  --tok-keyword: #c9f43b;
+  --tok-string: #f2b880;
+  --tok-comment: #7d7d86;
+  --tok-number: #9fd3ff;
+  --tok-type: #e6c6ff;
+  --tok-member: #d6d6dc;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .blog {
+    --code-bg: #ebe4cc;
+    --code-inline: #e8e0c6;
+    --tok-keyword: #3f6f05;
+    --tok-string: #9a3f12;
+    --tok-comment: #736b58;
+    --tok-number: #1d5a8a;
+    --tok-type: #6b2c8f;
+    --tok-member: #2b2720;
+  }
+}
+:root[data-theme="light"] .blog {
+  --code-bg: #ebe4cc;
+  --code-inline: #e8e0c6;
+  --tok-keyword: #3f6f05;
+  --tok-string: #9a3f12;
+  --tok-comment: #736b58;
+  --tok-number: #1d5a8a;
+  --tok-type: #6b2c8f;
+  --tok-member: #2b2720;
+}
+.blog .code-block {
+  background: var(--code-bg);
+}
+.blog .code-block pre,
+.blog code {
+  font-family: var(--font-courier-prime), "Courier New", monospace;
+}
+.blog :not(pre) > code {
+  background: var(--code-inline);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+  font-size: 0.92em;
+}
+.tok-keyword { color: var(--tok-keyword); }
+.tok-string { color: var(--tok-string); }
+.tok-comment { color: var(--tok-comment); font-style: italic; }
+.tok-number { color: var(--tok-number); }
+.tok-type { color: var(--tok-type); }
+.tok-member { color: var(--tok-member); }

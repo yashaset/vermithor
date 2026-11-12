@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Nunito } from 'next/font/google'
+import { Inter, Nunito, Courier_Prime, Special_Elite } from 'next/font/google'
 import './globals.css'
 import { STUDIO_NAME } from '@/components/studio/config'
 import { themeInitScript } from '@/components/ThemeToggle'
@@ -7,6 +7,9 @@ import { themeInitScript } from '@/components/ThemeToggle'
 // Fallbacks only: Apple devices render the real SF Pro / SF Pro Rounded, like the Momentum app.
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap', preload: false })
 const nunito = Nunito({ subsets: ['latin'], weight: ['700', '800', '900'], variable: '--font-nunito', display: 'swap', preload: false })
+// Devlog posts only: typewriter body and worn, inked headings.
+const courierPrime = Courier_Prime({ subsets: ['latin'], weight: ['400', '700'], style: ['normal', 'italic'], variable: '--font-courier-prime', display: 'swap', preload: false })
+const specialElite = Special_Elite({ subsets: ['latin'], weight: '400', variable: '--font-special-elite', display: 'swap', preload: false })
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://yashrawat.com'),
@@ -24,7 +27,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${nunito.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${nunito.variable} ${courierPrime.variable} ${specialElite.variable}`} suppressHydrationWarning>
       <head>
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f6f7f3" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0a0b" />

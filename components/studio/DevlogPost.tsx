@@ -20,7 +20,7 @@ export default function DevlogPost({
   children: React.ReactNode
 }) {
   return (
-    <div className="overflow-hidden">
+    <div className="blog overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-8 lg:px-10">
         <StudioNav />
         <main className="pt-16 sm:pt-24 pb-10">

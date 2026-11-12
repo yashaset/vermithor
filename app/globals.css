@@ -87,6 +87,31 @@ h3 {
   border-top: 1px solid var(--border);
 }
 
+/* Film grain: a fine printed-paper texture over every page, like the apps.
+   One 256 px tile (public/grain.png) of soft light and dark specks; strength per theme below.
+   Sits above the content but never blocks clicks, and is skipped for print and high-contrast mode.
+   Pages that mark themselves data-no-grain (the Careways client demo) don't get it. */
+:root { --grain-opacity: 0.18; }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) { --grain-opacity: 0.32; }
+}
+:root[data-theme="light"] { --grain-opacity: 0.32; }
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  background-image: url("/grain.png");
+  background-size: 256px 256px;
+  opacity: var(--grain-opacity);
+}
+body:has([data-no-grain])::after { display: none; }
+@media print, (prefers-contrast: more) {
+  body::after { display: none; }
+}
+
 /* Slow breathing motion (FocusBlock lineup art): 5 s in, 5 s out. */
 @keyframes breathe {
   0%, 100% { transform: scale(0.88); }

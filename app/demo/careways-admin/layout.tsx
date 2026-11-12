@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function CarewaysAdminLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className={`${sans.variable}`}>
+    <div className={`${sans.variable}`} data-no-grain>
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap" />
       <style>{":root{--cw-serif:'Cormorant Garamond'}"}</style>

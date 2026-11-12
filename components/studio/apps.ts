@@ -1,4 +1,5 @@
 import { APP_STORE_URL } from '@/components/momentum/config'
+import { APP_STORE_URL as DARKMATTER_STORE_URL } from '@/components/darkmatter/config'
 
 /** Every app in the lineup. Add a new app here and it appears in the dock, lineup, signup and footer. */
 export type AppStatus = 'live' | 'soon' | 'building'
@@ -76,8 +77,9 @@ export const APPS: StudioApp[] = [
     category: 'Photo & Video',
     description:
       'A manual camera for iPhone. Dial in ISO, shutter speed, white balance and focus, shoot RAW or ProRAW, and paint light trails with long exposures.',
-    status: 'soon',
+    status: 'live',
     href: '/darkmatter',
+    storeUrl: DARKMATTER_STORE_URL ?? undefined,
     supportHref: '/darkmatter/support',
     privacyHref: '/darkmatter/privacy',
     tint: '#141416',

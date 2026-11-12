@@ -50,13 +50,13 @@
 
 /* Per-app colours: set --a-d/--a-l (accent) and --t-d/--t-l (panel tint) inline. */
 .app-accent { color: var(--a-d); }
-.app-tint { background: var(--t-d); }
+.app-tint { background-color: var(--t-d); }
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) .app-accent { color: var(--a-l); }
-  :root:not([data-theme="dark"]) .app-tint { background: var(--t-l); }
+  :root:not([data-theme="dark"]) .app-tint { background-color: var(--t-l); }
 }
 :root[data-theme="light"] .app-accent { color: var(--a-l); }
-:root[data-theme="light"] .app-tint { background: var(--t-l); }
+:root[data-theme="light"] .app-tint { background-color: var(--t-l); }
 
 * {
   box-sizing: border-box;
@@ -87,29 +87,27 @@ h3 {
   border-top: 1px solid var(--border);
 }
 
-/* Film grain: a fine printed-paper texture over every page, like the apps.
-   One 256 px tile (public/grain.png) of soft light and dark specks; strength per theme below.
-   Sits above the content but never blocks clicks, and is skipped for print and high-contrast mode.
-   Pages that mark themselves data-no-grain (the Careways client demo) don't get it. */
-:root { --grain-opacity: 0.18; }
+/* Film grain: a fine printed-paper texture, like the apps.
+   It is part of the background (page, cards, app panels), so text, icons and images stay crisp on top.
+   Two pre-faded 256 px tiles: subtle on dark (keeps blacks deep), a little stronger on light.
+   Off for print and prefers-contrast: more. Pages marked data-no-grain (the Careways demo) opt out. */
+:root { --grain: url("/grain-dark.png"); }
 @media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) { --grain-opacity: 0.32; }
+  :root:not([data-theme="dark"]) { --grain: url("/grain-light.png"); }
 }
-:root[data-theme="light"] { --grain-opacity: 0.32; }
+:root[data-theme="light"] { --grain: url("/grain-light.png"); }
 
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  pointer-events: none;
-  background-image: url("/grain.png");
+body,
+.bg-surface,
+.app-tint {
+  background-image: var(--grain);
   background-size: 256px 256px;
-  opacity: var(--grain-opacity);
 }
-body:has([data-no-grain])::after { display: none; }
+body:has([data-no-grain]) { background-image: none; }
 @media print, (prefers-contrast: more) {
-  body::after { display: none; }
+  body,
+  .bg-surface,
+  .app-tint { background-image: none; }
 }
 
 /* Slow breathing motion (FocusBlock lineup art): 5 s in, 5 s out. */

@@ -1,6 +1,19 @@
 import type { Metadata } from 'next'
 import DevlogPost from '@/components/studio/DevlogPost'
 import { DocSection } from '@/components/momentum/DocPage'
+import Figure from '@/components/blog/Figure'
+import CodeBlock from '@/components/blog/CodeBlock'
+
+const SCREEN_TIME_CODE = `
+import FamilyControls
+
+// Ask once; the person approves in a system sheet, not in my UI.
+try await AuthorizationCenter.shared.requestAuthorization(for: .individual)
+
+// What they pick comes back as opaque tokens, never app names.
+@State private var selection = FamilyActivitySelection()
+let blocked = selection.applicationTokens
+`
 
 const URL_PATH = '/devlog/why-ios'
 const TITLE = 'Why I build for iPhone first'
@@ -51,11 +64,20 @@ const link = 'text-accent underline underline-offset-4'
 export default function WhyIosPost() {
   return (
     <DevlogPost path={URL_PATH} title={<>Why I build for <span className="text-accent">iPhone</span> first</>} meta="12 Nov 2026 · Yash Rawat" jsonLd={jsonLd}>
-      <p className="text-[14px] sm:text-[15px] text-ink2 leading-[1.8]">
+      <p className="text-[17px] sm:text-[18px] text-ink2 leading-[1.8]">
         By day I build web interfaces. So when I started making my own apps, the obvious move would have been something cross-platform
         that ships everywhere at once. Instead, every app in the lineup so far starts on iPhone. That wasn&apos;t loyalty to a logo. It
         came down to what each app needed to do, and what one person can realistically build, test and support well.
       </p>
+
+      <Figure
+        wide
+        priority
+        src="https://images.unsplash.com/photo-1603268611612-302be0f37c72"
+        alt="A hand holding an iPhone up to take a photo of a white building"
+        caption="Every app in the lineup starts here."
+        credit={{ name: 'herrreiprich', username: 'herrreiprich', photo: 'https://unsplash.com/photos/person-holding-silver-iphone-6-taking-photo-of-white-building-during-daytime-JzjZrXmHIgM' }}
+      />
 
       <DocSection n="1" title="The best features live in the system, not the app">
         <p>
@@ -83,6 +105,11 @@ export default function WhyIosPost() {
           <li>Every permission is a system prompt you can change later in Settings, not a toggle buried in my app.</li>
         </ul>
         <p>
+          Here&apos;s what that looks like in FocusBlock. Even the code can&apos;t see what you chose, only a <code>Set</code> of
+          tokens to hand back to Screen Time:
+        </p>
+        <CodeBlock code={SCREEN_TIME_CODE} />
+        <p>
           When the platform does the protecting, &ldquo;we collect nothing&rdquo; isn&apos;t just a line in a privacy policy. It&apos;s
           how the app is physically built.
         </p>
@@ -95,6 +122,13 @@ export default function WhyIosPost() {
           every stop of Darkmatter&apos;s dials, a one-tap set log in Momentum, a framing grid that matches the photo exactly. Spread
           across every platform at once, those details would be the first thing I&apos;d cut.
         </p>
+        <Figure
+          src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+          alt="A MacBook with lines of code on its screen, on a busy desk"
+          aspect="3 / 2"
+          caption="One developer, one codebase per app."
+          credit={{ name: 'Christopher Gower', username: 'cgower', photo: 'https://unsplash.com/photos/a-macbook-with-lines-of-code-on-its-screen-on-a-busy-desk-m_HRfLhgABo' }}
+        />
       </DocSection>
 
       <DocSection n="4" title="Clear rules, honestly explained">

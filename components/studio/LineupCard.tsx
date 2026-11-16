@@ -91,6 +91,29 @@ function Art({ app }: { app: StudioApp }) {
       </div>
     )
   }
+  if (app.slug === 'coindas') {
+    // The daily safe-to-spend card from the app's Today screen, on warm paper.
+    return (
+      <div className="app-tint h-[260px] flex items-center justify-center" style={appVars(app)} aria-hidden>
+        <div className="w-[232px] rounded-[22px] border-[5px] border-[#15161B] bg-[#F7F5F0] px-5 py-6 text-[#1A1A17] -rotate-[3deg] shadow-[0_18px_40px_-20px_rgba(0,0,0,0.6)]">
+          <span className="block text-[9px] font-bold tracking-[0.18em] uppercase text-[#6B6860]">Safe to spend today</span>
+          <span
+            className="block mt-2 text-[50px] leading-none text-[#2F6B3F] tabular-nums"
+            style={{ fontFamily: 'ui-serif, "New York", Georgia, serif' }}
+          >
+            ₹794
+          </span>
+          <span className="block mt-4 h-[3px] bg-[#E6E1D6]">
+            <span className="block h-full w-[35%] bg-[#1A1A17]" />
+          </span>
+          <span className="mt-2 flex justify-between text-[9px] text-[#6B6860] tabular-nums">
+            <span>Spent ₹420</span>
+            <span>Limit ₹1,214</span>
+          </span>
+        </div>
+      </div>
+    )
+  }
   return <div className="app-tint h-[260px]" style={appVars(app)} aria-hidden />
 }
 

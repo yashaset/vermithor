@@ -7,6 +7,7 @@ const TITLE = 'A budget you can read in one number'
 const DESCRIPTION =
   'Why Coindas, an upcoming iPhone budgeting app, turns your monthly budget into a single daily safe-to-spend number: money you don’t spend rolls forward, fixed costs are set aside first, and nothing needs a bank login.'
 const PUBLISHED = '2026-11-16'
+const OG_IMAGE = 'https://images.unsplash.com/photo-1743385779331-15e7e53c2253?auto=format&fit=crop&q=70&w=1200&h=630'
 
 export const metadata: Metadata = {
   title: { absolute: `${TITLE} · yash.apps Devlog` },
@@ -30,8 +31,9 @@ export const metadata: Metadata = {
     siteName: 'yash.apps',
     publishedTime: PUBLISHED,
     authors: ['Yash Rawat'],
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: 'An open notebook with pens and a cup of coffee on a wooden table' }],
   },
-  twitter: { card: 'summary', title: TITLE, description: DESCRIPTION },
+  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION, images: [OG_IMAGE] },
 }
 
 const jsonLd = {
@@ -44,10 +46,57 @@ const jsonLd = {
   author: { '@type': 'Person', name: 'Yash Rawat', url: 'https://yashrawat.com' },
   publisher: { '@type': 'Person', name: 'Yash Rawat', url: 'https://yashrawat.com' },
   mainEntityOfPage: `https://yashrawat.com${URL_PATH}`,
+  image: OG_IMAGE,
   about: { '@type': 'SoftwareApplication', name: 'Coindas', operatingSystem: 'iOS', applicationCategory: 'FinanceApplication' },
 }
 
 const link = 'text-accent underline underline-offset-4'
+
+/** Photos are served from Unsplash's CDN (as Unsplash asks) and credited to each photographer. */
+const UTM = 'utm_source=yash.apps&utm_medium=referral'
+
+function Photo({
+  id,
+  alt,
+  by,
+  username,
+  aspect = 'aspect-[16/9]',
+  caption,
+}: {
+  id: string
+  alt: string
+  by: string
+  username: string
+  aspect?: string
+  caption?: string
+}) {
+  const src = (w: number) => `https://images.unsplash.com/${id}?auto=format&fit=crop&q=70&w=${w}`
+  return (
+    <figure className="flex flex-col gap-3">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src(1400)}
+        srcSet={`${src(800)} 800w, ${src(1400)} 1400w, ${src(2000)} 2000w`}
+        sizes="(max-width: 760px) 100vw, 720px"
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+        className={`w-full ${aspect} object-cover rounded-[22px] border border-border bg-surface`}
+      />
+      <figcaption className="text-[12px] text-faint leading-relaxed">
+        {caption && <span className="text-ink2">{caption} </span>}
+        Photo by{' '}
+        <a href={`https://unsplash.com/@${username}?${UTM}`} className="underline underline-offset-2 hover:text-accent" target="_blank" rel="noopener noreferrer">
+          {by}
+        </a>{' '}
+        on{' '}
+        <a href={`https://unsplash.com/?${UTM}`} className="underline underline-offset-2 hover:text-accent" target="_blank" rel="noopener noreferrer">
+          Unsplash
+        </a>
+      </figcaption>
+    </figure>
+  )
+}
 
 export default function WhyCoindasPost() {
   return (
@@ -64,6 +113,14 @@ export default function WhyCoindasPost() {
         to that one question: <em>how much can I spend today?</em> It&apos;s coming to iPhone soon. Here&apos;s why it works the way it
         does.
       </p>
+
+      <Photo
+        id="photo-1743385779331-15e7e53c2253"
+        alt="An open notebook with pens and a cup of coffee on a wooden table"
+        by="Kelly Sikkema"
+        username="kellysikkema"
+        caption="Coindas is meant to feel more like a notebook than a spreadsheet."
+      />
 
       <DocSection n="1" title="Most budgets look backwards">
         <p>
@@ -88,6 +145,15 @@ export default function WhyCoindasPost() {
           absorbed instead of punished. If you&apos;d rather think in bigger chunks, the same number is there for the week and the month.
         </p>
       </DocSection>
+
+      <Photo
+        id="photo-1582181774491-11853e42c076"
+        alt="Two ₹20 notes and a ₹50 note laid on a table"
+        by="Avinash Kumar"
+        username="ashishjha"
+        aspect="aspect-[21/9]"
+        caption="Small amounts, every day. That’s where a budget is actually won or lost."
+      />
 
       <DocSection n="3" title="Rent shouldn’t ruin a Tuesday">
         <p>
@@ -126,6 +192,14 @@ export default function WhyCoindasPost() {
           decoration, so when you see it, it means something. Dark mode keeps the same paper feel, just at night.
         </p>
       </DocSection>
+
+      <Photo
+        id="photo-1643148636637-58b3eb95cdad"
+        alt="A cup of coffee beside an open notebook on a table"
+        by="Priscilla Du Preez"
+        username="priscilladupreez"
+        aspect="aspect-[4/3]"
+      />
 
       <DocSection n="7" title="Your money stays yours">
         <p>

@@ -89,6 +89,21 @@ export const APPS: StudioApp[] = [
     accentInk: '#0A0A0B',
   },
   {
+    slug: 'coindas',
+    name: 'Coindas',
+    icon: '/apps/coindas/icon.png',
+    platforms: 'iPhone',
+    category: 'Finance',
+    description:
+      'A calm budgeting app built around one number: what’s safe to spend today. Leftovers roll into tomorrow, rent and EMIs are set aside first, and nothing needs a bank login.',
+    status: 'soon',
+    tint: '#141412',
+    tintLight: '#EDE9E0',
+    accent: '#7CC293',
+    accentLight: '#2F6B3F',
+    accentInk: '#0F1A12',
+  },
+  {
     slug: 'sweetheart',
     name: 'Sweetheart',
     icon: '/apps/sweetheart/icon.png',

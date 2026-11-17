@@ -106,6 +106,23 @@ export const APPS: StudioApp[] = [
     accentInk: '#0F1A12',
   },
   {
+    slug: 'marigold',
+    name: 'Marigold',
+    icon: '/apps/marigold/icon.png',
+    platforms: 'Mac',
+    category: 'Photography',
+    description:
+      'A fast photo viewer for Mac. Double-click any photo and flip through the whole folder with the arrow keys. Opens JPEG, PNG, HEIC and camera RAW, and never uploads a thing.',
+    status: 'soon',
+    supportHref: '/marigold/support',
+    privacyHref: '/marigold/privacy',
+    tint: '#1C170D',
+    tintLight: '#F6EEDB',
+    accent: '#F6BA34',
+    accentLight: '#8A5A00',
+    accentInk: '#1A1204',
+  },
+  {
     slug: 'sweetheart',
     name: 'Sweetheart',
     icon: '/apps/sweetheart/icon.png',

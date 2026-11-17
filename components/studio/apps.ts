@@ -3,7 +3,7 @@ import { APP_STORE_URL as DARKMATTER_STORE_URL } from '@/components/darkmatter/c
 import { APP_STORE_URL as FOCUSBLOCK_STORE_URL } from '@/components/focusblock/config'
 
 /** Every app in the lineup. Add a new app here and it appears in the dock, lineup, signup and footer. */
-export type AppStatus = 'live' | 'soon' | 'building'
+export type AppStatus = 'live' | 'review' | 'soon' | 'building'
 
 export interface StudioApp {
   slug: string
@@ -120,7 +120,7 @@ export const APPS: StudioApp[] = [
     category: 'Photography',
     description:
       'A fast photo viewer for Mac. Double-click any photo and flip through the whole folder with the arrow keys. Opens JPEG, PNG, HEIC and camera RAW, and never uploads a thing.',
-    status: 'soon',
+    status: 'review',
     href: '/marigold',
     supportHref: '/marigold/support',
     privacyHref: '/marigold/privacy',
@@ -130,21 +130,6 @@ export const APPS: StudioApp[] = [
     accentLight: '#8A5A00',
     accentInk: '#1A1204',
   },
-  {
-    slug: 'sweetheart',
-    name: 'Sweetheart',
-    icon: '/apps/sweetheart/icon.png',
-    platforms: 'iPhone · Android',
-    category: 'Education',
-    description:
-      'Flashcards for memorising German words and phrases, with meanings, examples and spaced repetition. der, die and das are colour-coded, so the articles finally stick.',
-    status: 'building',
-    tint: '#1A1416',
-    tintLight: '#F8E9E7',
-    accent: '#FF6B6B',
-    accentLight: '#B3261E',
-    accentInk: '#1A0606',
-  },
 ]
 
 export const PHONE_APPS = APPS.filter((a) => a.device !== 'mac')
@@ -152,6 +137,7 @@ export const MAC_APPS = APPS.filter((a) => a.device === 'mac')
 
 export const STATUS_LABEL: Record<AppStatus, string> = {
   live: 'On the App Store',
+  review: 'In App Store review',
   soon: 'Coming soon',
   building: 'In development',
 }
@@ -159,6 +145,7 @@ export const STATUS_LABEL: Record<AppStatus, string> = {
 /** Shorter labels for tight spots like the hero dock. */
 export const STATUS_SHORT: Record<AppStatus, string> = {
   live: 'Out now',
+  review: 'In review',
   soon: 'Coming soon',
   building: 'In development',
 }

@@ -4,9 +4,9 @@ import { DocSection } from '@/components/momentum/DocPage'
 import UnsplashPhoto from '@/components/studio/UnsplashPhoto'
 
 const URL_PATH = '/devlog/why-marigold'
-const TITLE = 'Double-click a photo, then just press →'
+const TITLE = 'The one thing I missed from Windows'
 const DESCRIPTION =
-  'Why I’m building Marigold, a fast photo viewer for Mac: double-click any photo and flip through the whole folder with the arrow keys. JPEG, PNG, HEIC and camera RAW, keyboard-first, and it never uploads a thing.'
+  'After switching from Windows to macOS, I missed opening an image and flipping through the rest of the folder with the arrow keys. So I built Marigold, a native Mac photo viewer that brings it back. It’s just been submitted to the Mac App Store.'
 const PUBLISHED = '2026-11-17'
 const OG_IMAGE = 'https://images.unsplash.com/photo-1777019096423-c3a144845b3f?auto=format&fit=crop&q=70&w=1200&h=630'
 
@@ -21,6 +21,8 @@ export const metadata: Metadata = {
     'HEIC viewer Mac',
     'Preview alternative',
     'browse photos with arrow keys Mac',
+    'Windows Photos alternative for Mac',
+    'switching from Windows to Mac',
   ],
   authors: [{ name: 'Yash Rawat', url: 'https://yashrawat.com' }],
   alternates: { canonical: URL_PATH },
@@ -59,15 +61,18 @@ export default function WhyMarigoldPost() {
     <DevlogPost
       path={URL_PATH}
       kicker="Marigold · Devlog"
-      title={<>Double-click a photo, then just <span className="text-accent">press →</span></>}
+      title={<>The one thing I missed from <span className="text-accent">Windows</span></>}
       meta="17 Nov 2026 · Yash Rawat"
       jsonLd={jsonLd}
     >
       <p className="text-[14px] sm:text-[15px] text-ink2 leading-[1.8]">
-        Every time I copied a card of photos onto my Mac, I&apos;d double-click the first one, look at it, and then press the right arrow
-        key, and nothing would happen. I wanted to see the <em>next</em> photo, not import a library, not select all and open them as a
-        batch. Marigold, the Mac app I&apos;m building now, does exactly that one thing well. It&apos;s coming to the Mac App Store soon.
-        Here&apos;s how it works and why.
+        When I switched from Windows to macOS, I expected to miss the big things. Instead I missed something tiny: open an image, press
+        the right arrow key, and see the next image in the same folder. Then the next, and the next. On Windows I&apos;d done that a
+        thousand times without thinking. On my Mac, I couldn&apos;t get it to work the way I wanted.
+      </p>
+      <p className="text-[14px] sm:text-[15px] text-ink2 leading-[1.8]">
+        So I built it myself. Marigold is a native macOS app that brings that simple way of browsing images back. Right-click an image,
+        choose <strong>Open With → Marigold</strong>, and browse away. I&apos;ve just submitted it to the Mac App Store for review.
       </p>
 
       <UnsplashPhoto
@@ -75,17 +80,18 @@ export default function WhyMarigoldPost() {
         alt="Film strips, a loupe and camera lenses laid out on a light table"
         by="Jakub Żerdzicki"
         username="jakubzerdzicki"
-        caption="Looking through a shoot should feel like sliding a loupe along a strip of film."
+        caption="Looking through a folder should feel like sliding a loupe along a strip of film."
       />
 
-      <DocSection n="1" title="The folder is the album">
+      <DocSection n="1" title="A surprisingly basic feature">
         <p>
-          Most of my photos don&apos;t live in a library. They live in folders: a trip, a client shoot, a card dump called{' '}
-          <em>DCIM-copy-2</em>. When I open a photo from one of them, I almost always want to look at its neighbours too.
+          On a Mac, you can get close. You can select every photo in a folder before opening them, or tap through them with Quick Look in
+          Finder. But neither felt like what I wanted, which was simply this: open <em>one</em> image from anywhere, and have every other
+          image in its folder one key press away. No selecting first, no importing into a library.
         </p>
         <p>
-          So in Marigold, the photo you double-click is just the starting point. Press <span className={kbd}>←</span> or{' '}
-          <span className={kbd}>→</span> (or <span className={kbd}>Space</span>) and you move through every photo in that folder, in the
+          That&apos;s what Marigold does. The photo you open is just the starting point. Press <span className={kbd}>←</span> or{' '}
+          <span className={kbd}>→</span> (or <span className={kbd}>Space</span>) and you move through every image in that folder, in the
           same order Finder shows them. A filmstrip along the bottom shows where you are, and the title bar says &ldquo;3 of 12&rdquo;
           so you always know how much is left.
         </p>
@@ -144,10 +150,10 @@ export default function WhyMarigoldPost() {
         </p>
       </DocSection>
 
-      <DocSection n="6" title="Why it asks about the folder, once">
+      <DocSection n="6" title="The hard part: the sandbox">
         <p>
           This was the most interesting problem to solve. Apps on the Mac App Store run in a sandbox, and a sandboxed app can only open the
-          exact file you double-clicked. Its neighbours are off limits. That&apos;s good for your privacy, and a real puzzle for an app
+          exact file you opened. Its neighbours are off limits. That&apos;s good for your privacy, and a real puzzle for an app
           whose whole point is the arrow keys.
         </p>
         <p>
@@ -174,19 +180,20 @@ export default function WhyMarigoldPost() {
         </p>
       </DocSection>
 
-      <DocSection n="8" title="What’s next">
+      <DocSection n="8" title="Submitted, and what’s next">
         <p>
-          I&apos;m using Marigold as my default viewer every day and fixing whatever slows me down. It&apos;s my first Mac app after
+          Marigold is in the Mac App Store review queue as I write this. It&apos;s a small app, but it&apos;s a feature I wanted badly
+          enough to build myself, and I&apos;ve been using it as my default viewer every day since. It&apos;s also my first Mac app after
           building <a href="/devlog/why-ios" className={link}>iPhone first</a>, and it&apos;s taught me how different the Mac is: windows,
-          menus, Finder and the keyboard all matter far more. Next up is polishing the first-launch flow, so making Marigold your default
-          photo app is one click.
+          menus, Finder and the keyboard all matter far more.
         </p>
+        <p>More soon! 🌼</p>
       </DocSection>
 
       <DocSection title="The short version">
         <p>
-          Marigold is a photo viewer that does the obvious thing: double-click a photo, press the arrow keys, see the rest of the folder.
-          It opens almost anything, including RAW, never touches your originals and never goes online.
+          Marigold brings back the Windows habit I missed: open an image, press the arrow keys, see the rest of the folder. Right-click,
+          Open With → Marigold, done. It opens almost anything, including RAW, never touches your originals and never goes online.
         </p>
         <p>
           <a href="/#app-marigold" className={link}>See Marigold in the lineup →</a>

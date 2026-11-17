@@ -143,7 +143,7 @@ export default function WhyIosPost() {
       <DocSection n="5" title="iPhone first, not iPhone only">
         <p>
           Choosing iOS first is about where an app works best, not about leaving anyone out. When the idea doesn&apos;t depend on iPhone-only
-          features, it goes wider: Sweetheart, the German flashcards app I&apos;m building now, is coming to both iPhone and Android.
+          features, it can go wider, to the Mac or to Android.
         </p>
       </DocSection>
 

@@ -79,10 +79,10 @@ export default function Home() {
             {inWorks > 0 && (
               <>
                 <h3 className="mt-14 mb-5 text-[12px] font-bold tracking-[0.14em] uppercase text-faint">On the way</h3>
-                <div className="grid gap-5 md:grid-cols-2">
+                <div className={`grid gap-5 ${inWorks > 1 ? 'md:grid-cols-2' : ''}`}>
                   {PHONE_APPS.filter((a) => a.status !== 'live').map((app) => (
                     <Reveal key={app.slug} className="h-full">
-                      <LineupCard app={app} />
+                      <LineupCard app={app} wide={inWorks === 1} />
                     </Reveal>
                   ))}
                 </div>

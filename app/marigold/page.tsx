@@ -71,7 +71,7 @@ const content: LandingContent = {
       Every photo, <span className="app-accent">one key away.</span>
     </>
   ),
-  devlog: { href: '/devlog/why-marigold', title: 'Double-click a photo, then just press →' },
+  devlog: { href: '/devlog/why-marigold', title: 'The one thing I missed from Windows' },
 }
 
 export default function MarigoldPage() {

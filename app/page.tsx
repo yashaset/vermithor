@@ -5,13 +5,15 @@ import StatusBadge from '@/components/studio/StatusBadge'
 import LineupCard, { NextAppCard } from '@/components/studio/LineupCard'
 import NotifyForm from '@/components/studio/NotifyForm'
 import Reveal from '@/components/Reveal'
-import { APPS } from '@/components/studio/apps'
+import { APPS, PHONE_APPS, MAC_APPS } from '@/components/studio/apps'
 import { POSTS } from '@/components/studio/devlog'
 import { appVars } from '@/components/studio/appStyle'
 
 export default function Home() {
-  const live = APPS.filter((a) => a.status === 'live').length
-  const inWorks = APPS.length - live
+  const live = PHONE_APPS.filter((a) => a.status === 'live').length
+  const inWorks = PHONE_APPS.length - live
+  const macLive = MAC_APPS.filter((a) => a.status === 'live').length
+  const macInWorks = MAC_APPS.length - macLive
 
   return (
     <div className="overflow-hidden">
@@ -34,7 +36,7 @@ export default function Home() {
               </p>
 
               <ul className="list-none mt-12 sm:mt-[72px] mx-auto inline-flex flex-wrap justify-center gap-2 sm:gap-12 px-4 sm:px-11 py-6 rounded-[36px] bg-surface border border-border">
-                {APPS.map((app) => (
+                {[...PHONE_APPS, ...MAC_APPS].map((app) => (
                   <li key={app.slug}>
                     <a href={`#app-${app.slug}`} className="flex flex-col items-center gap-3 w-[98px] sm:w-[120px]">
                       <AppIcon src={app.icon} size={84} shadow />
@@ -61,13 +63,33 @@ export default function Home() {
           {/* Lineup */}
           <section id="apps" className="scroll-mt-6 pb-20 sm:pb-32">
             <div className="flex flex-wrap justify-between items-baseline gap-4 mb-7">
-              <h2 className="text-[clamp(32px,4vw,48px)] font-black tracking-[-0.04em]">The lineup</h2>
+              <h2 className="text-[clamp(32px,4vw,48px)] font-black tracking-[-0.04em]">For your phone</h2>
               <span className="text-[13px] text-faint">
                 {live > 0 ? `${live} live · ${inWorks} on the way` : `${inWorks} apps on the way`}
               </span>
             </div>
             <div className="grid gap-5 grid-cols-[repeat(auto-fit,minmax(min(100%,340px),1fr))]">
-              {APPS.map((app) => (
+              {PHONE_APPS.map((app) => (
+                <Reveal key={app.slug} className="h-full">
+                  <LineupCard app={app} />
+                </Reveal>
+              ))}
+            </div>
+          </section>
+
+          {/* Mac apps */}
+          <section id="mac" className="scroll-mt-6 pb-20 sm:pb-32">
+            <div className="flex flex-wrap justify-between items-baseline gap-4 mb-7">
+              <div>
+                <h2 className="text-[clamp(32px,4vw,48px)] font-black tracking-[-0.04em]">For your Mac</h2>
+                <p className="mt-2 text-[16px] text-muted">Small, fast tools that feel at home on macOS.</p>
+              </div>
+              <span className="text-[13px] text-faint">
+                {macLive > 0 ? `${macLive} live · ${macInWorks} on the way` : `${macInWorks} ${macInWorks === 1 ? 'app' : 'apps'} on the way`}
+              </span>
+            </div>
+            <div className="grid gap-5 grid-cols-[repeat(auto-fit,minmax(min(100%,340px),1fr))]">
+              {MAC_APPS.map((app) => (
                 <Reveal key={app.slug} className="h-full">
                   <LineupCard app={app} />
                 </Reveal>

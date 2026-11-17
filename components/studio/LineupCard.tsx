@@ -114,6 +114,49 @@ function Art({ app }: { app: StudioApp }) {
       </div>
     )
   }
+  if (app.slug === 'marigold') {
+    // A Marigold window: one photo with the filmstrip underneath, like the app.
+    const thumbs = ['#9CC3E0', '#F2B880', '#CFE3D4', '#1F2A44', '#F6D7C3']
+    const chevron = (d: string, side: string) => (
+      <span className={`absolute ${side} top-1/2 -translate-y-1/2 w-[20px] h-[20px] rounded-full bg-black/55 border border-white/15 flex items-center justify-center text-white`}>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d={d} />
+        </svg>
+      </span>
+    )
+    return (
+      <div className="app-tint h-[260px] flex items-center justify-center" style={appVars(app)} aria-hidden>
+        <div className="w-[300px] rounded-[12px] border border-[#3A3A3A] bg-[#141414] overflow-hidden -rotate-[2deg] shadow-[0_18px_40px_-20px_rgba(0,0,0,0.6)]">
+          <div className="h-[24px] flex items-center gap-[5px] px-2.5 bg-[#262626] border-b border-black">
+            {['#FF5F57', '#FEBC2E', '#28C840'].map((c) => (
+              <span key={c} className="w-[7px] h-[7px] rounded-full" style={{ background: c }} />
+            ))}
+            <span className="ml-2 text-[9px] font-semibold text-[#E6E6E6]">IMG_2041.jpg</span>
+            <span className="ml-auto text-[8px] text-[#A3A3A3] tabular-nums">3 of 12</span>
+          </div>
+          <div className="relative h-[132px] flex items-center justify-center">
+            <svg width="171" height="114" viewBox="0 0 600 400" preserveAspectRatio="none" className="shadow-[0_6px_18px_rgba(0,0,0,0.5)]">
+              <rect width="600" height="400" fill="#CFE3D4" />
+              <circle cx="440" cy="110" r="40" fill="#FFFFFF" />
+              <path d="M0 260 L120 170 L220 230 L330 140 L460 240 L600 180 L600 400 L0 400Z" fill="#6E9A7A" />
+              <path d="M0 320 L150 250 L280 310 L420 260 L600 330 L600 400 L0 400Z" fill="#2E4F3A" />
+            </svg>
+            {chevron('m15 18-6-6 6-6', 'left-2.5')}
+            {chevron('m9 18 6-6-6-6', 'right-2.5')}
+          </div>
+          <div className="h-[40px] flex items-center justify-center gap-1.5 bg-[#1C1C1C] border-t border-black">
+            {thumbs.map((c, i) => (
+              <span
+                key={c}
+                className="w-[36px] h-[24px] rounded-[3px]"
+                style={{ background: c, opacity: i === 2 ? 1 : 0.6, boxShadow: i === 2 ? `0 0 0 2px ${app.accent}` : undefined }}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    )
+  }
   return <div className="app-tint h-[260px]" style={appVars(app)} aria-hidden />
 }
 

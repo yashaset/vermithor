@@ -9,6 +9,8 @@ export interface StudioApp {
   name: string
   icon: string
   platforms: string
+  /** Which home-page section the app sits in. Defaults to phone. */
+  device?: 'phone' | 'mac'
   category: string
   description: string
   status: AppStatus
@@ -110,6 +112,7 @@ export const APPS: StudioApp[] = [
     name: 'Marigold',
     icon: '/apps/marigold/icon.png',
     platforms: 'Mac',
+    device: 'mac',
     category: 'Photography',
     description:
       'A fast photo viewer for Mac. Double-click any photo and flip through the whole folder with the arrow keys. Opens JPEG, PNG, HEIC and camera RAW, and never uploads a thing.',
@@ -138,6 +141,9 @@ export const APPS: StudioApp[] = [
     accentInk: '#1A0606',
   },
 ]
+
+export const PHONE_APPS = APPS.filter((a) => a.device !== 'mac')
+export const MAC_APPS = APPS.filter((a) => a.device === 'mac')
 
 export const STATUS_LABEL: Record<AppStatus, string> = {
   live: 'On the App Store',

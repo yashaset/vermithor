@@ -24,7 +24,7 @@ export default function AppIcon({
         width: size,
         height: size,
         borderRadius: size * 0.2237,
-        // Hairline ring keeps light icons (e.g. Sweetheart's) defined on light backgrounds.
+        // Hairline ring keeps light icons (e.g. FocusBlock's) defined on light backgrounds.
         boxShadow: `0 0 0 1px var(--border)${shadow ? ', 0 12px 28px -14px rgba(0, 0, 0, 0.45)' : ''}`,
       }}
     />

@@ -18,27 +18,6 @@ export function Art({ app, h = 'h-[260px]' }: { app: StudioApp; h?: string }) {
       </div>
     )
   }
-  if (app.slug === 'sweetheart') {
-    // der / die / das, colour-coded like the app and its icon.
-    const words = [
-      { w: 'der', bg: '#1565C0', r: '-rotate-[10deg]', y: 'translate-y-3' },
-      { w: 'die', bg: '#C62828', r: 'rotate-0', y: '-translate-y-2' },
-      { w: 'das', bg: '#2E7D32', r: 'rotate-[10deg]', y: 'translate-y-3' },
-    ]
-    return (
-      <div className={`app-tint ${h} flex items-center justify-center gap-3`} style={appVars(app)} aria-hidden>
-        {words.map((x) => (
-          <span
-            key={x.w}
-            className={`font-display font-black text-white text-[30px] w-[92px] h-[124px] rounded-[18px] border-[5px] border-[#15161B] flex items-center justify-center ${x.r} ${x.y}`}
-            style={{ background: x.bg }}
-          >
-            {x.w}
-          </span>
-        ))}
-      </div>
-    )
-  }
   if (app.slug === 'focusblock') {
     // A breathing circle with the leaf, like the app's focus screen.
     return (
@@ -161,7 +140,8 @@ export function Art({ app, h = 'h-[260px]' }: { app: StudioApp; h?: string }) {
   return <div className={`app-tint ${h}`} style={appVars(app)} aria-hidden />
 }
 
-export default function LineupCard({ app }: { app: StudioApp }) {
+/** `wide` lays the card out side by side, for a row that holds a single card. */
+export default function LineupCard({ app, wide = false }: { app: StudioApp; wide?: boolean }) {
   const primary = app.storeUrl
     ? { href: app.storeUrl, label: 'Get the app', external: true }
     : app.href
@@ -171,9 +151,18 @@ export default function LineupCard({ app }: { app: StudioApp }) {
   const secondary = app.storeUrl && app.href ? { href: app.href, label: 'Learn more' } : null
 
   return (
-    <article id={`app-${app.slug}`} className="scroll-mt-6 rounded-[28px] bg-surface border border-border overflow-hidden flex flex-col">
-      <Art app={app} />
-      <div className="p-7 flex flex-col gap-3.5 flex-1">
+    <article
+      id={`app-${app.slug}`}
+      className={`scroll-mt-6 rounded-[28px] bg-surface border border-border overflow-hidden flex flex-col ${wide ? 'md:flex-row' : ''}`}
+    >
+      {wide ? (
+        <div className="md:w-1/2 shrink-0">
+          <Art app={app} h="h-[260px] md:h-full md:min-h-[340px]" />
+        </div>
+      ) : (
+        <Art app={app} />
+      )}
+      <div className={`p-7 flex flex-col gap-3.5 flex-1 ${wide ? 'md:p-10 md:justify-center' : ''}`}>
         <div className="flex items-center gap-3.5">
           <AppIcon src={app.icon} size={56} />
           <div>
@@ -184,7 +173,7 @@ export default function LineupCard({ app }: { app: StudioApp }) {
           </div>
         </div>
         <p className="text-[16px] leading-relaxed text-ink2">{app.description}</p>
-        <div className="mt-auto pt-2 flex flex-wrap items-center gap-2.5">
+        <div className={`${wide ? 'md:mt-4' : 'mt-auto'} pt-2 flex flex-wrap items-center gap-2.5`}>
           <a
             href={primary.href}
             target={primary.external ? '_blank' : undefined}

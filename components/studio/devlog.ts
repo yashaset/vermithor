@@ -7,7 +7,7 @@ export interface Post {
 }
 
 export const POSTS: Post[] = [
-  { date: '17 Nov 2026', title: 'Double-click a photo, then just press →', app: 'marigold', href: '/devlog/why-marigold' },
+  { date: '17 Nov 2026', title: 'The one thing I missed from Windows', app: 'marigold', href: '/devlog/why-marigold' },
   { date: '16 Nov 2026', title: 'A budget you can read in one number', app: 'coindas', href: '/devlog/why-coindas' },
   { date: '12 Nov 2026', title: 'Why I build for iPhone first', app: 'studio', href: '/devlog/why-ios' },
   { date: '12 Nov 2026', title: 'Why build a manual camera when the iPhone camera is this good?', app: 'darkmatter', href: '/darkmatter/why-darkmatter' },

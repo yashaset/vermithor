@@ -1,4 +1,4 @@
-import { STATUS_LABEL, type StudioApp } from './apps'
+import { STATUS_LABEL, STATUS_SHORT, type StudioApp } from './apps'
 import { appVars } from './appStyle'
 
 export default function StatusBadge({ app, variant = 'pill' }: { app: StudioApp; variant?: 'pill' | 'dot' }) {
@@ -6,7 +6,7 @@ export default function StatusBadge({ app, variant = 'pill' }: { app: StudioApp;
     return (
       <span className="app-accent inline-flex items-center gap-1.5 text-[11px] sm:text-[12px] font-semibold whitespace-nowrap" style={appVars(app)}>
         <span className="w-1.5 h-1.5 rounded-full bg-current" aria-hidden />
-        {STATUS_LABEL[app.status]}
+        {STATUS_SHORT[app.status]}
       </span>
     )
   }

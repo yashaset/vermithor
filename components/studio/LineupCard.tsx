@@ -166,6 +166,8 @@ export default function LineupCard({ app }: { app: StudioApp }) {
     : app.href
       ? { href: app.href, label: 'View app', external: false }
       : { href: '#notify', label: 'Notify me', external: false }
+  // When the main button goes to the App Store, still link the app's own page if it has one.
+  const secondary = app.storeUrl && app.href ? { href: app.href, label: 'Learn more' } : null
 
   return (
     <article id={`app-${app.slug}`} className="scroll-mt-6 rounded-[28px] bg-surface border border-border overflow-hidden flex flex-col">
@@ -190,8 +192,20 @@ export default function LineupCard({ app }: { app: StudioApp }) {
             style={{ background: app.accent, color: app.accentInk }}
           >
             {primary.label}
+            {primary.external && (
+              <svg className="ml-1.5" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <path d="M7 17 17 7M8 7h9v9" />
+              </svg>
+            )}
           </a>
-          <StatusBadge app={app} />
+          {secondary && (
+            <a href={secondary.href} className="inline-flex items-center min-h-[44px] px-2 font-semibold text-[14px] text-ink2 hover:text-ink">
+              {secondary.label} →
+            </a>
+          )}
+          <span className="ml-auto">
+            <StatusBadge app={app} />
+          </span>
         </div>
       </div>
     </article>

@@ -1,5 +1,6 @@
 import { APP_STORE_URL } from '@/components/momentum/config'
 import { APP_STORE_URL as DARKMATTER_STORE_URL } from '@/components/darkmatter/config'
+import { APP_STORE_URL as FOCUSBLOCK_STORE_URL } from '@/components/focusblock/config'
 
 /** Every app in the lineup. Add a new app here and it appears in the dock, lineup, signup and footer. */
 export type AppStatus = 'live' | 'soon' | 'building'
@@ -62,7 +63,8 @@ export const APPS: StudioApp[] = [
     category: 'Productivity',
     description:
       'A calm app blocker. Keep Instagram, TikTok and YouTube out of reach during focus sessions and quiet hours that run on their own. Built on Screen Time, so it never sees what you use.',
-    status: 'soon',
+    status: 'live',
+    storeUrl: FOCUSBLOCK_STORE_URL ?? undefined,
     supportHref: '/focusblock/support',
     privacyHref: '/focusblock/privacy',
     tint: '#1A221D',
@@ -147,6 +149,13 @@ export const MAC_APPS = APPS.filter((a) => a.device === 'mac')
 
 export const STATUS_LABEL: Record<AppStatus, string> = {
   live: 'On the App Store',
+  soon: 'Coming soon',
+  building: 'In development',
+}
+
+/** Shorter labels for tight spots like the hero dock. */
+export const STATUS_SHORT: Record<AppStatus, string> = {
+  live: 'Out now',
   soon: 'Coming soon',
   building: 'In development',
 }

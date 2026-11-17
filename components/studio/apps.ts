@@ -65,6 +65,7 @@ export const APPS: StudioApp[] = [
       'A calm app blocker. Keep Instagram, TikTok and YouTube out of reach during focus sessions and quiet hours that run on their own. Built on Screen Time, so it never sees what you use.',
     status: 'live',
     storeUrl: FOCUSBLOCK_STORE_URL ?? undefined,
+    href: '/focusblock',
     supportHref: '/focusblock/support',
     privacyHref: '/focusblock/privacy',
     tint: '#1A221D',
@@ -101,6 +102,7 @@ export const APPS: StudioApp[] = [
     description:
       'A calm budgeting app built around one number: what’s safe to spend today. Leftovers roll into tomorrow, rent and EMIs are set aside first, and nothing needs a bank login.',
     status: 'soon',
+    href: '/coindas',
     supportHref: '/coindas/support',
     privacyHref: '/coindas/privacy',
     tint: '#141412',
@@ -119,6 +121,7 @@ export const APPS: StudioApp[] = [
     description:
       'A fast photo viewer for Mac. Double-click any photo and flip through the whole folder with the arrow keys. Opens JPEG, PNG, HEIC and camera RAW, and never uploads a thing.',
     status: 'soon',
+    href: '/marigold',
     supportHref: '/marigold/support',
     privacyHref: '/marigold/privacy',
     tint: '#1C170D',

@@ -5,7 +5,7 @@ import StatusBadge from '@/components/studio/StatusBadge'
 import LineupCard, { NextAppCard } from '@/components/studio/LineupCard'
 import NotifyForm from '@/components/studio/NotifyForm'
 import Reveal from '@/components/Reveal'
-import { APPS, PHONE_APPS, MAC_APPS } from '@/components/studio/apps'
+import { APPS, PHONE_APPS, MAC_APPS, WORKBENCH } from '@/components/studio/apps'
 import { POSTS } from '@/components/studio/devlog'
 import { appVars } from '@/components/studio/appStyle'
 
@@ -35,25 +35,26 @@ export default function Home() {
                 I&apos;m Yash. I design, build and support every app here myself. No ads, no tracking, no filler.
               </p>
 
-              <ul className="list-none mt-12 sm:mt-[72px] mx-auto inline-flex flex-wrap justify-center gap-2 sm:gap-12 px-4 sm:px-11 py-6 rounded-[36px] bg-surface border border-border">
+              {/* One row on desktop; scrolls sideways on small screens instead of wrapping. */}
+              <ul className="list-none mt-12 sm:mt-[72px] mx-auto flex w-max max-w-full overflow-x-auto snap-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden gap-4 sm:gap-7 px-5 sm:px-10 py-6 rounded-[36px] bg-surface border border-border text-center">
                 {[...PHONE_APPS, ...MAC_APPS].map((app) => (
-                  <li key={app.slug}>
-                    <a href={`#app-${app.slug}`} className="flex flex-col items-center gap-3 w-[98px] sm:w-[120px]">
+                  <li key={app.slug} className="shrink-0 snap-start">
+                    <a href={`#app-${app.slug}`} className="flex flex-col items-center gap-3 w-[96px] sm:w-[108px]">
                       <AppIcon src={app.icon} size={84} shadow />
                       <span className="font-semibold text-[15px]">{app.name}</span>
                       <StatusBadge app={app} variant="dot" />
                     </a>
                   </li>
                 ))}
-                <li>
-                  <a href="#app-next" className="flex flex-col items-center gap-3 w-[98px] sm:w-[120px]">
+                <li className="shrink-0 snap-start pl-4 sm:pl-7 border-l border-border">
+                  <a href="#app-next" className="flex flex-col items-center gap-3 w-[96px] sm:w-[108px]">
                     <span className="w-[84px] h-[84px] rounded-[19px] border-[1.5px] border-dashed border-line text-faint flex items-center justify-center" aria-hidden>
                       <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                         <path d="M12 5v14M5 12h14" />
                       </svg>
                     </span>
                     <span className="font-semibold text-[15px] text-muted">Up next</span>
-                    <span className="text-[12px] text-faint whitespace-nowrap">Camera · Git</span>
+                    <span className="text-[12px] text-faint whitespace-nowrap">{WORKBENCH.map((w) => w.title.replace(/^An? /, '')).join(' · ')}</span>
                   </a>
                 </li>
               </ul>
@@ -68,13 +69,25 @@ export default function Home() {
                 {live > 0 ? `${live} live · ${inWorks} on the way` : `${inWorks} apps on the way`}
               </span>
             </div>
-            <div className="grid gap-5 grid-cols-[repeat(auto-fit,minmax(min(100%,340px),1fr))]">
-              {PHONE_APPS.map((app) => (
+            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {PHONE_APPS.filter((a) => a.status === 'live').map((app) => (
                 <Reveal key={app.slug} className="h-full">
                   <LineupCard app={app} />
                 </Reveal>
               ))}
             </div>
+            {inWorks > 0 && (
+              <>
+                <h3 className="mt-14 mb-5 text-[12px] font-bold tracking-[0.14em] uppercase text-faint">On the way</h3>
+                <div className="grid gap-5 md:grid-cols-2">
+                  {PHONE_APPS.filter((a) => a.status !== 'live').map((app) => (
+                    <Reveal key={app.slug} className="h-full">
+                      <LineupCard app={app} />
+                    </Reveal>
+                  ))}
+                </div>
+              </>
+            )}
           </section>
 
           {/* Mac apps */}
@@ -88,7 +101,7 @@ export default function Home() {
                 {macLive > 0 ? `${macLive} live · ${macInWorks} on the way` : `${macInWorks} ${macInWorks === 1 ? 'app' : 'apps'} on the way`}
               </span>
             </div>
-            <div className="grid gap-5 grid-cols-[repeat(auto-fit,minmax(min(100%,340px),1fr))]">
+            <div className="grid gap-5 md:grid-cols-2">
               {MAC_APPS.map((app) => (
                 <Reveal key={app.slug} className="h-full">
                   <LineupCard app={app} />

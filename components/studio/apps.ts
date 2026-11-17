@@ -97,6 +97,8 @@ export const APPS: StudioApp[] = [
     description:
       'A calm budgeting app built around one number: what’s safe to spend today. Leftovers roll into tomorrow, rent and EMIs are set aside first, and nothing needs a bank login.',
     status: 'soon',
+    supportHref: '/coindas/support',
+    privacyHref: '/coindas/privacy',
     tint: '#141412',
     tintLight: '#EDE9E0',
     accent: '#7CC293',

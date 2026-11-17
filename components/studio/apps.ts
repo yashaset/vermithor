@@ -9,6 +9,8 @@ export interface StudioApp {
   name: string
   icon: string
   platforms: string
+  /** Which home-page section the app sits in. Defaults to phone. */
+  device?: 'phone' | 'mac'
   category: string
   description: string
   status: AppStatus
@@ -97,11 +99,31 @@ export const APPS: StudioApp[] = [
     description:
       'A calm budgeting app built around one number: what’s safe to spend today. Leftovers roll into tomorrow, rent and EMIs are set aside first, and nothing needs a bank login.',
     status: 'soon',
+    supportHref: '/coindas/support',
+    privacyHref: '/coindas/privacy',
     tint: '#141412',
     tintLight: '#EDE9E0',
     accent: '#7CC293',
     accentLight: '#2F6B3F',
     accentInk: '#0F1A12',
+  },
+  {
+    slug: 'marigold',
+    name: 'Marigold',
+    icon: '/apps/marigold/icon.png',
+    platforms: 'Mac',
+    device: 'mac',
+    category: 'Photography',
+    description:
+      'A fast photo viewer for Mac. Double-click any photo and flip through the whole folder with the arrow keys. Opens JPEG, PNG, HEIC and camera RAW, and never uploads a thing.',
+    status: 'soon',
+    supportHref: '/marigold/support',
+    privacyHref: '/marigold/privacy',
+    tint: '#1C170D',
+    tintLight: '#F6EEDB',
+    accent: '#F6BA34',
+    accentLight: '#8A5A00',
+    accentInk: '#1A1204',
   },
   {
     slug: 'sweetheart',
@@ -119,6 +141,9 @@ export const APPS: StudioApp[] = [
     accentInk: '#1A0606',
   },
 ]
+
+export const PHONE_APPS = APPS.filter((a) => a.device !== 'mac')
+export const MAC_APPS = APPS.filter((a) => a.device === 'mac')
 
 export const STATUS_LABEL: Record<AppStatus, string> = {
   live: 'On the App Store',

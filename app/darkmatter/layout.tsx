@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
+import { APP_SEO } from '@/components/seo/appSeo'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://yashrawat.com'),
   title: {
-    default: 'Darkmatter — A manual camera for iPhone',
+    default: APP_SEO.darkmatter.title,
     template: '%s · Darkmatter',
   },
-  description:
-    'Darkmatter gives you full control over ISO, shutter speed, white balance and focus, shoots RAW and ProRAW, and paints light trails. No account, no ads, no tracking.',
+  description: APP_SEO.darkmatter.description,
   icons: { icon: '/apps/darkmatter/icon.png', apple: '/apps/darkmatter/icon.png' },
 }
 

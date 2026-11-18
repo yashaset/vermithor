@@ -2,10 +2,12 @@ import type { Metadata } from 'next'
 import CoindasDocPage from '@/components/coindas/CoindasDocPage'
 import { DocSection } from '@/components/momentum/DocPage'
 import { SUPPORT_EMAIL } from '@/components/coindas/config'
+import { pageMeta } from '@/components/seo/site'
 
 export const metadata: Metadata = {
   title: 'Support',
   description: 'Get help with Coindas: the daily number, fixed costs, categories, signing in and deleting your account.',
+  ...pageMeta({ path: '/coindas/support', title: 'Support · Coindas', description: 'Get help with Coindas: the daily number, fixed costs, categories, signing in and deleting your account.' }),
 }
 
 const faqs: { q: string; a: React.ReactNode }[] = [

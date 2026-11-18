@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
 import DocPage, { DocSection } from '@/components/momentum/DocPage'
 import { SUPPORT_EMAIL } from '@/components/momentum/config'
+import { pageMeta } from '@/components/seo/site'
 
 export const metadata: Metadata = {
   title: 'Support',
   description: 'Get help with Momentum: accounts, sync, Apple Health, the gym alarm, widgets and deleting your data.',
+  ...pageMeta({ path: '/momentum/support', title: 'Support · Momentum', description: 'Get help with Momentum: accounts, sync, Apple Health, the gym alarm, widgets and deleting your data.' }),
 }
 
 const faqs: { q: string; a: React.ReactNode }[] = [

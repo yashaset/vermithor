@@ -2,10 +2,12 @@ import type { Metadata } from 'next'
 import DarkmatterDocPage from '@/components/darkmatter/DarkmatterDocPage'
 import { DocSection } from '@/components/momentum/DocPage'
 import { SUPPORT_EMAIL } from '@/components/darkmatter/config'
+import { pageMeta } from '@/components/seo/site'
 
 export const metadata: Metadata = {
   title: 'Support',
   description: 'Get help with Darkmatter: manual exposure, RAW and ProRAW, light trails, focus and permissions.',
+  ...pageMeta({ path: '/darkmatter/support', title: 'Support · Darkmatter', description: 'Get help with Darkmatter: manual exposure, RAW and ProRAW, light trails, focus and permissions.' }),
 }
 
 const faqs: { q: string; a: React.ReactNode }[] = [

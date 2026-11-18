@@ -6,6 +6,12 @@ import Phone from '@/components/momentum/Phone'
 import SectionLabel from '@/components/SectionLabel'
 import Reveal from '@/components/Reveal'
 import StoreButton from '@/components/darkmatter/StoreButton'
+import type { Metadata } from 'next'
+import { APP_SEO } from '@/components/seo/appSeo'
+import { pageMeta } from '@/components/seo/site'
+import AppJsonLd from '@/components/seo/AppJsonLd'
+
+export const metadata: Metadata = pageMeta({ path: '/darkmatter', ...APP_SEO.darkmatter })
 
 const app = APPS.find((a) => a.slug === 'darkmatter')!
 
@@ -60,6 +66,7 @@ export default function DarkmatterPage() {
   return (
     <div className="overflow-hidden" style={appVars(app)}>
       <div className="max-w-[1200px] mx-auto px-4 sm:px-8 lg:px-10">
+        <AppJsonLd app={app} />
         <StudioNav />
         <main>
           {/* Hero */}

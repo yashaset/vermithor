@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     publishedTime: PUBLISHED,
     authors: ['Yash Rawat'],
   },
-  twitter: { card: 'summary', title: TITLE, description: DESCRIPTION },
+  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION },
 }
 
 const jsonLd = {

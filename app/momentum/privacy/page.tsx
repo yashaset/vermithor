@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
 import DocPage, { DocSection, DocTable } from '@/components/momentum/DocPage'
 import { SUPPORT_EMAIL } from '@/components/momentum/config'
+import { pageMeta } from '@/components/seo/site'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
   description: 'How Momentum handles your workouts, Apple Health data, location and account.',
+  ...pageMeta({ path: '/momentum/privacy', title: 'Privacy Policy · Momentum', description: 'How Momentum handles your workouts, Apple Health data, location and account.' }),
 }
 
 export default function PrivacyPage() {

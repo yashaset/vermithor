@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
+import { APP_SEO } from '@/components/seo/appSeo'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://yashrawat.com'),
   title: {
-    default: 'FocusBlock — A calm app blocker for iPhone',
+    default: APP_SEO.focusblock.title,
     template: '%s · FocusBlock',
   },
-  description:
-    'FocusBlock keeps distracting apps out of reach during focus sessions and quiet hours. Built on Apple Screen Time. No account, no ads, no tracking.',
+  description: APP_SEO.focusblock.description,
   icons: { icon: '/apps/focusblock/icon.png', apple: '/apps/focusblock/icon.png' },
 }
 

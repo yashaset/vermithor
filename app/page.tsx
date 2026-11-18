@@ -10,6 +10,43 @@ import Reveal from '@/components/Reveal'
 import { APPS, PHONE_APPS, MAC_APPS, WORKBENCH } from '@/components/studio/apps'
 import { POSTS } from '@/components/studio/devlog'
 import { appVars } from '@/components/studio/appStyle'
+import type { Metadata } from 'next'
+import { STUDIO_NAME, LINKS } from '@/components/studio/config'
+import { AUTHOR, SITE_URL, jsonLdHtml, pageMeta } from '@/components/seo/site'
+
+export const metadata: Metadata = pageMeta({
+  path: '/',
+  title: `${STUDIO_NAME} — Independent apps by Yash Rawat`,
+  description:
+    'Apps worth keeping on your home screen. Yash Rawat is an independent developer in Delhi who designs, builds and supports every app himself. No ads, no tracking.',
+})
+
+// Who's behind the site, for Google's knowledge panel and to tie the apps to one developer.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${SITE_URL}/#yash`,
+      ...AUTHOR,
+      jobTitle: 'Independent app developer',
+      address: { '@type': 'PostalAddress', addressLocality: 'Delhi', addressCountry: 'IN' },
+      sameAs: [LINKS.github, LINKS.linkedin],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: STUDIO_NAME,
+      publisher: { '@id': `${SITE_URL}/#yash` },
+    },
+    {
+      '@type': 'ItemList',
+      name: 'Apps by Yash Rawat',
+      itemListElement: APPS.filter((a) => a.href).map((a, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE_URL}${a.href}`, name: a.name })),
+    },
+  ],
+}
 
 export default function Home() {
   const live = PHONE_APPS.filter((a) => a.status === 'live').length
@@ -19,6 +56,7 @@ export default function Home() {
 
   return (
     <div className="overflow-hidden">
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdHtml(jsonLd)} />
       <div className="max-w-[1200px] mx-auto px-4 sm:px-8 lg:px-10">
         <StudioNav />
 

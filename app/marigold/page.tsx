@@ -1,5 +1,10 @@
 import AppLanding, { type LandingContent } from '@/components/studio/AppLanding'
 import { APPS } from '@/components/studio/apps'
+import type { Metadata } from 'next'
+import { APP_SEO } from '@/components/seo/appSeo'
+import { pageMeta } from '@/components/seo/site'
+
+export const metadata: Metadata = pageMeta({ path: '/marigold', ...APP_SEO.marigold })
 
 const app = APPS.find((a) => a.slug === 'marigold')!
 

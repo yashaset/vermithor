@@ -4,6 +4,17 @@ import AppStoreButton from '@/components/momentum/AppStoreButton'
 import Phone from '@/components/momentum/Phone'
 import SectionLabel from '@/components/SectionLabel'
 import Reveal from '@/components/Reveal'
+import type { Metadata } from 'next'
+import { APP_SEO } from '@/components/seo/appSeo'
+import { pageMeta } from '@/components/seo/site'
+import AppJsonLd from '@/components/seo/AppJsonLd'
+import { APPS } from '@/components/studio/apps'
+
+export const metadata: Metadata = pageMeta({
+  path: '/momentum',
+  ...APP_SEO.momentum,
+  images: [{ url: '/momentum/og.jpg', width: 1200, height: 630 }],
+})
 
 const stats = [
   { value: '149', label: 'Exercises' },
@@ -55,6 +66,7 @@ const extras = [
 export default function MomentumPage() {
   return (
     <>
+      <AppJsonLd app={APPS.find((a) => a.slug === 'momentum')!} />
       <MomentumNav />
       <main>
         {/* Hero */}

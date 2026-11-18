@@ -186,6 +186,7 @@ export default function WhyMarigoldPost() {
           Marigold is in the Mac App Store review queue as I write this. It&apos;s a small app, but it&apos;s a feature I wanted badly
           enough to build myself, and I&apos;ve been using it as my default viewer every day since. It&apos;s also my first Mac app after
           building <Link href="/devlog/why-ios" className={link}>iPhone first</Link>, and it&apos;s taught me how different the Mac is: windows,
+
           menus, Finder and the keyboard all matter far more.
         </p>
         <p>More soon! 🌼</p>

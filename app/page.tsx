@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import StudioNav from '@/components/studio/StudioNav'
 import StudioFooter from '@/components/studio/StudioFooter'
 import AppIcon from '@/components/studio/AppIcon'
@@ -154,7 +155,7 @@ export default function Home() {
                 return (
                   <li key={p.title} className="border-t border-border">
                     {p.href ? (
-                      <a href={p.href} className={`${cls} hover:text-accent`}>{inner}</a>
+                      <Link href={p.href} scroll={false} className={`${cls} hover:text-accent`}>{inner}</Link>
                     ) : (
                       <div className={cls}>{inner}</div>
                     )}

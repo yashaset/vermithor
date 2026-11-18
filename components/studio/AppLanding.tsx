@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import StudioNav from './StudioNav'
 import StudioFooter from './StudioFooter'
 import AppIcon from './AppIcon'
@@ -154,7 +155,7 @@ export default function AppLanding({ app, content }: { app: StudioApp; content: 
 
           {/* Devlog */}
           {c.devlog && (
-            <a
+            <Link
               href={c.devlog.href}
               className="mt-4 flex flex-wrap items-center justify-between gap-4 rounded-[24px] border border-border p-6 sm:px-8 hover:border-line"
             >
@@ -163,7 +164,7 @@ export default function AppLanding({ app, content }: { app: StudioApp; content: 
                 <span className="block mt-1.5 text-[18px] font-semibold">{c.devlog.title}</span>
               </span>
               <span className="font-semibold text-[15px] app-accent">Read →</span>
-            </a>
+            </Link>
           )}
 
           {/* CTA */}

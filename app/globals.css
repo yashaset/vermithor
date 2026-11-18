@@ -115,3 +115,8 @@ h3 {
     scroll-behavior: auto;
   }
 }
+
+/* Bottom sheet (components/Sheet.tsx): the page inside drops its own nav and footer. */
+.sheet [data-sheet-hide] {
+  display: none;
+}

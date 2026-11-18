@@ -12,7 +12,7 @@ const links = [
 export default function StudioNav() {
   const [name, tld] = STUDIO_NAME.split('.')
   return (
-    <header className="flex flex-wrap justify-between items-center gap-4 py-[22px] border-b border-border">
+    <header data-sheet-hide className="flex flex-wrap justify-between items-center gap-4 py-[22px] border-b border-border">
       <a href="/" className="font-display font-extrabold text-[18px] tracking-tight">
         {name}
         {tld && (

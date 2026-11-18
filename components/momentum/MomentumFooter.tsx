@@ -2,7 +2,7 @@ import { SUPPORT_EMAIL } from './config'
 
 export default function MomentumFooter() {
   return (
-    <footer className="border-t border-border px-4 sm:px-8 md:px-[60px] py-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-center sm:text-left">
+    <footer data-sheet-hide className="border-t border-border px-4 sm:px-8 md:px-[60px] py-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-center sm:text-left">
       <span className="text-[10px] text-muted tracking-widest uppercase">
         © {new Date().getFullYear()} Yash Rawat · Momentum
       </span>

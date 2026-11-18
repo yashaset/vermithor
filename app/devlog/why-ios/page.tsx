@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import type { Metadata } from 'next'
 import DevlogPost from '@/components/studio/DevlogPost'
 import { DocSection } from '@/components/momentum/DocPage'
@@ -59,13 +60,13 @@ export default function WhyIosPost() {
 
       <DocSection n="1" title="The best features live in the system, not the app">
         <p>
-          Each of my apps leans on something only the operating system can do. The <a href="/momentum" className={link}>Momentum</a> gym
+          Each of my apps leans on something only the operating system can do. The <Link href="/momentum" className={link}>Momentum</Link> gym
           alarm is a real system alarm, so it rings even when your iPhone is on Silent. Your running workout and rest timer sit on the Lock
           Screen and in the Dynamic Island as a Live Activity, with buttons to log a set without unlocking. Workouts save to Apple Health and
           close your Activity rings, and widgets put your streak on the Home Screen.
         </p>
         <p>
-          <a href="/darkmatter" className={link}>Darkmatter</a> is built directly on Apple&apos;s camera system: manual ISO and shutter,
+          <Link href="/darkmatter" className={link}>Darkmatter</Link> is built directly on Apple&apos;s camera system: manual ISO and shutter,
           RAW and Apple ProRAW. FocusBlock can block apps only because Apple&apos;s Screen Time framework lets it. None of these are
           things a wrapper or a web view can fake. They&apos;re the reason the apps are worth keeping, so I build where they&apos;re
           first-class.

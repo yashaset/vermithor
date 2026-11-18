@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import AppIcon from './AppIcon'
 import StatusBadge from './StatusBadge'
 import { WORKBENCH, type StudioApp } from './apps'
@@ -149,6 +150,8 @@ export default function LineupCard({ app, wide = false }: { app: StudioApp; wide
       : { href: '#notify', label: 'Notify me', external: false }
   // When the main button goes to the App Store, still link the app's own page if it has one.
   const secondary = app.storeUrl && app.href ? { href: app.href, label: 'Learn more' } : null
+  const btnCls = 'inline-flex items-center min-h-[44px] px-[18px] rounded-xl font-bold text-[14px] transition-transform hover:-translate-y-0.5'
+  const btnStyle = { background: app.accent, color: app.accentInk }
 
   return (
     <article
@@ -174,24 +177,30 @@ export default function LineupCard({ app, wide = false }: { app: StudioApp; wide
         </div>
         <p className="text-[16px] leading-relaxed text-ink2">{app.description}</p>
         <div className={`${wide ? 'md:mt-4' : 'mt-auto'} pt-2 flex flex-wrap items-center gap-2.5`}>
-          <a
-            href={primary.href}
-            target={primary.external ? '_blank' : undefined}
-            rel={primary.external ? 'noopener noreferrer' : undefined}
-            className="inline-flex items-center min-h-[44px] px-[18px] rounded-xl font-bold text-[14px] transition-transform hover:-translate-y-0.5"
-            style={{ background: app.accent, color: app.accentInk }}
-          >
-            {primary.label}
-            {primary.external && (
-              <svg className="ml-1.5" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                <path d="M7 17 17 7M8 7h9v9" />
-              </svg>
-            )}
-          </a>
-          {secondary && (
-            <a href={secondary.href} className="inline-flex items-center min-h-[44px] px-2 font-semibold text-[14px] text-ink2 hover:text-ink">
-              {secondary.label} →
+          {primary.external || primary.href.startsWith('#') ? (
+            <a
+              href={primary.href}
+              target={primary.external ? '_blank' : undefined}
+              rel={primary.external ? 'noopener noreferrer' : undefined}
+              className={btnCls}
+              style={btnStyle}
+            >
+              {primary.label}
+              {primary.external && (
+                <svg className="ml-1.5" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <path d="M7 17 17 7M8 7h9v9" />
+                </svg>
+              )}
             </a>
+          ) : (
+            <Link href={primary.href} scroll={false} className={btnCls} style={btnStyle}>
+              {primary.label}
+            </Link>
+          )}
+          {secondary && (
+            <Link href={secondary.href} scroll={false} className="inline-flex items-center min-h-[44px] px-2 font-semibold text-[14px] text-ink2 hover:text-ink">
+              {secondary.label} →
+            </Link>
           )}
           <span className="ml-auto">
             <StatusBadge app={app} />

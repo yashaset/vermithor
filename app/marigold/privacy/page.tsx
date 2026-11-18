@@ -2,10 +2,12 @@ import type { Metadata } from 'next'
 import MarigoldDocPage from '@/components/marigold/MarigoldDocPage'
 import { DocSection, DocTable } from '@/components/momentum/DocPage'
 import { SUPPORT_EMAIL } from '@/components/marigold/config'
+import { pageMeta } from '@/components/seo/site'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
   description: 'How Marigold handles your data: your photos never leave your Mac, and the app collects nothing at all.',
+  ...pageMeta({ path: '/marigold/privacy', title: 'Privacy Policy · Marigold', description: 'How Marigold handles your data: your photos never leave your Mac, and the app collects nothing at all.' }),
 }
 
 export default function MarigoldPrivacyPage() {

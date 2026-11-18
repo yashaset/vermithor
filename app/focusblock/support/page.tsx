@@ -2,10 +2,12 @@ import type { Metadata } from 'next'
 import FocusDocPage from '@/components/focusblock/FocusDocPage'
 import { DocSection } from '@/components/momentum/DocPage'
 import { SUPPORT_EMAIL } from '@/components/focusblock/config'
+import { pageMeta } from '@/components/seo/site'
 
 export const metadata: Metadata = {
   title: 'Support',
   description: 'Get help with FocusBlock: Screen Time access, blocked apps, schedules, strict mode and short unlocks.',
+  ...pageMeta({ path: '/focusblock/support', title: 'Support · FocusBlock', description: 'Get help with FocusBlock: Screen Time access, blocked apps, schedules, strict mode and short unlocks.' }),
 }
 
 const faqs: { q: string; a: React.ReactNode }[] = [

@@ -8,6 +8,7 @@ import { Art } from './LineupCard'
 import { appVars } from './appStyle'
 import type { StudioApp } from './apps'
 import Reveal from '@/components/Reveal'
+import AppJsonLd from '@/components/seo/AppJsonLd'
 
 export interface LandingContent {
   /** Small line above the headline, e.g. "iPhone app · Productivity". */
@@ -59,6 +60,7 @@ export default function AppLanding({ app, content }: { app: StudioApp; content: 
   return (
     <div className="overflow-hidden" style={appVars(app)}>
       <div className="max-w-[1200px] mx-auto px-4 sm:px-8 lg:px-10">
+        <AppJsonLd app={app} />
         <StudioNav />
         <main>
           {/* Hero */}

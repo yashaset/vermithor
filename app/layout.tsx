@@ -17,10 +17,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${STUDIO_NAME} — Independent apps by Yash Rawat`,
     description: 'Apps worth keeping on your home screen.',
-    url: '/',
     siteName: STUDIO_NAME,
     type: 'website',
+    locale: 'en_IN',
   },
+  authors: [{ name: 'Yash Rawat', url: 'https://yashrawat.com' }],
+  creator: 'Yash Rawat',
 }
 
 export default function RootLayout({ children, modal }: { children: React.ReactNode; modal: React.ReactNode }) {

@@ -2,10 +2,12 @@ import type { Metadata } from 'next'
 import CoindasDocPage from '@/components/coindas/CoindasDocPage'
 import { DocSection, DocTable } from '@/components/momentum/DocPage'
 import { SUPPORT_EMAIL } from '@/components/coindas/config'
+import { pageMeta } from '@/components/seo/site'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
   description: 'How Coindas handles your data: your money stays on your iPhone, and your account holds only your name and email.',
+  ...pageMeta({ path: '/coindas/privacy', title: 'Privacy Policy · Coindas', description: 'How Coindas handles your data: your money stays on your iPhone, and your account holds only your name and email.' }),
 }
 
 export default function CoindasPrivacyPage() {

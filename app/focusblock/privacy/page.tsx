@@ -2,10 +2,12 @@ import type { Metadata } from 'next'
 import FocusDocPage from '@/components/focusblock/FocusDocPage'
 import { DocSection, DocTable } from '@/components/momentum/DocPage'
 import { SUPPORT_EMAIL } from '@/components/focusblock/config'
+import { pageMeta } from '@/components/seo/site'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
   description: 'How FocusBlock handles your data: everything stays on your iPhone, and Screen Time keeps your app choices anonymous.',
+  ...pageMeta({ path: '/focusblock/privacy', title: 'Privacy Policy · FocusBlock', description: 'How FocusBlock handles your data: everything stays on your iPhone, and Screen Time keeps your app choices anonymous.' }),
 }
 
 export default function FocusBlockPrivacyPage() {

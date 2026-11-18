@@ -2,10 +2,12 @@ import type { Metadata } from 'next'
 import MarigoldDocPage from '@/components/marigold/MarigoldDocPage'
 import { DocSection } from '@/components/momentum/DocPage'
 import { SUPPORT_EMAIL } from '@/components/marigold/config'
+import { pageMeta } from '@/components/seo/site'
 
 export const metadata: Metadata = {
   title: 'Support',
   description: 'Get help with Marigold: making it your default photo viewer, Open With, RAW files, folder access and keyboard shortcuts.',
+  ...pageMeta({ path: '/marigold/support', title: 'Support · Marigold', description: 'Get help with Marigold: making it your default photo viewer, Open With, RAW files, folder access and keyboard shortcuts.' }),
 }
 
 const faqs: { q: string; a: React.ReactNode }[] = [

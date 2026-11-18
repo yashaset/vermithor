@@ -2,10 +2,12 @@ import type { Metadata } from 'next'
 import DarkmatterDocPage from '@/components/darkmatter/DarkmatterDocPage'
 import { DocSection, DocTable } from '@/components/momentum/DocPage'
 import { SUPPORT_EMAIL } from '@/components/darkmatter/config'
+import { pageMeta } from '@/components/seo/site'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
   description: 'How Darkmatter handles your data: it collects nothing, and your photos and videos go straight to your own Photos library.',
+  ...pageMeta({ path: '/darkmatter/privacy', title: 'Privacy Policy · Darkmatter', description: 'How Darkmatter handles your data: it collects nothing, and your photos and videos go straight to your own Photos library.' }),
 }
 
 export default function DarkmatterPrivacyPage() {

@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
+import { APP_SEO } from '@/components/seo/appSeo'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://yashrawat.com'),
   title: {
-    default: 'Marigold — A fast photo viewer for Mac',
+    default: APP_SEO.marigold.title,
     template: '%s · Marigold',
   },
-  description:
-    'Marigold opens any photo instantly and lets you flip through the whole folder with the arrow keys. JPEG, PNG, HEIC and camera RAW, with nothing uploaded anywhere.',
+  description: APP_SEO.marigold.description,
   icons: { icon: '/apps/marigold/icon.png', apple: '/apps/marigold/icon.png' },
 }
 

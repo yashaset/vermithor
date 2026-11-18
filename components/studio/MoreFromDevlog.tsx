@@ -1,3 +1,5 @@
+import Link from 'next/link'
+import { sheetFor } from '@/components/sheet/links'
 import { POSTS } from './devlog'
 import { APPS } from './apps'
 import { appVars } from './appStyle'
@@ -20,7 +22,7 @@ export default function MoreFromDevlog({ current }: { current: string }) {
           const app = APPS.find((a) => a.slug === p.app)
           return (
             <li key={p.href} className="border-t border-border first:border-t-0">
-              <a href={p.href} className="grid grid-cols-[1fr_auto] gap-x-5 gap-y-2 items-baseline py-5 hover:text-accent">
+              <Link href={p.href!} {...sheetFor(p.href)} scroll={false} className="grid grid-cols-[1fr_auto] gap-x-5 gap-y-2 items-baseline py-5 hover:text-accent">
                 <span>
                   <span className="block text-[17px] font-semibold">{p.title}</span>
                   <span className="mt-2 flex items-center gap-3 text-[12px] text-faint">
@@ -34,7 +36,7 @@ export default function MoreFromDevlog({ current }: { current: string }) {
                   </span>
                 </span>
                 <span className="text-[14px] text-faint" aria-hidden>→</span>
-              </a>
+              </Link>
             </li>
           )
         })}

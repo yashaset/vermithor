@@ -1,8 +1,9 @@
 import { APP_STORE_URL } from '@/components/momentum/config'
 import { APP_STORE_URL as DARKMATTER_STORE_URL } from '@/components/darkmatter/config'
+import { APP_STORE_URL as FOCUSBLOCK_STORE_URL } from '@/components/focusblock/config'
 
 /** Every app in the lineup. Add a new app here and it appears in the dock, lineup, signup and footer. */
-export type AppStatus = 'live' | 'soon' | 'building'
+export type AppStatus = 'live' | 'review' | 'soon' | 'building'
 
 export interface StudioApp {
   slug: string
@@ -62,7 +63,9 @@ export const APPS: StudioApp[] = [
     category: 'Productivity',
     description:
       'A calm app blocker. Keep Instagram, TikTok and YouTube out of reach during focus sessions and quiet hours that run on their own. Built on Screen Time, so it never sees what you use.',
-    status: 'soon',
+    status: 'live',
+    storeUrl: FOCUSBLOCK_STORE_URL ?? undefined,
+    href: '/focusblock',
     supportHref: '/focusblock/support',
     privacyHref: '/focusblock/privacy',
     tint: '#1A221D',
@@ -99,6 +102,7 @@ export const APPS: StudioApp[] = [
     description:
       'A calm budgeting app built around one number: what’s safe to spend today. Leftovers roll into tomorrow, rent and EMIs are set aside first, and nothing needs a bank login.',
     status: 'soon',
+    href: '/coindas',
     supportHref: '/coindas/support',
     privacyHref: '/coindas/privacy',
     tint: '#141412',
@@ -116,7 +120,8 @@ export const APPS: StudioApp[] = [
     category: 'Photography',
     description:
       'A fast photo viewer for Mac. Double-click any photo and flip through the whole folder with the arrow keys. Opens JPEG, PNG, HEIC and camera RAW, and never uploads a thing.',
-    status: 'soon',
+    status: 'review',
+    href: '/marigold',
     supportHref: '/marigold/support',
     privacyHref: '/marigold/privacy',
     tint: '#1C170D',
@@ -125,21 +130,6 @@ export const APPS: StudioApp[] = [
     accentLight: '#8A5A00',
     accentInk: '#1A1204',
   },
-  {
-    slug: 'sweetheart',
-    name: 'Sweetheart',
-    icon: '/apps/sweetheart/icon.png',
-    platforms: 'iPhone · Android',
-    category: 'Education',
-    description:
-      'Flashcards for memorising German words and phrases, with meanings, examples and spaced repetition. der, die and das are colour-coded, so the articles finally stick.',
-    status: 'building',
-    tint: '#1A1416',
-    tintLight: '#F8E9E7',
-    accent: '#FF6B6B',
-    accentLight: '#B3261E',
-    accentInk: '#1A0606',
-  },
 ]
 
 export const PHONE_APPS = APPS.filter((a) => a.device !== 'mac')
@@ -147,6 +137,15 @@ export const MAC_APPS = APPS.filter((a) => a.device === 'mac')
 
 export const STATUS_LABEL: Record<AppStatus, string> = {
   live: 'On the App Store',
+  review: 'In App Store review',
+  soon: 'Coming soon',
+  building: 'In development',
+}
+
+/** Shorter labels for tight spots like the hero dock. */
+export const STATUS_SHORT: Record<AppStatus, string> = {
+  live: 'Out now',
+  review: 'In review',
   soon: 'Coming soon',
   building: 'In development',
 }

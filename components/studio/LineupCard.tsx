@@ -1,13 +1,16 @@
+import Link from 'next/link'
+import { sheetFor } from '@/components/sheet/links'
 import AppIcon from './AppIcon'
 import StatusBadge from './StatusBadge'
 import { WORKBENCH, type StudioApp } from './apps'
 import { appVars } from './appStyle'
 
-function Art({ app }: { app: StudioApp }) {
+/** The illustrated panel for an app. `h` sets its height so app pages can show it larger. */
+export function Art({ app, h = 'h-[260px]' }: { app: StudioApp; h?: string }) {
   if (app.screenshots?.length) {
     const [a, b] = app.screenshots
     return (
-      <div className="app-tint h-[260px] flex justify-center items-start gap-3 pt-8 overflow-hidden" style={appVars(app)}>
+      <div className={`app-tint ${h} flex justify-center items-start gap-3 pt-8 overflow-hidden`} style={appVars(app)}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={a.src} alt={a.alt} width={640} height={1391} loading="lazy" className="w-[38%] rounded-[22px] border-[5px] border-black -rotate-[5deg] translate-y-[18px]" />
         {b && (
@@ -17,31 +20,10 @@ function Art({ app }: { app: StudioApp }) {
       </div>
     )
   }
-  if (app.slug === 'sweetheart') {
-    // der / die / das, colour-coded like the app and its icon.
-    const words = [
-      { w: 'der', bg: '#1565C0', r: '-rotate-[10deg]', y: 'translate-y-3' },
-      { w: 'die', bg: '#C62828', r: 'rotate-0', y: '-translate-y-2' },
-      { w: 'das', bg: '#2E7D32', r: 'rotate-[10deg]', y: 'translate-y-3' },
-    ]
-    return (
-      <div className="app-tint h-[260px] flex items-center justify-center gap-3" style={appVars(app)} aria-hidden>
-        {words.map((x) => (
-          <span
-            key={x.w}
-            className={`font-display font-black text-white text-[30px] w-[92px] h-[124px] rounded-[18px] border-[5px] border-[#15161B] flex items-center justify-center ${x.r} ${x.y}`}
-            style={{ background: x.bg }}
-          >
-            {x.w}
-          </span>
-        ))}
-      </div>
-    )
-  }
   if (app.slug === 'focusblock') {
     // A breathing circle with the leaf, like the app's focus screen.
     return (
-      <div className="app-tint h-[260px] flex items-center justify-center" style={appVars(app)} aria-hidden>
+      <div className={`app-tint ${h} flex items-center justify-center`} style={appVars(app)} aria-hidden>
         <div className="relative w-[200px] h-[200px] flex items-center justify-center">
           <span className="absolute inset-0 rounded-full motion-safe:animate-[breathe_10s_ease-in-out_infinite]" style={{ background: `${app.accent}26` }} />
           <span className="absolute inset-[22px] rounded-full motion-safe:animate-[breathe_10s_ease-in-out_infinite]" style={{ background: `${app.accent}33` }} />
@@ -64,7 +46,7 @@ function Art({ app }: { app: StudioApp }) {
     // The aperture from the app icon over a shutter-speed dial, like the app's controls.
     const stops = ['1/60', '1/125', '1/250', '1/500', '1/1000']
     return (
-      <div className="app-tint h-[260px] flex flex-col items-center justify-center gap-6" style={appVars(app)} aria-hidden>
+      <div className={`app-tint ${h} flex flex-col items-center justify-center gap-6`} style={appVars(app)} aria-hidden>
         <svg className="app-accent" width="112" height="112" viewBox="20 20 60 60" aria-hidden>
           <defs>
             <mask id="mc-aperture" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
@@ -94,7 +76,7 @@ function Art({ app }: { app: StudioApp }) {
   if (app.slug === 'coindas') {
     // The daily safe-to-spend card from the app's Today screen, on warm paper.
     return (
-      <div className="app-tint h-[260px] flex items-center justify-center" style={appVars(app)} aria-hidden>
+      <div className={`app-tint ${h} flex items-center justify-center`} style={appVars(app)} aria-hidden>
         <div className="w-[232px] rounded-[22px] border-[5px] border-[#15161B] bg-[#F7F5F0] px-5 py-6 text-[#1A1A17] -rotate-[3deg] shadow-[0_18px_40px_-20px_rgba(0,0,0,0.6)]">
           <span className="block text-[9px] font-bold tracking-[0.18em] uppercase text-[#6B6860]">Safe to spend today</span>
           <span
@@ -125,7 +107,7 @@ function Art({ app }: { app: StudioApp }) {
       </span>
     )
     return (
-      <div className="app-tint h-[260px] flex items-center justify-center" style={appVars(app)} aria-hidden>
+      <div className={`app-tint ${h} flex items-center justify-center`} style={appVars(app)} aria-hidden>
         <div className="w-[300px] rounded-[12px] border border-[#3A3A3A] bg-[#141414] overflow-hidden -rotate-[2deg] shadow-[0_18px_40px_-20px_rgba(0,0,0,0.6)]">
           <div className="h-[24px] flex items-center gap-[5px] px-2.5 bg-[#262626] border-b border-black">
             {['#FF5F57', '#FEBC2E', '#28C840'].map((c) => (
@@ -157,20 +139,34 @@ function Art({ app }: { app: StudioApp }) {
       </div>
     )
   }
-  return <div className="app-tint h-[260px]" style={appVars(app)} aria-hidden />
+  return <div className={`app-tint ${h}`} style={appVars(app)} aria-hidden />
 }
 
-export default function LineupCard({ app }: { app: StudioApp }) {
+/** `wide` lays the card out side by side, for a row that holds a single card. */
+export default function LineupCard({ app, wide = false }: { app: StudioApp; wide?: boolean }) {
   const primary = app.storeUrl
     ? { href: app.storeUrl, label: 'Get the app', external: true }
     : app.href
       ? { href: app.href, label: 'View app', external: false }
       : { href: '#notify', label: 'Notify me', external: false }
+  // When the main button goes to the App Store, still link the app's own page if it has one.
+  const secondary = app.storeUrl && app.href ? { href: app.href, label: 'Learn more' } : null
+  const btnCls = 'inline-flex items-center min-h-[44px] px-[18px] rounded-xl font-bold text-[14px] transition-transform hover:-translate-y-0.5'
+  const btnStyle = { background: app.accent, color: app.accentInk }
 
   return (
-    <article id={`app-${app.slug}`} className="scroll-mt-6 rounded-[28px] bg-surface border border-border overflow-hidden flex flex-col">
-      <Art app={app} />
-      <div className="p-7 flex flex-col gap-3.5 flex-1">
+    <article
+      id={`app-${app.slug}`}
+      className={`scroll-mt-6 rounded-[28px] bg-surface border border-border overflow-hidden flex flex-col ${wide ? 'md:flex-row' : ''}`}
+    >
+      {wide ? (
+        <div className="md:w-1/2 shrink-0">
+          <Art app={app} h="h-[260px] md:h-full md:min-h-[340px]" />
+        </div>
+      ) : (
+        <Art app={app} />
+      )}
+      <div className={`p-7 flex flex-col gap-3.5 flex-1 ${wide ? 'md:p-10 md:justify-center' : ''}`}>
         <div className="flex items-center gap-3.5">
           <AppIcon src={app.icon} size={56} />
           <div>
@@ -181,17 +177,35 @@ export default function LineupCard({ app }: { app: StudioApp }) {
           </div>
         </div>
         <p className="text-[16px] leading-relaxed text-ink2">{app.description}</p>
-        <div className="mt-auto pt-2 flex flex-wrap items-center gap-2.5">
-          <a
-            href={primary.href}
-            target={primary.external ? '_blank' : undefined}
-            rel={primary.external ? 'noopener noreferrer' : undefined}
-            className="inline-flex items-center min-h-[44px] px-[18px] rounded-xl font-bold text-[14px] transition-transform hover:-translate-y-0.5"
-            style={{ background: app.accent, color: app.accentInk }}
-          >
-            {primary.label}
-          </a>
-          <StatusBadge app={app} />
+        <div className={`${wide ? 'md:mt-4' : 'mt-auto'} pt-2 flex flex-wrap items-center gap-2.5`}>
+          {primary.external || primary.href.startsWith('#') ? (
+            <a
+              href={primary.href}
+              target={primary.external ? '_blank' : undefined}
+              rel={primary.external ? 'noopener noreferrer' : undefined}
+              className={btnCls}
+              style={btnStyle}
+            >
+              {primary.label}
+              {primary.external && (
+                <svg className="ml-1.5" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <path d="M7 17 17 7M8 7h9v9" />
+                </svg>
+              )}
+            </a>
+          ) : (
+            <Link href={primary.href} {...sheetFor(primary.href)} scroll={false} className={btnCls} style={btnStyle}>
+              {primary.label}
+            </Link>
+          )}
+          {secondary && (
+            <Link href={secondary.href} {...sheetFor(secondary.href)} scroll={false} className="inline-flex items-center min-h-[44px] px-2 font-semibold text-[14px] text-ink2 hover:text-ink">
+              {secondary.label} →
+            </Link>
+          )}
+          <span className="ml-auto">
+            <StatusBadge app={app} />
+          </span>
         </div>
       </div>
     </article>

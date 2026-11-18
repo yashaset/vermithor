@@ -3,6 +3,7 @@ import { Inter, Nunito } from 'next/font/google'
 import './globals.css'
 import { STUDIO_NAME } from '@/components/studio/config'
 import { themeInitScript } from '@/components/ThemeToggle'
+import SheetHost from '@/components/sheet/SheetHost'
 
 // Fallbacks only: Apple devices render the real SF Pro / SF Pro Rounded, like the Momentum app.
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap', preload: false })
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children, modal }: { children: React.ReactNode; modal: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${nunito.variable}`} suppressHydrationWarning>
       <head>
@@ -38,7 +39,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0a0b" />
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body className="font-sans bg-bg text-ink">{children}</body>
+      <body className="font-sans bg-bg text-ink">
+        {children}
+        {modal}
+        <SheetHost />
+      </body>
     </html>
   )
 }

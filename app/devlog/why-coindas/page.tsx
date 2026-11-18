@@ -1,6 +1,9 @@
+import Link from 'next/link'
+import { sheetFor } from '@/components/sheet/links'
 import type { Metadata } from 'next'
 import DevlogPost from '@/components/studio/DevlogPost'
 import { DocSection } from '@/components/momentum/DocPage'
+import UnsplashPhoto from '@/components/studio/UnsplashPhoto'
 
 const URL_PATH = '/devlog/why-coindas'
 const TITLE = 'A budget you can read in one number'
@@ -52,52 +55,6 @@ const jsonLd = {
 
 const link = 'text-accent underline underline-offset-4'
 
-/** Photos are served from Unsplash's CDN (as Unsplash asks) and credited to each photographer. */
-const UTM = 'utm_source=yash.apps&utm_medium=referral'
-
-function Photo({
-  id,
-  alt,
-  by,
-  username,
-  aspect = 'aspect-[16/9]',
-  caption,
-}: {
-  id: string
-  alt: string
-  by: string
-  username: string
-  aspect?: string
-  caption?: string
-}) {
-  const src = (w: number) => `https://images.unsplash.com/${id}?auto=format&fit=crop&q=70&w=${w}`
-  return (
-    <figure className="flex flex-col gap-3">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={src(1400)}
-        srcSet={`${src(800)} 800w, ${src(1400)} 1400w, ${src(2000)} 2000w`}
-        sizes="(max-width: 760px) 100vw, 720px"
-        alt={alt}
-        loading="lazy"
-        decoding="async"
-        className={`w-full ${aspect} object-cover rounded-[22px] border border-border bg-surface`}
-      />
-      <figcaption className="text-[12px] text-faint leading-relaxed">
-        {caption && <span className="text-ink2">{caption} </span>}
-        Photo by{' '}
-        <a href={`https://unsplash.com/@${username}?${UTM}`} className="underline underline-offset-2 hover:text-accent" target="_blank" rel="noopener noreferrer">
-          {by}
-        </a>{' '}
-        on{' '}
-        <a href={`https://unsplash.com/?${UTM}`} className="underline underline-offset-2 hover:text-accent" target="_blank" rel="noopener noreferrer">
-          Unsplash
-        </a>
-      </figcaption>
-    </figure>
-  )
-}
-
 export default function WhyCoindasPost() {
   return (
     <DevlogPost
@@ -114,7 +71,7 @@ export default function WhyCoindasPost() {
         does.
       </p>
 
-      <Photo
+      <UnsplashPhoto
         id="photo-1743385779331-15e7e53c2253"
         alt="An open notebook with pens and a cup of coffee on a wooden table"
         by="Kelly Sikkema"
@@ -146,7 +103,7 @@ export default function WhyCoindasPost() {
         </p>
       </DocSection>
 
-      <Photo
+      <UnsplashPhoto
         id="photo-1582181774491-11853e42c076"
         alt="Two ₹20 notes and a ₹50 note laid on a table"
         by="Avinash Kumar"
@@ -193,7 +150,7 @@ export default function WhyCoindasPost() {
         </p>
       </DocSection>
 
-      <Photo
+      <UnsplashPhoto
         id="photo-1643148636637-58b3eb95cdad"
         alt="A cup of coffee beside an open notebook on a table"
         by="Priscilla Du Preez"
@@ -213,7 +170,7 @@ export default function WhyCoindasPost() {
         <p>
           I&apos;m using Coindas every day right now and fixing whatever annoys me. After that, the plan is a weekly and monthly email
           report that tells you how you actually did, and a mode for couples, so two people can share one budget and see who paid what.
-          Like <a href="/devlog/why-ios" className={link}>everything else I build</a>, it&apos;s iPhone first.
+          Like <Link href="/devlog/why-ios" {...sheetFor("/devlog/why-ios")} scroll={false} className={link}>everything else I build</Link>, it&apos;s iPhone first.
         </p>
       </DocSection>
 

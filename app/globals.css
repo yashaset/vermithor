@@ -139,6 +139,11 @@ body:has([data-no-grain]) { background-image: none; }
   }
 }
 
+/* Bottom sheet (components/Sheet.tsx): the page inside drops its own nav and footer. */
+.sheet [data-sheet-hide] {
+  display: none;
+}
+
 /* Devlog font families, loaded by the Google Fonts stylesheet in app/layout.tsx. */
 :root {
   --font-courier-prime: "Courier Prime";
@@ -244,3 +249,7 @@ body:has([data-no-grain]) { background-image: none; }
 .tok-number { color: var(--tok-number); }
 .tok-type { color: var(--tok-type); }
 .tok-member { color: var(--tok-member); }
+@keyframes sheet-load {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(300%); }
+}

@@ -3,7 +3,7 @@ import { CONTACT_EMAIL, LINKS } from './config'
 
 export default function StudioFooter() {
   return (
-    <footer id="support" className="scroll-mt-6 flex flex-wrap justify-between gap-8 pt-16 pb-10 mt-16 border-t border-border text-[14px]">
+    <footer data-sheet-hide id="support" className="scroll-mt-6 flex flex-wrap justify-between gap-8 pt-16 pb-10 mt-16 border-t border-border text-[14px]">
       <span className="text-faint">© {new Date().getFullYear()} Yash Rawat · Delhi, India</span>
       <div className="flex flex-wrap gap-10">
         {APPS.map((app) => (

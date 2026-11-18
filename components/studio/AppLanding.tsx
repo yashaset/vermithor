@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { sheetFor } from '@/components/sheet/links'
 import StudioNav from './StudioNav'
 import StudioFooter from './StudioFooter'
 import AppIcon from './AppIcon'
@@ -157,6 +158,7 @@ export default function AppLanding({ app, content }: { app: StudioApp; content: 
           {c.devlog && (
             <Link
               href={c.devlog.href}
+              {...sheetFor(c.devlog.href)} scroll={false}
               className="mt-4 flex flex-wrap items-center justify-between gap-4 rounded-[24px] border border-border p-6 sm:px-8 hover:border-line"
             >
               <span>

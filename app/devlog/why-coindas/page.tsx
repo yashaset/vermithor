@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { sheetFor } from '@/components/sheet/links'
 import type { Metadata } from 'next'
 import DevlogPost from '@/components/studio/DevlogPost'
 import { DocSection } from '@/components/momentum/DocPage'
@@ -169,7 +170,7 @@ export default function WhyCoindasPost() {
         <p>
           I&apos;m using Coindas every day right now and fixing whatever annoys me. After that, the plan is a weekly and monthly email
           report that tells you how you actually did, and a mode for couples, so two people can share one budget and see who paid what.
-          Like <Link href="/devlog/why-ios" className={link}>everything else I build</Link>, it&apos;s iPhone first.
+          Like <Link href="/devlog/why-ios" {...sheetFor("/devlog/why-ios")} scroll={false} className={link}>everything else I build</Link>, it&apos;s iPhone first.
         </p>
       </DocSection>
 

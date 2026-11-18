@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { sheetFor } from '@/components/sheet/links'
 import type { Metadata } from 'next'
 import DarkmatterDocPage from '@/components/darkmatter/DarkmatterDocPage'
 import { DocSection } from '@/components/momentum/DocPage'
@@ -192,7 +193,7 @@ export default function WhyDarkmatterPost() {
           plan to edit properly later. For those, the camera shouldn&apos;t be making the call. You should.
         </p>
         <p>
-          <Link href="/darkmatter" className="text-accent underline underline-offset-4">See what Darkmatter can do →</Link>
+          <Link href="/darkmatter" {...sheetFor("/darkmatter")} scroll={false} className="text-accent underline underline-offset-4">See what Darkmatter can do →</Link>
         </p>
       </DocSection>
       <MoreFromDevlog current={URL_PATH} />

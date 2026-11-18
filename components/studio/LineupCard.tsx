@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { sheetFor } from '@/components/sheet/links'
 import AppIcon from './AppIcon'
 import StatusBadge from './StatusBadge'
 import { WORKBENCH, type StudioApp } from './apps'
@@ -193,12 +194,12 @@ export default function LineupCard({ app, wide = false }: { app: StudioApp; wide
               )}
             </a>
           ) : (
-            <Link href={primary.href} scroll={false} className={btnCls} style={btnStyle}>
+            <Link href={primary.href} {...sheetFor(primary.href)} scroll={false} className={btnCls} style={btnStyle}>
               {primary.label}
             </Link>
           )}
           {secondary && (
-            <Link href={secondary.href} scroll={false} className="inline-flex items-center min-h-[44px] px-2 font-semibold text-[14px] text-ink2 hover:text-ink">
+            <Link href={secondary.href} {...sheetFor(secondary.href)} scroll={false} className="inline-flex items-center min-h-[44px] px-2 font-semibold text-[14px] text-ink2 hover:text-ink">
               {secondary.label} →
             </Link>
           )}

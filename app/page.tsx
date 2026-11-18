@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { sheetFor } from '@/components/sheet/links'
 import StudioNav from '@/components/studio/StudioNav'
 import StudioFooter from '@/components/studio/StudioFooter'
 import AppIcon from '@/components/studio/AppIcon'
@@ -155,7 +156,7 @@ export default function Home() {
                 return (
                   <li key={p.title} className="border-t border-border">
                     {p.href ? (
-                      <Link href={p.href} scroll={false} className={`${cls} hover:text-accent`}>{inner}</Link>
+                      <Link href={p.href} {...sheetFor(p.href)} scroll={false} className={`${cls} hover:text-accent`}>{inner}</Link>
                     ) : (
                       <div className={cls}>{inner}</div>
                     )}

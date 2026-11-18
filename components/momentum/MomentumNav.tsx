@@ -23,6 +23,7 @@ export default function MomentumNav() {
 
   return (
     <nav
+      data-sheet-hide
       className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-center gap-4 px-4 sm:px-10 md:px-[60px] py-4 transition-all duration-300 ${
         scrolled ? 'bg-nav backdrop-blur-md border-b border-border' : 'bg-transparent'
       }`}

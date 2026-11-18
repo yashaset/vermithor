@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children, modal }: { children: React.ReactNode; modal: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${nunito.variable} ${courierPrime.variable} ${specialElite.variable}`} suppressHydrationWarning>
       <head>
@@ -33,7 +33,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0a0b" />
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body className="font-sans bg-bg text-ink">{children}</body>
+      <body className="font-sans bg-bg text-ink">
+        {children}
+        {modal}
+      </body>
     </html>
   )
 }

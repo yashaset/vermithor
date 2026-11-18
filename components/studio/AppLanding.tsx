@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import StudioNav from './StudioNav'
 import StudioFooter from './StudioFooter'
 import AppIcon from './AppIcon'

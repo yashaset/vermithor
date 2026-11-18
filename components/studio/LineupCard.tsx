@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import AppIcon from './AppIcon'
 import StatusBadge from './StatusBadge'
 import { WORKBENCH, type StudioApp } from './apps'

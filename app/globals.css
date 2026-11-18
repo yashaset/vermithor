@@ -139,6 +139,11 @@ body:has([data-no-grain]) { background-image: none; }
   }
 }
 
+/* Bottom sheet (components/Sheet.tsx): the page inside drops its own nav and footer. */
+.sheet [data-sheet-hide] {
+  display: none;
+}
+
 /* Devlog posts: typewriter type. Dark mode keeps the site palette; light mode turns the page into warm paper. */
 .blog {
   font-family: var(--font-courier-prime), "Courier New", Courier, monospace;

@@ -23,6 +23,7 @@ export default function StudioFooter() {
         ))}
         <div className="flex flex-col gap-2.5">
           <span className="font-semibold">Elsewhere</span>
+          <a href="/work" className="text-muted hover:text-ink">Work with me</a>
           <a href={`mailto:${CONTACT_EMAIL}`} className="text-muted hover:text-ink">Email</a>
           <a href={LINKS.github} className="text-muted hover:text-ink">GitHub</a>
           <a href={LINKS.linkedin} className="text-muted hover:text-ink">LinkedIn</a>

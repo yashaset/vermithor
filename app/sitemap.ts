@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     { url: url('/'), lastModified: latestPost, changeFrequency: 'weekly', priority: 1 },
+    { url: url('/work'), changeFrequency: 'monthly', priority: 0.9 },
     ...APPS.filter((a) => a.href).map((a) => ({ url: url(a.href!), changeFrequency: 'monthly' as const, priority: 0.9 })),
     ...posts.map((p) => ({ url: url(p.href!), lastModified: new Date(p.date), changeFrequency: 'yearly' as const, priority: 0.7 })),
     ...APPS.flatMap((a) => [a.supportHref, a.privacyHref])

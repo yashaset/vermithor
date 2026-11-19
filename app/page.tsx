@@ -215,6 +215,9 @@ export default function Home() {
                 An independent developer in Delhi. By day I build interfaces for 100K+ monthly users at Wheelseye; the rest of the
                 time I design, build and support my own apps, and a real person answers every support email.
               </p>
+              <a href="/work" className="inline-flex mt-6 px-5 py-3 rounded-full bg-lime text-onlime font-bold text-[15px] hover:brightness-95">
+                Hire me for your project →
+              </a>
             </div>
           </section>
         </main>

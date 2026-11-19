@@ -127,3 +127,33 @@ export async function studioOgImage() {
     ogSize,
   )
 }
+
+export async function workOgImage() {
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          padding: 80,
+          background: `linear-gradient(135deg, #0a0a0b 45%, ${rgba('#C9F43B', 0.22)})`,
+          color: '#ededef',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16, fontSize: 30, color: '#C9F43B', letterSpacing: 4, textTransform: 'uppercase' }}>
+          <div style={{ width: 14, height: 14, borderRadius: 7, background: '#C9F43B' }} />
+          Available for freelance
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <div style={{ fontSize: 84, fontWeight: 800, letterSpacing: -3, lineHeight: 1.02, maxWidth: 1040 }}>Full-stack developer for iOS and the web.</div>
+          <div style={{ marginTop: 24, fontSize: 34, color: '#a0a0a8' }}>SwiftUI · Next.js · React · TypeScript</div>
+        </div>
+        <Footer accent="#C9F43B" />
+      </div>
+    ),
+    ogSize,
+  )
+}

@@ -10,34 +10,51 @@ import { sheetFor } from '@/components/sheet/links'
 import { CONTACT_EMAIL, LINKS } from '@/components/studio/config'
 import { AUTHOR, SITE_URL, jsonLdHtml, pageMeta } from '@/components/seo/site'
 
-const TITLE = 'Work with me — Freelance full-stack developer (iOS, Next.js, React) · Yash Rawat'
+const TITLE = 'Hire a Freelance Full-Stack Developer in India (iOS, Next.js, React) · Yash Rawat'
 const DESCRIPTION =
   'Hire Yash Rawat, a freelance full-stack developer in Delhi. Native iOS apps in SwiftUI, web apps in Next.js and React, from idea to App Store and production. Available for new projects.'
 
 export const metadata: Metadata = {
-  title: TITLE,
+  title: { absolute: TITLE },
   description: DESCRIPTION,
+  keywords: [
+    'freelance full-stack developer',
+    'hire full-stack developer India',
+    'freelance developer Delhi',
+    'freelance iOS developer',
+    'freelance Next.js developer',
+    'freelance React developer',
+    'hire app developer India',
+  ],
   ...pageMeta({ path: '/work', title: TITLE, description: DESCRIPTION }),
 }
 
 const SERVICES = [
   {
     title: 'Native iOS apps',
+    href: '/work/ios-app-developer',
+    link: 'Freelance iOS development',
     body: 'SwiftUI apps that feel at home on iPhone and Mac: widgets, haptics, offline-first data, and the whole App Store submission handled for you.',
     tags: ['Swift', 'SwiftUI', 'WidgetKit', 'App Store'],
   },
   {
     title: 'Web apps & sites',
+    href: '/work/nextjs-developer',
+    link: 'Freelance Next.js development',
     body: 'Fast, accessible Next.js and React front ends, from marketing sites that rank to dashboards people use every day.',
     tags: ['Next.js', 'React', 'TypeScript', 'Tailwind'],
   },
   {
     title: 'Full-stack MVPs',
+    href: '/work/react-developer',
+    link: 'Freelance React development',
     body: 'The whole product, end to end: APIs, auth and OTP flows, admin panels, deploys. Built to launch quickly and grow without a rewrite.',
     tags: ['Node.js', 'API routes', 'Auth', 'Vercel'],
   },
   {
     title: 'Product design & polish',
+    href: undefined as string | undefined,
+    link: '',
     body: 'I design what I build. Bring a Figma file or just an idea; I’ll shape the flows, sweat the details and handle SEO and performance.',
     tags: ['UI/UX', 'Figma', 'SEO', 'Core Web Vitals'],
   },
@@ -51,6 +68,10 @@ const STEPS = [
 ]
 
 const FAQ = [
+  {
+    q: 'What kind of projects do you take on?',
+    a: 'iPhone and Mac apps, Next.js and React web apps, and full-stack MVPs that need both. From a few weeks of focused work to an ongoing retainer.',
+  },
   {
     q: 'Do you work with clients outside India?',
     a: 'Yes. I work remotely from Delhi (IST), which overlaps with European working hours and US mornings. Billing in INR or USD.',
@@ -68,8 +89,7 @@ const FAQ = [
 export default function WorkWithMe() {
   const shipped = APPS.filter((a) => a.status === 'live' && a.href)
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
+  const service = {
     '@type': 'ProfessionalService',
     '@id': `${SITE_URL}/work#service`,
     name: 'Yash Rawat — Freelance full-stack development',
@@ -85,6 +105,13 @@ export default function WorkWithMe() {
       name: 'Services',
       itemListElement: SERVICES.map((s) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: s.title, description: s.body } })),
     },
+  }
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      service,
+      { '@type': 'FAQPage', mainEntity: FAQ.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+    ],
   }
 
   return (
@@ -104,7 +131,7 @@ export default function WorkWithMe() {
               Available for freelance projects · Remote from Delhi
             </span>
             <h1 className="mt-7 max-w-[980px] font-black text-[clamp(44px,7vw,96px)] leading-[0.98] tracking-[-0.045em]">
-              Full-stack developer for iOS and the web.
+              Freelance full-stack developer for iOS and the web.
             </h1>
             <p className="mt-6 max-w-[620px] text-[clamp(18px,1.7vw,21px)] leading-normal text-muted">
               I&apos;m Yash. I design and build native iOS apps in SwiftUI and web products in Next.js and React, from first
@@ -143,6 +170,11 @@ export default function WorkWithMe() {
                   <article className="h-full rounded-[24px] bg-surface border border-border p-7 sm:p-9">
                     <h3 className="text-[22px] font-extrabold tracking-[-0.02em]">{s.title}</h3>
                     <p className="mt-3 text-[16px] leading-relaxed text-muted">{s.body}</p>
+                    {s.href && (
+                      <a href={s.href} className="inline-block mt-4 text-[14px] font-semibold text-accent hover:underline">
+                        {s.link} →
+                      </a>
+                    )}
                     <ul className="mt-6 flex flex-wrap gap-2 list-none">
                       {s.tags.map((t) => (
                         <li key={t} className="px-2.5 py-1 rounded-md bg-ghost text-ink2 text-[12px] font-semibold">

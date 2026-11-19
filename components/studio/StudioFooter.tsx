@@ -1,5 +1,6 @@
 import { APPS } from './apps'
 import { CONTACT_EMAIL, LINKS } from './config'
+import { SERVICES } from './services'
 
 export default function StudioFooter() {
   return (
@@ -22,8 +23,14 @@ export default function StudioFooter() {
           </div>
         ))}
         <div className="flex flex-col gap-2.5">
+          <span className="font-semibold">Hire me</span>
+          <a href="/work" className="text-muted hover:text-ink">Freelance developer</a>
+          {SERVICES.map((s) => (
+            <a key={s.slug} href={`/work/${s.slug}`} className="text-muted hover:text-ink">{s.h1.replace('Freelance ', '').replace(/^./, (c) => c.toUpperCase())}</a>
+          ))}
+        </div>
+        <div className="flex flex-col gap-2.5">
           <span className="font-semibold">Elsewhere</span>
-          <a href="/work" className="text-muted hover:text-ink">Work with me</a>
           <a href={`mailto:${CONTACT_EMAIL}`} className="text-muted hover:text-ink">Email</a>
           <a href={LINKS.github} className="text-muted hover:text-ink">GitHub</a>
           <a href={LINKS.linkedin} className="text-muted hover:text-ink">LinkedIn</a>

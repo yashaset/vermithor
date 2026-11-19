@@ -11,14 +11,14 @@ import { APPS, PHONE_APPS, MAC_APPS, WORKBENCH } from '@/components/studio/apps'
 import { POSTS } from '@/components/studio/devlog'
 import { appVars } from '@/components/studio/appStyle'
 import type { Metadata } from 'next'
-import { STUDIO_NAME, LINKS } from '@/components/studio/config'
+import { STUDIO_NAME, LINKS, CONTACT_EMAIL } from '@/components/studio/config'
 import { AUTHOR, SITE_URL, jsonLdHtml, pageMeta } from '@/components/seo/site'
 
 export const metadata: Metadata = pageMeta({
   path: '/',
   title: `${STUDIO_NAME} — Independent apps by Yash Rawat`,
   description:
-    'Apps worth keeping on your home screen. Yash Rawat is an independent developer in Delhi who designs, builds and supports every app himself. No ads, no tracking.',
+    'Apps worth keeping on your home screen, by Yash Rawat, an independent iOS and full-stack developer in Delhi. No ads, no tracking. Available for freelance iOS, Next.js and React projects.',
 })
 
 // Who's behind the site, for Google's knowledge panel and to tie the apps to one developer.
@@ -29,7 +29,10 @@ const jsonLd = {
       '@type': 'Person',
       '@id': `${SITE_URL}/#yash`,
       ...AUTHOR,
-      jobTitle: 'Independent app developer',
+      jobTitle: 'Freelance full-stack developer (iOS, Next.js, React)',
+      description: 'Independent app developer in Delhi, available for freelance iOS, Next.js and React projects.',
+      knowsAbout: ['iOS development', 'Swift', 'SwiftUI', 'Next.js', 'React', 'TypeScript', 'Full-stack web development'],
+      email: `mailto:${CONTACT_EMAIL}`,
       address: { '@type': 'PostalAddress', addressLocality: 'Delhi', addressCountry: 'IN' },
       sameAs: [LINKS.github, LINKS.linkedin],
     },

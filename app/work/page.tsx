@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import ProjectBrief from '@/components/studio/ProjectBrief'
+import BusinessCard from '@/components/studio/BusinessCard'
 import { APPS } from '@/components/studio/apps'
 import { CONTACT_EMAIL, LINKS } from '@/components/studio/config'
 import { AUTHOR, SITE_URL, jsonLdHtml, pageMeta } from '@/components/seo/site'
@@ -193,17 +194,17 @@ export default function WorkWithMe() {
             </ol>
           </Row>
 
-          <Row id="contact" label="Start a project">
-            <div className="max-w-[720px]">
-              <p className="text-[clamp(24px,2.6vw,32px)] font-semibold tracking-[-0.02em] leading-snug">
-                Tell me what you&apos;re building.
-              </p>
-              <p className="mt-2 mb-10 text-[16px] text-muted">
-                Or write to <a href={`mailto:${CONTACT_EMAIL}`} className="text-ink2 underline decoration-line underline-offset-4 hover:decoration-ink">{CONTACT_EMAIL}</a>.
-              </p>
-              <ProjectBrief />
+          <section id="contact" className="scroll-mt-6 py-14 sm:py-20 border-t border-border">
+            <h2 className="text-[12px] font-semibold tracking-[0.14em] uppercase text-faint">Start a project</h2>
+            <div className="mt-10 grid gap-16 lg:gap-20 lg:grid-cols-2 items-center">
+              <BusinessCard />
+              <div className="min-w-0">
+                <p className="text-[clamp(24px,2.6vw,32px)] font-semibold tracking-[-0.02em] leading-snug">Tell me what you&apos;re building.</p>
+                <p className="mt-2 mb-10 text-[16px] text-muted">A few lines is enough. I reply within 1–2 working days.</p>
+                <ProjectBrief />
+              </div>
             </div>
-          </Row>
+          </section>
 
           <Row label="Questions">
             <div className="max-w-[720px] border-b border-border">

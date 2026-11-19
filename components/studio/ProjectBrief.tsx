@@ -57,7 +57,7 @@ export default function ProjectBrief() {
         <button type="submit" className="px-6 py-3 rounded-full bg-ink text-bg font-semibold text-[15px] hover:opacity-90 transition-opacity">
           Send enquiry
         </button>
-        <span className="text-[13px] text-faint">Opens your email app · reply within 1–2 working days</span>
+        <span className="text-[13px] text-faint">Opens your email app</span>
       </div>
     </form>
   )

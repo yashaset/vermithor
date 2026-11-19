@@ -1,14 +1,10 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
-import StudioNav from '@/components/studio/StudioNav'
-import StudioFooter from '@/components/studio/StudioFooter'
-import AppIcon from '@/components/studio/AppIcon'
 import ProjectBrief from '@/components/studio/ProjectBrief'
-import Reveal from '@/components/Reveal'
 import { APPS } from '@/components/studio/apps'
-import { sheetFor } from '@/components/sheet/links'
 import { CONTACT_EMAIL, LINKS } from '@/components/studio/config'
 import { AUTHOR, SITE_URL, jsonLdHtml, pageMeta } from '@/components/seo/site'
+import StudioNav from '@/components/studio/StudioNav'
+import StudioFooter from '@/components/studio/StudioFooter'
 
 const TITLE = 'Hire a Freelance Full-Stack Developer in India (iOS, Next.js, React) · Yash Rawat'
 const DESCRIPTION =
@@ -31,40 +27,23 @@ export const metadata: Metadata = {
 
 const SERVICES = [
   {
-    title: 'Native iOS apps',
+    n: '01',
+    title: 'iOS apps',
     href: '/work/ios-app-developer',
-    link: 'Freelance iOS development',
-    body: 'SwiftUI apps that feel at home on iPhone and Mac: widgets, haptics, offline-first data, and the whole App Store submission handled for you.',
-    tags: ['Swift', 'SwiftUI', 'WidgetKit', 'App Store'],
+    body: 'Native iPhone and Mac apps in Swift and SwiftUI, taken from first screen through App Review.',
   },
   {
+    n: '02',
     title: 'Web apps & sites',
     href: '/work/nextjs-developer',
-    link: 'Freelance Next.js development',
-    body: 'Fast, accessible Next.js and React front ends, from marketing sites that rank to dashboards people use every day.',
-    tags: ['Next.js', 'React', 'TypeScript', 'Tailwind'],
+    body: 'Fast, search-friendly sites and products in Next.js, with SEO and performance built in.',
   },
   {
-    title: 'Full-stack MVPs',
+    n: '03',
+    title: 'Full-stack products',
     href: '/work/react-developer',
-    link: 'Freelance React development',
-    body: 'The whole product, end to end: APIs, auth and OTP flows, admin panels, deploys. Built to launch quickly and grow without a rewrite.',
-    tags: ['Node.js', 'API routes', 'Auth', 'Vercel'],
+    body: 'React front ends with the APIs, auth and admin behind them. One developer, end to end.',
   },
-  {
-    title: 'Product design & polish',
-    href: undefined as string | undefined,
-    link: '',
-    body: 'I design what I build. Bring a Figma file or just an idea; I’ll shape the flows, sweat the details and handle SEO and performance.',
-    tags: ['UI/UX', 'Figma', 'SEO', 'Core Web Vitals'],
-  },
-]
-
-const STEPS = [
-  { title: 'Intro call', body: 'A free 30-minute call about what you’re building, who it’s for and what success looks like.' },
-  { title: 'Scope & quote', body: 'A short written plan with milestones and a fixed price, or a monthly rate for ongoing work.' },
-  { title: 'Build in the open', body: 'Weekly demos on a live preview link or TestFlight build, so you always see real progress.' },
-  { title: 'Launch & support', body: 'App Store submission or production deploy, a clean handover, and support after launch.' },
 ]
 
 const FAQ = [
@@ -86,30 +65,50 @@ const FAQ = [
   },
 ]
 
-export default function WorkWithMe() {
-  const shipped = APPS.filter((a) => a.status === 'live' && a.href)
+/** A section with its label in a narrow left column on wide screens. */
+function Row({ id, label, children }: { id?: string; label: string; children: React.ReactNode }) {
+  return (
+    <section id={id} className="scroll-mt-6 grid gap-6 lg:grid-cols-[220px_minmax(0,1fr)] py-14 sm:py-20 border-t border-border">
+      <h2 className="text-[12px] font-semibold tracking-[0.14em] uppercase text-faint">{label}</h2>
+      <div className="min-w-0">{children}</div>
+    </section>
+  )
+}
 
-  const service = {
-    '@type': 'ProfessionalService',
-    '@id': `${SITE_URL}/work#service`,
-    name: 'Yash Rawat — Freelance full-stack development',
-    url: `${SITE_URL}/work`,
-    description: DESCRIPTION,
-    email: CONTACT_EMAIL,
-    areaServed: 'Worldwide',
-    address: { '@type': 'PostalAddress', addressLocality: 'Delhi', addressCountry: 'IN' },
-    founder: { '@type': 'Person', '@id': `${SITE_URL}/#yash`, ...AUTHOR, sameAs: [LINKS.github, LINKS.linkedin] },
-    knowsAbout: ['iOS development', 'Swift', 'SwiftUI', 'Next.js', 'React', 'TypeScript', 'Node.js', 'Full-stack web development'],
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'Services',
-      itemListElement: SERVICES.map((s) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: s.title, description: s.body } })),
-    },
-  }
+export default function WorkWithMe() {
+  const work = [
+    ...APPS.filter((a) => a.status === 'live' && a.href).map((a) => ({
+      name: a.name,
+      kind: `${a.platforms} app · SwiftUI`,
+      note: a.category,
+      href: a.href!,
+    })),
+    { name: 'Careways', kind: 'Client MVP · Next.js', note: 'Travel booking & admin', href: '/demo/careways' },
+  ]
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
-      service,
+      {
+        '@type': 'ProfessionalService',
+        '@id': `${SITE_URL}/work#service`,
+        name: 'Yash Rawat — Freelance full-stack development',
+        url: `${SITE_URL}/work`,
+        description: DESCRIPTION,
+        email: CONTACT_EMAIL,
+        areaServed: 'Worldwide',
+        address: { '@type': 'PostalAddress', addressLocality: 'Delhi', addressCountry: 'IN' },
+        founder: { '@type': 'Person', '@id': `${SITE_URL}/#yash`, ...AUTHOR, sameAs: [LINKS.github, LINKS.linkedin] },
+        knowsAbout: ['iOS development', 'Swift', 'SwiftUI', 'Next.js', 'React', 'TypeScript', 'Node.js', 'Full-stack web development'],
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: 'Services',
+          itemListElement: SERVICES.map((s) => ({
+            '@type': 'Offer',
+            itemOffered: { '@type': 'Service', name: s.title, description: s.body, url: `${SITE_URL}${s.href}` },
+          })),
+        },
+      },
       { '@type': 'FAQPage', mainEntity: FAQ.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
     ],
   }
@@ -121,160 +120,104 @@ export default function WorkWithMe() {
         <StudioNav />
 
         <main>
-          {/* Hero */}
-          <section className="pt-16 sm:pt-24 lg:pt-[110px] pb-16 sm:pb-24">
-            <span className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-line text-[13px] font-medium text-ink2">
-              <span className="relative flex w-2 h-2" aria-hidden>
-                <span className="absolute inset-0 rounded-full bg-lime motion-safe:animate-ping opacity-60" />
-                <span className="relative w-2 h-2 rounded-full bg-lime" />
-              </span>
-              Available for freelance projects · Remote from Delhi
-            </span>
-            <h1 className="mt-7 max-w-[980px] font-black text-[clamp(44px,7vw,96px)] leading-[0.98] tracking-[-0.045em]">
+          {/* Intro */}
+          <section className="pt-20 sm:pt-28 lg:pt-36 pb-20 sm:pb-28">
+            <p className="flex items-center gap-2.5 text-[13px] text-muted">
+              <span className="w-1.5 h-1.5 rounded-full bg-lime" aria-hidden />
+              Taking on new projects
+            </p>
+            <h1 className="mt-6 max-w-[880px] font-bold text-[clamp(36px,5.2vw,64px)] leading-[1.04] tracking-[-0.035em]">
               Freelance full-stack developer for iOS and the web.
             </h1>
-            <p className="mt-6 max-w-[620px] text-[clamp(18px,1.7vw,21px)] leading-normal text-muted">
-              I&apos;m Yash. I design and build native iOS apps in SwiftUI and web products in Next.js and React, from first
-              sketch to App Store and production. You work directly with the person writing the code.
+            <p className="mt-6 max-w-[560px] text-[18px] leading-relaxed text-muted">
+              I design and build native iOS apps and Next.js and React products for founders and teams, from first idea to
+              launch. You work directly with the person writing the code.
             </p>
-            <div className="mt-10 flex flex-wrap gap-3">
-              <a href="#brief" className="px-6 py-3.5 rounded-full bg-lime text-onlime font-bold text-[15px] hover:brightness-95">
+            <div className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-4">
+              <a href="#contact" className="px-6 py-3 rounded-full bg-ink text-bg font-semibold text-[15px] hover:opacity-90 transition-opacity">
                 Start a project
               </a>
-              <a href={`mailto:${CONTACT_EMAIL}`} className="px-6 py-3.5 rounded-full border border-line font-semibold text-[15px] hover:border-ink2">
+              <a href={`mailto:${CONTACT_EMAIL}`} className="text-[15px] text-ink2 underline decoration-line underline-offset-[6px] hover:decoration-ink">
                 {CONTACT_EMAIL}
               </a>
             </div>
+            <p className="mt-16 text-[13px] text-faint">
+              Delhi, India · Remote worldwide · Front-end developer at Wheelseye, on interfaces used by 100K+ people a month
+            </p>
+          </section>
 
-            <dl className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-px rounded-[24px] overflow-hidden border border-border bg-border">
+          <Row label="Services">
+            <ul className="grid gap-px md:grid-cols-3 list-none">
+              {SERVICES.map((s) => (
+                <li key={s.href}>
+                  <a href={s.href} className="group block h-full md:pr-8">
+                    <span className="text-[13px] text-faint tabular-nums">{s.n}</span>
+                    <h3 className="mt-3 text-[20px] font-semibold tracking-[-0.01em]">
+                      {s.title}
+                      <span className="inline-block ml-2 text-faint transition-transform group-hover:translate-x-1" aria-hidden>→</span>
+                    </h3>
+                    <p className="mt-2 text-[15px] leading-relaxed text-muted">{s.body}</p>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </Row>
+
+          <Row label="Selected work">
+            <ul className="list-none border-b border-border">
+              {work.map((w) => (
+                <li key={w.name} className="border-t border-border first:border-t-0">
+                  <a href={w.href} className="group grid grid-cols-[1fr_auto] sm:grid-cols-[200px_minmax(0,1fr)_auto] gap-x-6 gap-y-1 items-baseline py-5">
+                    <span className="text-[17px] font-semibold group-hover:text-accent transition-colors">{w.name}</span>
+                    <span className="hidden sm:block text-[15px] text-muted">{w.kind}</span>
+                    <span className="text-[14px] text-faint text-right">{w.note}</span>
+                    <span className="sm:hidden col-span-2 text-[14px] text-muted">{w.kind}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </Row>
+
+          <Row label="How it works">
+            <ol className="grid gap-8 sm:grid-cols-3 list-none">
               {[
-                { k: `${shipped.length} apps`, v: 'designed, built and shipped solo' },
-                { k: '100K+', v: 'monthly users on interfaces I build at Wheelseye' },
-                { k: 'iOS + Web', v: 'one developer across both platforms' },
-                { k: '1–2 days', v: 'to a reply on every enquiry' },
-              ].map((s) => (
-                <div key={s.k} className="bg-surface p-6 sm:p-8">
-                  <dt className="font-display font-black text-[clamp(26px,3vw,38px)] tracking-[-0.03em]">{s.k}</dt>
-                  <dd className="mt-1.5 text-[14px] leading-snug text-muted">{s.v}</dd>
-                </div>
-              ))}
-            </dl>
-          </section>
-
-          {/* Services */}
-          <section id="services" className="scroll-mt-6 pb-20 sm:pb-32">
-            <h2 className="text-[clamp(32px,4vw,48px)] font-black tracking-[-0.04em] mb-7">What I can build for you</h2>
-            <div className="grid gap-5 md:grid-cols-2">
-              {SERVICES.map((s, i) => (
-                <Reveal key={s.title} delay={i * 60} className="h-full">
-                  <article className="h-full rounded-[24px] bg-surface border border-border p-7 sm:p-9">
-                    <h3 className="text-[22px] font-extrabold tracking-[-0.02em]">{s.title}</h3>
-                    <p className="mt-3 text-[16px] leading-relaxed text-muted">{s.body}</p>
-                    {s.href && (
-                      <a href={s.href} className="inline-block mt-4 text-[14px] font-semibold text-accent hover:underline">
-                        {s.link} →
-                      </a>
-                    )}
-                    <ul className="mt-6 flex flex-wrap gap-2 list-none">
-                      {s.tags.map((t) => (
-                        <li key={t} className="px-2.5 py-1 rounded-md bg-ghost text-ink2 text-[12px] font-semibold">
-                          {t}
-                        </li>
-                      ))}
-                    </ul>
-                  </article>
-                </Reveal>
-              ))}
-            </div>
-          </section>
-
-          {/* Selected work */}
-          <section id="work" className="scroll-mt-6 pb-20 sm:pb-32">
-            <div className="flex flex-wrap justify-between items-baseline gap-4 mb-7">
-              <div>
-                <h2 className="text-[clamp(32px,4vw,48px)] font-black tracking-[-0.04em]">Proof, not promises</h2>
-                <p className="mt-2 text-[16px] text-muted">Real products I&apos;ve designed, built and shipped myself.</p>
-              </div>
-              <Link href="/#apps" className="text-[14px] text-accent hover:underline">All apps →</Link>
-            </div>
-            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {shipped.map((app) => (
-                <Link
-                  key={app.slug}
-                  href={app.href!}
-                  {...sheetFor(app.href)}
-                  scroll={false}
-                  className="group flex items-center gap-5 rounded-[24px] bg-surface border border-border p-6 hover:border-line"
-                >
-                  <AppIcon src={app.icon} size={64} />
-                  <span className="min-w-0">
-                    <span className="block text-[18px] font-bold group-hover:text-accent">{app.name}</span>
-                    <span className="block text-[14px] text-muted">{app.platforms} · SwiftUI · {app.category}</span>
-                  </span>
-                </Link>
-              ))}
-              <a
-                href="/demo/careways"
-                className="group md:col-span-2 lg:col-span-3 flex flex-wrap items-center justify-between gap-5 rounded-[24px] bg-surface border border-border p-6 sm:p-8 hover:border-line"
-              >
-                <span className="min-w-0 flex-[1_1_420px]">
-                  <span className="text-[12px] font-bold tracking-[0.14em] uppercase text-faint">Client MVP · Next.js</span>
-                  <span className="block mt-2 text-[22px] font-extrabold tracking-[-0.02em] group-hover:text-accent">Careways — luxury travel booking</span>
-                  <span className="block mt-2 text-[15px] leading-relaxed text-muted max-w-[640px]">
-                    Members&apos; rates on stays, flights and chauffeurs: search, booking passes, phone OTP verification and a full admin for
-                    offers, content and leads.
-                  </span>
-                </span>
-                <span className="text-[14px] font-semibold text-accent whitespace-nowrap">View live demo →</span>
-              </a>
-            </div>
-          </section>
-
-          {/* Process */}
-          <section id="process" className="scroll-mt-6 pb-20 sm:pb-32">
-            <h2 className="text-[clamp(32px,4vw,48px)] font-black tracking-[-0.04em] mb-7">How we&apos;d work together</h2>
-            <ol className="grid gap-5 md:grid-cols-2 lg:grid-cols-4 list-none">
-              {STEPS.map((s, i) => (
-                <li key={s.title} className="rounded-[24px] border border-border p-7">
-                  <span className="font-display font-black text-[15px] text-accent tabular-nums">0{i + 1}</span>
-                  <h3 className="mt-3 text-[19px] font-bold">{s.title}</h3>
-                  <p className="mt-2 text-[15px] leading-relaxed text-muted">{s.body}</p>
+                ['A short call', 'We talk through the idea, the users and what success looks like. Free, 30 minutes.'],
+                ['A fixed plan', 'A written scope with milestones and one price, or a monthly rate for ongoing work.'],
+                ['Weekly progress', 'Working builds every week, then launch, a clean handover and support after.'],
+              ].map(([t, b]) => (
+                <li key={t}>
+                  <h3 className="text-[17px] font-semibold">{t}</h3>
+                  <p className="mt-2 text-[15px] leading-relaxed text-muted">{b}</p>
                 </li>
               ))}
             </ol>
-          </section>
+          </Row>
 
-          {/* Brief */}
-          <section id="brief" className="scroll-mt-6 rounded-[28px] bg-surface border border-border p-7 sm:p-14 flex flex-wrap gap-12">
-            <div className="flex-[1_1_300px]">
-              <h2 className="text-[clamp(28px,3.4vw,42px)] font-black tracking-[-0.04em] leading-[1.05]">Have a project in mind?</h2>
-              <p className="mt-3 text-[16px] leading-relaxed text-muted max-w-[360px]">
-                Tell me a little about it. Rough ideas are fine; we&apos;ll shape the rest on a call.
+          <Row id="contact" label="Start a project">
+            <div className="max-w-[720px]">
+              <p className="text-[clamp(24px,2.6vw,32px)] font-semibold tracking-[-0.02em] leading-snug">
+                Tell me what you&apos;re building.
               </p>
-              <div className="mt-8 flex flex-col gap-2.5 text-[15px]">
-                <a href={`mailto:${CONTACT_EMAIL}`} className="text-ink2 hover:text-accent">{CONTACT_EMAIL}</a>
-                <a href={LINKS.linkedin} className="text-ink2 hover:text-accent">LinkedIn →</a>
-                <a href={LINKS.github} className="text-ink2 hover:text-accent">GitHub →</a>
-              </div>
+              <p className="mt-2 mb-10 text-[16px] text-muted">
+                Or write to <a href={`mailto:${CONTACT_EMAIL}`} className="text-ink2 underline decoration-line underline-offset-4 hover:decoration-ink">{CONTACT_EMAIL}</a>.
+              </p>
+              <ProjectBrief />
             </div>
-            <ProjectBrief />
-          </section>
+          </Row>
 
-          {/* FAQ */}
-          <section id="faq" className="scroll-mt-6 pt-20 sm:pt-32 flex flex-wrap gap-10">
-            <h2 className="flex-[1_1_260px] text-[clamp(32px,4vw,48px)] font-black tracking-[-0.04em]">Questions</h2>
-            <div className="flex-[999_1_560px] min-w-0 border-b border-border">
+          <Row label="Questions">
+            <div className="max-w-[720px] border-b border-border">
               {FAQ.map((f) => (
-                <details key={f.q} className="group border-t border-border py-[22px]">
-                  <summary className="flex justify-between gap-6 cursor-pointer list-none text-[18px] font-semibold [&::-webkit-details-marker]:hidden">
+                <details key={f.q} className="group border-t border-border first:border-t-0 py-5">
+                  <summary className="flex justify-between gap-6 cursor-pointer list-none text-[16px] font-medium [&::-webkit-details-marker]:hidden">
                     {f.q}
                     <span className="text-faint transition-transform group-open:rotate-45" aria-hidden>+</span>
                   </summary>
-                  <p className="mt-3 text-[16px] leading-relaxed text-muted max-w-[640px]">{f.a}</p>
+                  <p className="mt-3 text-[15px] leading-relaxed text-muted">{f.a}</p>
                 </details>
               ))}
             </div>
-          </section>
+          </Row>
         </main>
 
         <StudioFooter />

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { CONTACT_EMAIL } from './config'
+import { WORK_EMAIL } from './config'
 
 const TYPES = ['iOS app', 'Web app (Next.js / React)', 'iOS app + web', 'Something else']
 const TIMELINES = ['As soon as possible', 'In 1–2 months', 'Later this year', 'Ongoing / retainer']
@@ -21,7 +21,7 @@ export default function ProjectBrief() {
     e.preventDefault()
     const subject = `Project enquiry: ${type}${name ? ` (${name})` : ''}`
     const body = ['Hi Yash,', '', about.trim(), '', `Project: ${type}`, `Timeline: ${timeline}`, '', name ? `${name}` : ''].join('\n')
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    window.location.href = `mailto:${WORK_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
   }
 
   return (

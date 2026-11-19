@@ -1,4 +1,4 @@
-import { CONTACT_EMAIL } from './config'
+import { WORK_EMAIL } from './config'
 
 /** Thin arrow mark in the card's corner. */
 function Mark({ className = '' }: { className?: string }) {
@@ -57,7 +57,7 @@ export default function BusinessCard() {
           </div>
 
           <div className="text-[clamp(9px,1.5vw,11.5px)] leading-[1.5]">
-            <a href={`mailto:${CONTACT_EMAIL}`} className="block hover:underline underline-offset-2">{CONTACT_EMAIL}</a>
+            <a href={`mailto:${WORK_EMAIL}`} className="block hover:underline underline-offset-2">{WORK_EMAIL}</a>
             <a href="/" className="block hover:underline underline-offset-2">yashrawat.com</a>
           </div>
           <p className="text-[clamp(9px,1.5vw,11.5px)] leading-[1.5] text-right text-[#4a5257]">

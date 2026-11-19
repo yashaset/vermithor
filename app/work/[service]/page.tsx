@@ -7,7 +7,7 @@ import AppIcon from '@/components/studio/AppIcon'
 import { APPS } from '@/components/studio/apps'
 import { SERVICES } from '@/components/studio/services'
 import { sheetFor } from '@/components/sheet/links'
-import { CONTACT_EMAIL } from '@/components/studio/config'
+import { WORK_EMAIL } from '@/components/studio/config'
 import { SITE_URL, jsonLdHtml, pageMeta } from '@/components/seo/site'
 
 export const dynamicParams = false
@@ -75,8 +75,8 @@ export default function ServicePage({ params }: { params: { service: string } })
             <p className="mt-6 max-w-[640px] text-[clamp(18px,1.7vw,21px)] leading-normal text-muted">{s.intro}</p>
             <div className="mt-10 flex flex-wrap gap-3">
               <a href="/work#brief" className="px-6 py-3.5 rounded-full bg-lime text-onlime font-bold text-[15px] hover:brightness-95">Start a project</a>
-              <a href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(`${s.name} enquiry`)}`} className="px-6 py-3.5 rounded-full border border-line font-semibold text-[15px] hover:border-ink2">
-                {CONTACT_EMAIL}
+              <a href={`mailto:${WORK_EMAIL}?subject=${encodeURIComponent(`${s.name} enquiry`)}`} className="px-6 py-3.5 rounded-full border border-line font-semibold text-[15px] hover:border-ink2">
+                {WORK_EMAIL}
               </a>
             </div>
           </section>

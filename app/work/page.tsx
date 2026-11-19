@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import ProjectBrief from '@/components/studio/ProjectBrief'
 import BusinessCard from '@/components/studio/BusinessCard'
 import { APPS } from '@/components/studio/apps'
-import { CONTACT_EMAIL, LINKS } from '@/components/studio/config'
+import { WORK_EMAIL, LINKS } from '@/components/studio/config'
 import { AUTHOR, SITE_URL, jsonLdHtml, pageMeta } from '@/components/seo/site'
 import StudioNav from '@/components/studio/StudioNav'
 import StudioFooter from '@/components/studio/StudioFooter'
@@ -96,7 +96,7 @@ export default function WorkWithMe() {
         name: 'Yash Rawat — Freelance full-stack development',
         url: `${SITE_URL}/work`,
         description: DESCRIPTION,
-        email: CONTACT_EMAIL,
+        email: WORK_EMAIL,
         areaServed: 'Worldwide',
         address: { '@type': 'PostalAddress', addressLocality: 'Delhi', addressCountry: 'IN' },
         founder: { '@type': 'Person', '@id': `${SITE_URL}/#yash`, ...AUTHOR, sameAs: [LINKS.github, LINKS.linkedin] },
@@ -138,8 +138,8 @@ export default function WorkWithMe() {
               <a href="#contact" className="px-6 py-3 rounded-full bg-ink text-bg font-semibold text-[15px] hover:opacity-90 transition-opacity">
                 Start a project
               </a>
-              <a href={`mailto:${CONTACT_EMAIL}`} className="text-[15px] text-ink2 underline decoration-line underline-offset-[6px] hover:decoration-ink">
-                {CONTACT_EMAIL}
+              <a href={`mailto:${WORK_EMAIL}`} className="text-[15px] text-ink2 underline decoration-line underline-offset-[6px] hover:decoration-ink">
+                {WORK_EMAIL}
               </a>
             </div>
             <p className="mt-16 text-[13px] text-faint">

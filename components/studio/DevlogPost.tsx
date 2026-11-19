@@ -26,7 +26,7 @@ export default function DevlogPost({
         <main className="pt-16 sm:pt-24 pb-10">
           <article className="max-w-[720px] mx-auto">
             {jsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />}
-            <a href="/#devlog" className="text-[11px] text-accent tracking-[0.2em] uppercase hover:underline underline-offset-4">
+            <a href="/devlog" className="text-[11px] text-accent tracking-[0.2em] uppercase hover:underline underline-offset-4">
               {kicker}
             </a>
             <h1 className="text-[clamp(40px,8vw,72px)] font-extrabold leading-[0.95] tracking-tight mt-6">{title}</h1>

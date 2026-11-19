@@ -4,16 +4,16 @@ import { POSTS } from './devlog'
 import { APPS } from './apps'
 import { appVars } from './appStyle'
 
-/** "More from the devlog" list for the bottom of a post: every other published post (those with an href). */
+/** "More from the devlog" list for the bottom of a post: the three latest other published posts. */
 export default function MoreFromDevlog({ current }: { current: string }) {
-  const others = POSTS.filter((p) => p.href && p.href !== current)
+  const others = POSTS.filter((p) => p.href && p.href !== current).slice(0, 3)
   if (others.length === 0) return null
 
   return (
     <nav aria-labelledby="more-devlog" className="mt-20 pt-10 border-t border-border">
       <div className="flex flex-wrap justify-between items-baseline gap-4">
         <h2 id="more-devlog" className="text-[22px] sm:text-[26px] font-bold tracking-tight">More from the devlog</h2>
-        <a href="/#devlog" className="text-[11px] text-accent tracking-[0.2em] uppercase hover:underline underline-offset-4">
+        <a href="/devlog" className="text-[11px] text-accent tracking-[0.2em] uppercase hover:underline underline-offset-4">
           All posts →
         </a>
       </div>

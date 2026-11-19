@@ -4,7 +4,7 @@ import ThemeToggle from '@/components/ThemeToggle'
 const links = [
   { href: '/#apps', label: 'Apps' },
   { href: '/#mac', label: 'Mac' },
-  { href: '/#devlog', label: 'Devlog' },
+  { href: '/devlog', label: 'Devlog' },
   { href: '/#about', label: 'About' },
   { href: '/#support', label: 'Support' },
   // Mobile only: on wider screens it's the lime button beside the theme toggle.

@@ -1,15 +1,13 @@
-import Link from 'next/link'
-import { sheetFor } from '@/components/sheet/links'
 import StudioNav from '@/components/studio/StudioNav'
 import StudioFooter from '@/components/studio/StudioFooter'
 import AppIcon from '@/components/studio/AppIcon'
 import StatusBadge from '@/components/studio/StatusBadge'
 import LineupCard, { NextAppCard } from '@/components/studio/LineupCard'
 import NotifyForm from '@/components/studio/NotifyForm'
+import DevlogList from '@/components/studio/DevlogList'
 import Reveal from '@/components/Reveal'
 import { APPS, PHONE_APPS, MAC_APPS, WORKBENCH } from '@/components/studio/apps'
 import { POSTS } from '@/components/studio/devlog'
-import { appVars } from '@/components/studio/appStyle'
 import type { Metadata } from 'next'
 import { STUDIO_NAME, LINKS, CONTACT_EMAIL } from '@/components/studio/config'
 import { AUTHOR, SITE_URL, jsonLdHtml, pageMeta } from '@/components/seo/site'
@@ -175,36 +173,12 @@ export default function Home() {
                 Building every app in the open: design calls, bugs, launches.
               </p>
             </div>
-            <ol className="flex-[999_1_560px] min-w-0 list-none border-b border-border">
-              {POSTS.map((p) => {
-                const app = APPS.find((a) => a.slug === p.app)
-                const tag = app
-                  ? { className: 'app-accent', style: { ...appVars(app), background: `${app.accent}26` } }
-                  : { className: 'text-ink2 bg-border', style: undefined }
-                const inner = (
-                  <>
-                    <span className="col-span-2 sm:col-span-1 text-[13px] text-faint tabular-nums">{p.date}</span>
-                    <span>
-                      <span className="block text-[18px] font-semibold">{p.title}</span>
-                      <span className={`${tag.className} inline-block mt-2 text-[11px] font-bold px-2 py-[3px] rounded-md`} style={tag.style}>
-                        {app?.name ?? 'Studio'}
-                      </span>
-                    </span>
-                    <span className="text-[12px] text-faint whitespace-nowrap">{p.href ? '→' : 'Writing soon'}</span>
-                  </>
-                )
-                const cls = 'grid grid-cols-[1fr_auto] sm:grid-cols-[110px_minmax(0,1fr)_auto] gap-x-5 gap-y-2 items-baseline py-[22px]'
-                return (
-                  <li key={p.title} className="border-t border-border">
-                    {p.href ? (
-                      <Link href={p.href} {...sheetFor(p.href)} scroll={false} className={`${cls} hover:text-accent`}>{inner}</Link>
-                    ) : (
-                      <div className={cls}>{inner}</div>
-                    )}
-                  </li>
-                )
-              })}
-            </ol>
+            <div className="flex-[999_1_560px] min-w-0">
+              <DevlogList posts={POSTS.filter((p) => p.href).slice(0, 3)} />
+              <a href="/devlog" className="inline-block mt-6 text-[14px] font-semibold text-accent hover:underline underline-offset-4">
+                All {POSTS.filter((p) => p.href).length} posts →
+              </a>
+            </div>
           </section>
 
           {/* About */}

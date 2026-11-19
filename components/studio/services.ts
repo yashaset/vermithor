@@ -65,7 +65,7 @@ export const SERVICES: Service[] = [
     proofExtra: [
       { title: 'Careways — travel booking MVP', body: 'Client MVP: search, booking passes, phone OTP and a full admin for offers, content and leads.', href: '/demo/careways' },
       { title: 'yashrawat.com', body: 'This site: Next.js App Router, light and dark themes, bottom-sheet navigation and full SEO set-up.', href: '/' },
-      { title: 'I did my SEO using Claude', body: 'How the SEO on this site was set up: metadata, share images, sitemap and structured data.', href: '/devlog/seo-with-claude' },
+      { title: 'I did my Next.js SEO using Claude', body: 'How this site’s Next.js SEO was set up: Metadata API, Open Graph images, sitemap.ts and JSON-LD.', href: '/devlog/seo-with-claude' },
     ],
     faq: [
       { q: 'Can you work on an existing Next.js codebase?', a: 'Yes. I regularly pick up existing projects for new features, App Router migrations and performance work.' },

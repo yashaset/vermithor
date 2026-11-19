@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     { url: url('/'), lastModified: latestPost, changeFrequency: 'weekly', priority: 1 },
+    { url: url('/devlog'), lastModified: latestPost, changeFrequency: 'weekly', priority: 0.8 },
     { url: url('/work'), changeFrequency: 'monthly', priority: 0.9 },
     ...SERVICES.map((s) => ({ url: url(`/work/${s.slug}`), changeFrequency: 'monthly' as const, priority: 0.8 })),
     ...APPS.filter((a) => a.href).map((a) => ({ url: url(a.href!), changeFrequency: 'monthly' as const, priority: 0.9 })),

@@ -10,7 +10,7 @@ import { APPS, PHONE_APPS, MAC_APPS, WORKBENCH } from '@/components/studio/apps'
 import { POSTS } from '@/components/studio/devlog'
 import type { Metadata } from 'next'
 import { STUDIO_NAME, LINKS, CONTACT_EMAIL } from '@/components/studio/config'
-import { AUTHOR, LOGO, SITE_NAME, SITE_URL, jsonLdHtml, pageMeta } from '@/components/seo/site'
+import { AUTHOR, LOGO, PHOTO, SITE_NAME, SITE_URL, jsonLdHtml, pageMeta } from '@/components/seo/site'
 
 export const metadata: Metadata = pageMeta({
   path: '/',
@@ -27,7 +27,7 @@ const jsonLd = {
       '@type': 'Person',
       '@id': `${SITE_URL}/#yash`,
       ...AUTHOR,
-      image: LOGO,
+      image: PHOTO,
       jobTitle: 'Freelance full-stack developer (iOS, Next.js, React)',
       description: 'Independent app developer in Delhi, available for freelance iOS, Next.js and React projects.',
       knowsAbout: ['iOS development', 'Swift', 'SwiftUI', 'Next.js', 'React', 'TypeScript', 'Full-stack web development'],
@@ -194,9 +194,15 @@ export default function Home() {
 
           {/* About */}
           <section id="about" className="scroll-mt-6 mt-20 sm:mt-32 rounded-[28px] bg-surface border border-border p-7 sm:p-14 flex flex-wrap gap-8 items-center">
-            <span aria-hidden className="shrink-0 w-24 h-24 rounded-full bg-lime text-onlime flex items-center justify-center font-display font-black text-[32px] tracking-tighter">
-              YR
-            </span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/brand/yash.jpg"
+              alt="Yash Rawat"
+              width={96}
+              height={96}
+              loading="lazy"
+              className="shrink-0 w-24 h-24 rounded-full object-cover ring-2 ring-lime ring-offset-4 ring-offset-surface"
+            />
             <div className="flex-[1_1_420px] min-w-0">
               <h2 className="text-[clamp(26px,3vw,36px)] font-extrabold tracking-[-0.03em]">Hi, I&apos;m Yash. One developer, every pixel.</h2>
               <p className="mt-3 text-[17px] leading-relaxed text-muted max-w-[680px]">

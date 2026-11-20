@@ -5,6 +5,8 @@ export const SITE_URL = 'https://yashrawat.com'
 export const SITE_NAME = 'Yash Rawat'
 export const AUTHOR = { name: 'Yash Rawat', url: SITE_URL }
 /** The "y." mark: Google asks for a square image at least 112 px, on a solid background. */
+/** Photo of Yash, for the Person (Google's profile box prefers a real photo). */
+export const PHOTO = { '@type': 'ImageObject', url: `${SITE_URL}/brand/yash.jpg`, width: 600, height: 600 }
 export const LOGO = { '@type': 'ImageObject', url: `${SITE_URL}/brand/icon-512.png`, width: 512, height: 512 }
 
 /**

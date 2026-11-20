@@ -15,18 +15,20 @@ export interface VideoEntry {
 }
 
 export const VIDEOS: VideoEntry[] = [
-  { id: 'Cp2sIlRWvjw' },
-  { id: 'HVy4wCL0V7E' },
-  { id: 'Mjf2Hfyal8U' },
-  { id: 'aEt1fHNwIfo' },
-  { id: 'Z0ccNHOmtQw' },
-  { id: '36yfSiqwJUQ' },
-  { id: 'WDMCUGzwKvc' },
-  { id: 'gqUSpbobccs' },
-  { id: 'b-i7l6TQa0M' },
-  { id: 'ruhVBM2hQm8' },
-  { id: '-KWb-O2djUU' },
-  { id: 'nod5ccGLSnY' },
+  {
+    id: 'Cp2sIlRWvjw',
+    slug: 'react-infinite-scroll-custom-hook',
+    title: 'Infinite scrolling in React with a custom hook',
+    notes:
+      'Load more items as the user scrolls, without a library: a reusable React custom hook that watches the end of the list and fetches the next page, explained step by step.',
+  },
+  {
+    id: 'aEt1fHNwIfo',
+    slug: 'react-todo-app-localstorage',
+    title: 'Build a todo app with React and localStorage',
+    notes:
+      'A beginner React project from scratch: add, complete and delete tasks with hooks, and save them to localStorage so they are still there after a refresh.',
+  },
 ]
 
 export const CHANNEL_URL = 'https://www.youtube.com/@yashrawatreact'

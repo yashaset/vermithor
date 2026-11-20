@@ -6,9 +6,9 @@ import { CHANNEL_URL } from '@/components/videos/videos'
 import { getVideos } from '@/components/videos/youtube'
 import { SITE_URL, jsonLdHtml, pageMeta } from '@/components/seo/site'
 
-const TITLE = 'Videos — React and JavaScript tutorials · Yash Rawat'
+const TITLE = 'Videos — React tutorials · Yash Rawat'
 const DESCRIPTION =
-  'React and JavaScript tutorials by Yash Rawat: hooks like useReducer and useContext, custom hooks, infinite scrolling and beginner projects, explained step by step.'
+  'React tutorials by Yash Rawat: infinite scrolling with a custom hook, and a beginner todo app with localStorage, explained step by step.'
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
@@ -54,7 +54,7 @@ export default async function VideosPage() {
             <div>
               <h1 className="font-black text-[clamp(44px,7vw,88px)] leading-[0.98] tracking-[-0.045em]">Videos</h1>
               <p className="mt-5 max-w-[600px] text-[clamp(17px,1.6vw,20px)] leading-normal text-muted">
-                React and JavaScript tutorials: hooks, custom hooks and small projects, explained step by step.
+                React tutorials, explained step by step. More on iOS and building my apps coming soon.
               </p>
             </div>
             <a

@@ -16,6 +16,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: url('/'), lastModified: latestPost, changeFrequency: 'weekly', priority: 1 },
     { url: url('/devlog'), lastModified: latestPost, changeFrequency: 'weekly', priority: 0.8 },
     { url: url('/work'), changeFrequency: 'monthly', priority: 0.9 },
+    { url: url('/contact'), changeFrequency: 'yearly', priority: 0.6 },
     { url: url('/videos'), changeFrequency: 'monthly', priority: 0.7 },
     ...videos.filter((v) => !v.partial).map((v) => ({
       url: url(`/videos/${v.slug}`),

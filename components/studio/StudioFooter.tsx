@@ -25,6 +25,7 @@ export default function StudioFooter() {
         <div className="flex flex-col gap-2.5">
           <span className="font-semibold">Hire me</span>
           <a href="/work" className="text-muted hover:text-ink">Freelance developer</a>
+          <a href="/contact" className="text-muted hover:text-ink">Contact</a>
           {SERVICES.map((s) => (
             <a key={s.slug} href={`/work/${s.slug}`} className="text-muted hover:text-ink">{s.h1.replace('Freelance ', '').replace(/^./, (c) => c.toUpperCase())}</a>
           ))}

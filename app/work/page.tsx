@@ -99,7 +99,7 @@ export default function WorkWithMe() {
         email: WORK_EMAIL,
         areaServed: 'Worldwide',
         address: { '@type': 'PostalAddress', addressLocality: 'Delhi', addressCountry: 'IN' },
-        founder: { '@type': 'Person', '@id': `${SITE_URL}/#yash`, ...AUTHOR, sameAs: [LINKS.github, LINKS.linkedin] },
+        founder: { '@type': 'Person', '@id': `${SITE_URL}/#yash`, ...AUTHOR, sameAs: Object.values(LINKS) },
         knowsAbout: ['iOS development', 'Swift', 'SwiftUI', 'Next.js', 'React', 'TypeScript', 'Node.js', 'Full-stack web development'],
         hasOfferCatalog: {
           '@type': 'OfferCatalog',

@@ -1,8 +1,11 @@
 import type { Metadata } from 'next'
-import { STUDIO_NAME } from '@/components/studio/config'
 
 export const SITE_URL = 'https://yashrawat.com'
+/** The name Google shows above search results (with the favicon). The studio brand goes in alternateName. */
+export const SITE_NAME = 'Yash Rawat'
 export const AUTHOR = { name: 'Yash Rawat', url: SITE_URL }
+/** The "y." mark: Google asks for a square image at least 112 px, on a solid background. */
+export const LOGO = { '@type': 'ImageObject', url: `${SITE_URL}/brand/icon-512.png`, width: 512, height: 512 }
 
 /**
  * Per-page SEO: canonical URL plus Open Graph / Twitter tags for this exact page.
@@ -25,7 +28,7 @@ export function pageMeta({
 }): Metadata {
   return {
     alternates: { canonical: path },
-    openGraph: { title, description, url: path, siteName: STUDIO_NAME, type, locale: 'en_IN', ...(images ? { images } : {}) },
+    openGraph: { title, description, url: path, siteName: SITE_NAME, type, locale: 'en_IN', ...(images ? { images } : {}) },
     twitter: { card: 'summary_large_image', title, description, ...(images ? { images: images.map((i) => i.url) } : {}) },
   }
 }

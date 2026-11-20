@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter, Nunito } from 'next/font/google'
 import './globals.css'
-import { STUDIO_NAME } from '@/components/studio/config'
 import { themeInitScript } from '@/components/ThemeToggle'
 import SheetHost from '@/components/sheet/SheetHost'
 
@@ -11,13 +10,13 @@ const nunito = Nunito({ subsets: ['latin'], weight: ['700', '800', '900'], varia
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://yashrawat.com'),
-  title: `${STUDIO_NAME} — Independent apps by Yash Rawat`,
+  title: 'Yash Rawat | iOS & Full-Stack Developer, Indie Apps',
   description:
     'Apps worth keeping on your home screen. Yash Rawat is an independent developer in Delhi who designs, builds and supports every app himself. No ads, no tracking.',
   openGraph: {
-    title: `${STUDIO_NAME} — Independent apps by Yash Rawat`,
+    title: 'Yash Rawat | iOS & Full-Stack Developer, Indie Apps',
     description: 'Apps worth keeping on your home screen.',
-    siteName: STUDIO_NAME,
+    siteName: 'Yash Rawat',
     type: 'website',
     locale: 'en_IN',
   },

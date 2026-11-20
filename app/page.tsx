@@ -10,13 +10,13 @@ import { APPS, PHONE_APPS, MAC_APPS, WORKBENCH } from '@/components/studio/apps'
 import { POSTS } from '@/components/studio/devlog'
 import type { Metadata } from 'next'
 import { STUDIO_NAME, LINKS, CONTACT_EMAIL } from '@/components/studio/config'
-import { AUTHOR, SITE_URL, jsonLdHtml, pageMeta } from '@/components/seo/site'
+import { AUTHOR, LOGO, SITE_NAME, SITE_URL, jsonLdHtml, pageMeta } from '@/components/seo/site'
 
 export const metadata: Metadata = pageMeta({
   path: '/',
-  title: `${STUDIO_NAME} — Independent apps by Yash Rawat`,
+  title: 'Yash Rawat | iOS & Full-Stack Developer, Indie Apps',
   description:
-    'Apps worth keeping on your home screen, by Yash Rawat, an independent iOS and full-stack developer in Delhi. No ads, no tracking. Available for freelance iOS, Next.js and React projects.',
+    'Yash Rawat is an independent iOS and full-stack developer in Delhi, building apps worth keeping on your home screen. No ads, no tracking. Available for freelance iOS, Next.js and React projects.',
 })
 
 // Who's behind the site, for Google's knowledge panel and to tie the apps to one developer.
@@ -27,19 +27,30 @@ const jsonLd = {
       '@type': 'Person',
       '@id': `${SITE_URL}/#yash`,
       ...AUTHOR,
+      image: LOGO,
       jobTitle: 'Freelance full-stack developer (iOS, Next.js, React)',
       description: 'Independent app developer in Delhi, available for freelance iOS, Next.js and React projects.',
       knowsAbout: ['iOS development', 'Swift', 'SwiftUI', 'Next.js', 'React', 'TypeScript', 'Full-stack web development'],
       email: `mailto:${CONTACT_EMAIL}`,
       address: { '@type': 'PostalAddress', addressLocality: 'Delhi', addressCountry: 'IN' },
-      sameAs: [LINKS.github, LINKS.linkedin],
+      sameAs: Object.values(LINKS),
     },
     {
       '@type': 'WebSite',
       '@id': `${SITE_URL}/#website`,
       url: SITE_URL,
-      name: STUDIO_NAME,
+      name: SITE_NAME,
+      alternateName: [STUDIO_NAME, 'yashrawat.com'],
       publisher: { '@id': `${SITE_URL}/#yash` },
+    },
+    {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#studio`,
+      name: STUDIO_NAME,
+      url: SITE_URL,
+      logo: LOGO,
+      founder: { '@id': `${SITE_URL}/#yash` },
+      sameAs: Object.values(LINKS),
     },
     {
       '@type': 'ItemList',

@@ -32,8 +32,10 @@ export default function StudioFooter() {
         <div className="flex flex-col gap-2.5">
           <span className="font-semibold">Elsewhere</span>
           <a href={`mailto:${CONTACT_EMAIL}`} className="text-muted hover:text-ink">Email</a>
-          <a href={LINKS.github} className="text-muted hover:text-ink">GitHub</a>
-          <a href={LINKS.linkedin} className="text-muted hover:text-ink">LinkedIn</a>
+          <a href={LINKS.github} rel="me" className="text-muted hover:text-ink">GitHub</a>
+          <a href={LINKS.linkedin} rel="me" className="text-muted hover:text-ink">LinkedIn</a>
+          <a href={LINKS.youtube} rel="me" className="text-muted hover:text-ink">YouTube</a>
+          <a href={LINKS.instagram} rel="me" className="text-muted hover:text-ink">Instagram</a>
         </div>
       </div>
     </footer>

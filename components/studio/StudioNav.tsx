@@ -6,7 +6,7 @@ const links = [
   { href: '/#mac', label: 'Mac' },
   { href: '/devlog', label: 'Devlog' },
   { href: '/#about', label: 'About' },
-  { href: '/#support', label: 'Support' },
+  { href: '/contact', label: 'Contact' },
   // Mobile only: on wider screens it's the lime button beside the theme toggle.
   { href: '/work', label: 'Work with me', className: 'sm:hidden' },
 ]

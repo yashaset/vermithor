@@ -85,14 +85,15 @@ async function load(entry: VideoEntry): Promise<Video> {
   }
 
   const finalTitle = entry.title ?? title ?? 'Video'
+  const manualLength = entry.length ? fromClock(entry.length) : undefined
   return {
     id,
     slug: entry.slug ?? (title || entry.title ? slugify(finalTitle) : id.toLowerCase()),
     title: finalTitle,
-    description,
+    description: entry.description ?? description,
     notes: entry.notes,
-    uploadDate,
-    length: lengthRaw ? Number(lengthRaw) : undefined,
+    uploadDate: entry.uploadDate ?? uploadDate,
+    length: manualLength ?? (lengthRaw ? Number(lengthRaw) : undefined),
     views: viewsRaw ? Number(viewsRaw) : undefined,
     partial: !title && !entry.title,
   }
@@ -118,6 +119,13 @@ export async function getVideo(slug: string) {
 
 export const thumb = (id: string, size: 'hq' | 'maxres' = 'hq') =>
   `https://i.ytimg.com/vi/${id}/${size === 'hq' ? 'hqdefault' : 'maxresdefault'}.jpg`
+
+/** "23:52" or "1:02:03" → seconds */
+function fromClock(s: string) {
+  const n = s.split(':').map(Number)
+  if (n.some(Number.isNaN)) return undefined
+  return n.reduce((acc, x) => acc * 60 + x, 0)
+}
 
 /** 1432 → "23:52" */
 export function clock(seconds?: number) {
